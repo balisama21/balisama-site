@@ -1,40 +1,63 @@
+<!-- contact.html -->
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact - Maminirina Balsama</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f7f7f7;
+      padding: 40px;
+      color: #333;
+    }
+    h1 {
+      text-align: center;
+      color: #1a1a2e;
+    }
+    form {
+      max-width: 600px;
+      margin: 40px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1em;
+    }
+    button {
+      background-color: #1a1a2e;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      font-size: 1em;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #333;
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <h1>Maminirina Balsama</h1>
-    <nav>
-      <a href="index.html">Accueil</a>
-      <a href="about.html">À propos</a>
-      <a href="blog.html">Blog</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </header>
-
-  <main>
-    <section class="contact">
-  <h2>Contactez-moi</h2>
+  <h1>Contactez-moi</h1>
   <form action="https://formsubmit.co/balisamamamy2003@gmail.com" method="POST">
-    <input type="text" name="name" placeholder="Votre nom" required>
-    <input type="email" name="email" placeholder="Votre adresse email" required>
-    <textarea name="message" placeholder="Votre message" required></textarea>
-    <button type="submit">Envoyer</button>
-
-    <!-- Protection contre spam -->
+    <input type="hidden" name="_next" value="https://balisama21.github.io/balisama-site/merci.html">
     <input type="hidden" name="_captcha" value="false">
-    <input type="hidden" name="_next" value="https://ton-site.com/merci.html">
+    <input type="hidden" name="_autoresponse" value="Merci pour votre message ! Je vous répondrai dès que possible.">
+
+    <input type="text" name="nom" placeholder="Votre nom" required>
+    <input type="email" name="email" placeholder="Votre adresse email" required>
+    <textarea name="message" rows="5" placeholder="Votre message" required></textarea>
+    <button type="submit">Envoyer</button>
   </form>
-</section>
-
-  </main>
-
-  <footer>
-    <p>&copy; 2025 Maminirina Balsama. Tous droits réservés.</p>
-  </footer>
 </body>
 </html>
