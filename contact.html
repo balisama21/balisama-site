@@ -1,63 +1,159 @@
-<!-- contact.html -->
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact - Maminirina Balsama</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body {
+    body, html {
+      margin: 0;
+      padding: 0;
       font-family: Arial, sans-serif;
-      background-color: #f7f7f7;
-      padding: 40px;
-      color: #333;
-    }
-    h1 {
-      text-align: center;
-      color: #1a1a2e;
-    }
-    form {
-      max-width: 600px;
-      margin: 40px auto;
-      background: white;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    input, textarea {
-      width: 100%;
-      padding: 12px;
-      margin-bottom: 20px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-size: 1em;
-    }
-    button {
-      background-color: #1a1a2e;
       color: white;
-      border: none;
-      padding: 12px 20px;
-      font-size: 1em;
-      border-radius: 6px;
-      cursor: pointer;
+      height: 100%;
+      overflow: hidden;
     }
-    button:hover {
-      background-color: #333;
+
+    video#bgVideo {
+      position: fixed;
+      top: 0;
+      left: 0;
+      min-width: 100%;
+      min-height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.6);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 60px 40px;
+      height: 100vh;
+      box-sizing: border-box;
+    }
+
+    .left-column, .right-column {
+      width: 48%;
+    }
+
+    .left-column h2 {
+      margin-top: 0;
+      color: #FFD700;
+    }
+
+    .contact-info p {
+      margin: 10px 0;
+      font-size: 1.1em;
+    }
+
+    .social-icons {
+      margin-top: 20px;
+    }
+
+    .social-icons img {
+      width: 30px;
+      margin-right: 10px;
+      vertical-align: middle;
+    }
+
+    .right-column form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .right-column input, .right-column textarea {
+      margin-bottom: 15px;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1em;
+    }
+
+    .right-column button {
+      padding: 10px;
+      background-color: #FFD700;
+      border: none;
+      font-size: 1em;
+      cursor: pointer;
+      color: black;
+    }
+
+    iframe {
+      width: 100%;
+      height: 200px;
+      border: none;
+      margin-top: 20px;
+    }
+
+    footer {
+      position: fixed;
+      bottom: 10px;
+      width: 100%;
+      text-align: center;
+      color: #ccc;
+      font-size: 0.9em;
+    }
+
+    @media (max-width: 768px) {
+      .overlay {
+        flex-direction: column;
+        align-items: center;
+        overflow: auto;
+      }
+
+      .left-column, .right-column {
+        width: 100%;
+        margin-bottom: 30px;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>Contactez-moi</h1>
-  <form action="https://formsubmit.co/balisamamamy2003@gmail.com" method="POST">
-    <input type="hidden" name="_next" value="https://balisama21.github.io/balisama-site/merci.html">
-    <input type="hidden" name="_captcha" value="false">
-    <input type="hidden" name="_autoresponse" value="Merci pour votre message ! Je vous répondrai dès que possible.">
 
-    <input type="text" name="nom" placeholder="Votre nom" required>
-    <input type="email" name="email" placeholder="Votre adresse email" required>
-    <textarea name="message" rows="5" placeholder="Votre message" required></textarea>
-    <button type="submit">Envoyer</button>
-  </form>
+  <!-- Vidéo de fond -->
+  <video autoplay muted loop id="bgVideo">
+    <source src="page.mp4" type="video/mp4">
+    Votre navigateur ne supporte pas les vidéos HTML5.
+  </video>
+
+  <div class="overlay">
+    <!-- Colonne gauche : infos -->
+    <div class="left-column">
+      <h2>Contactez-moi</h2>
+      <div class="contact-info">
+        <p>📧 Email : <a href="mailto:balisamamamy2003@gmail.com" style="color: #FFD700;">balisamamamy2003@gmail.com</a></p>
+        <p>💼 LinkedIn : <a href="https://www.linkedin.com/in/balisama-maminiaina-146350326" style="color: #FFD700;" target="_blank">Profil LinkedIn</a></p>
+        <p>📱 WhatsApp : <a href="https://wa.me/261328740631" style="color: #FFD700;" target="_blank">+261 32 87 406 31</a></p>
+        <div class="social-icons">
+          <img src="https://img.icons8.com/ios-filled/50/facebook-new.png" alt="Facebook" />
+          <img src="https://img.icons8.com/ios-filled/50/instagram-new.png" alt="Instagram" />
+          <img src="https://img.icons8.com/ios-filled/50/twitter.png" alt="Twitter" />
+        </div>
+        <iframe 
+          src="https://www.google.com/maps?q=Lavage+Ambohitrimanjaka&output=embed"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+
+    <!-- Colonne droite : formulaire -->
+    <div class="right-column">
+      <form action="https://formsubmit.co/balisamamamy2003@gmail.com" method="POST">
+        <input type="text" name="name" placeholder="Votre nom" required>
+        <input type="email" name="email" placeholder="Votre email" required>
+        <textarea name="message" placeholder="Votre message" rows="5" required></textarea>
+        <input type="hidden" name="_next" value="https://balisama21.github.io/balisama-site/merci.html">
+        <input type="text" name="_honey" style="display:none">
+        <input type="hidden" name="_captcha" value="false">
+        <button type="submit">Envoyer</button>
+      </form>
+    </div>
+  </div>
+
+  <footer>
+    © 2025 Maminirina Balsama. Tous droits réservés.
+  </footer>
 </body>
 </html>
