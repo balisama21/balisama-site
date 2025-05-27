@@ -12,7 +12,7 @@
       background-image: url('https://balisama21.github.io/balisama-site/site.jpg');
       background-size: cover;
       background-position: center;
-      padding: 190px 60px;
+      padding: 120px 20px;
       color: white;
       text-align: center;
       position: relative;
@@ -49,15 +49,33 @@
       background-color: #dddddd;
     }
 
-    /* Styles précédents ici... */
+    /* Arrière-plan personnalisé pour FAQ et newsletter */
     .faq, .newsletter {
       padding: 60px 20px;
-      background-color: #f7f7f7;
+      background-image: url('https://balisama21.github.io/balisama-site/bébé.jpg');
+      background-size: cover;
+      background-position: center;
+      color: white;
       text-align: center;
+      position: relative;
     }
+
+    .faq::before, .newsletter::before {
+      content: '';
+      background-color: rgba(0, 0, 0, 0.6);
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: 0;
+    }
+
+    .faq > *, .newsletter > * {
+      position: relative;
+      z-index: 1;
+    }
+
     .faq h2, .newsletter h2 {
       font-size: 2.5em;
-      color: #1a1a2e;
       margin-bottom: 30px;
     }
     .faq-item {
@@ -67,12 +85,10 @@
     }
     .faq-item h3 {
       font-size: 1.3em;
-      color: #1a1a2e;
       margin-bottom: 5px;
     }
     .faq-item p {
       font-size: 1em;
-      color: #444;
       margin: 0;
     }
     .newsletter form {
@@ -95,6 +111,14 @@
     }
     .newsletter button:hover {
       background-color: #333;
+    }
+
+    footer p {
+      font-size: 1.3em;
+      color: #666666;
+      text-align: center;
+      padding: 20px 10px;
+      margin: 0;
     }
   </style>
 </head>
