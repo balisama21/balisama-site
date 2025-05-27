@@ -2,27 +2,108 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>À propos - Maminirina Balsama</title>
-  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-image: url('https://raw.githubusercontent.com/balisama21/balisama-site/main/technologie.jpg');
+      background-size: cover;
+      background-position: center;
+      color: white;
+    }
+
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 60px 20px;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      animation: fadeIn 1.2s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 3em;
+      margin-bottom: 20px;
+      color: #FFD700;
+    }
+
+    h2 {
+      margin-top: 40px;
+      color: #87CEFA;
+    }
+
+    p, li {
+      font-size: 1.2em;
+      line-height: 1.8;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2em;
+      }
+      h2 {
+        font-size: 1.5em;
+      }
+      p, li {
+        font-size: 1em;
+      }
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <h1>Maminirina Balsama</h1>
-    <nav>
-      <a href="index.html">Accueil</a>
-      <a href="about.html">À propos</a>
-      <a href="blog.html">Blog</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </header>
+  <div class="overlay">
+    <div class="container">
+      <h1>À propos de Maminirina Balsama</h1>
 
-  <main>
-    <h2>À propos de moi</h2>
-    <p>Bienvenue ! Je suis Maminirina Balsama, passionnée par la rédaction, la communication et la création de mini-sites. J’aide les entreprises et particuliers à mieux communiquer en ligne.</p>
-  </main>
+      <h2>Compétences</h2>
+      <ul>
+        <li>Marketing digital : réseaux sociaux, SEO, email marketing</li>
+        <li>Programmation Python – niveau débutant à intermédiaire</li>
+        <li>Développement web avec Python (bases)</li>
+        <li>Connaissances de base en Intelligence Artificielle</li>
+        <li>Pack Office : Word, Excel, PowerPoint</li>
+        <li>Outils numériques : Canva, Gmail, Google, Facebook, WhatsApp</li>
+      </ul>
 
-  <footer>
-    <p>&copy; 2025 Maminirina Balsama. Tous droits réservés.</p>
-  </footer>
+      <h2>Centres d’intérêt</h2>
+      <p>Voyage, lecture, sport, musique, exploration sur internet</p>
+
+      <h2>Formations</h2>
+      <ul>
+        <li><strong>Début de formation en Télécommunication</strong> – CNTEMAD (Université Madagascar)</li>
+        <li><strong>Baccalauréat – Série Scientifique</strong> – Lycée Ambohitrimanjaka, Antananarivo – Madagascar</li>
+        <li><strong>Formation en Marketing Digital</strong> – Sayna (en ligne)</li>
+        <ul>
+          <li>SEO, réseaux sociaux, publicité digitale, email marketing</li>
+          <li>Outils : Canva, Google Analytics, Meta Business Suite</li>
+        </ul>
+        <li><strong>Autoformation</strong> en Python, IA & Développement Web</li>
+        <ul>
+          <li>Programmation Python (bases, logique, automatisation)</li>
+          <li>Développement web avec Python (bases de Flask ou Django)</li>
+          <li>Notions en Intelligence Artificielle</li>
+          <li>Bibliothèques : pandas, matplotlib, scikit-learn</li>
+        </ul>
+      </ul>
+    </div>
+  </div>
 </body>
 </html>
