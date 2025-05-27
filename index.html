@@ -7,9 +7,7 @@
   <title>Accueil - Maminirina Balsama</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    /* Arrière-plan complet unifié */
-    .hero-background,
-    .faq-newsletter-wrapper {
+    .main-wrapper {
       background-image: url('https://raw.githubusercontent.com/balisama21/balisama-site/main/baba.jpg');
       background-size: cover;
       background-position: center;
@@ -17,8 +15,7 @@
       position: relative;
     }
 
-    .hero-background::before,
-    .faq-newsletter-wrapper::before {
+    .main-wrapper::before {
       content: '';
       background-color: rgba(0, 0, 0, 0.5);
       position: absolute;
@@ -27,34 +24,59 @@
       z-index: 0;
     }
 
-    .hero-background {
-      padding: 80px 20px 60px;
-    }
-
-    .faq-newsletter-wrapper {
-      padding: 60px 20px;
-    }
-
-    .hero-content {
+    .main-wrapper > * {
       position: relative;
       z-index: 1;
-      max-width: 900px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      gap: 30px;
     }
 
-    .hero-content img {
-      width: 120px;
-      height: 120px;
+    header {
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    header img {
+      width: 180px;
+      height: 180px;
       border-radius: 50%;
-      object-fit: cover;
       border: 3px solid white;
+      object-fit: cover;
+    }
+
+    header h1 {
+      font-size: 3em;
+      color: #FFD700;
+      margin: 0;
+    }
+
+    nav {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: bold;
     }
 
     .hero-text {
-      text-align: left;
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    .hero-text h2 {
+      font-size: 2.8em;
+      margin-bottom: 10px;
+    }
+
+    .hero-text p {
+      font-size: 1.3em;
+      margin-bottom: 20px;
     }
 
     .btn {
@@ -64,45 +86,49 @@
       border-radius: 8px;
       text-decoration: none;
       font-weight: bold;
-      display: inline-block;
-      margin-top: 20px;
     }
 
     .btn:hover {
       background-color: #dddddd;
     }
 
-    .faq-newsletter-wrapper > * {
-      position: relative;
-      z-index: 1;
+    .faq, .newsletter {
+      padding: 40px 20px;
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
     }
 
     .faq h2, .newsletter h2 {
       font-size: 2.5em;
       margin-bottom: 30px;
     }
+
     .faq-item {
-      max-width: 800px;
-      margin: 0 auto 20px;
+      margin-bottom: 20px;
       text-align: left;
     }
+
     .faq-item h3 {
       font-size: 1.3em;
       margin-bottom: 5px;
     }
+
     .faq-item p {
-      font-size: 1em;
       margin: 0;
     }
+
     .newsletter form {
       margin-top: 20px;
     }
+
     .newsletter input[type="email"] {
       padding: 10px;
       width: 300px;
       border-radius: 5px;
       border: 1px solid #ccc;
     }
+
     .newsletter button {
       padding: 10px 20px;
       background-color: #1a1a2e;
@@ -112,6 +138,7 @@
       margin-left: 10px;
       cursor: pointer;
     }
+
     .newsletter button:hover {
       background-color: #333;
     }
@@ -126,28 +153,24 @@
   </style>
 </head>
 <body>
-  <header>
-    <div class="hero-content">
+  <div class="main-wrapper">
+    <header>
       <img src="https://raw.githubusercontent.com/balisama21/balisama-site/main/site.jpg" alt="Photo de Maminirina Balsama">
       <h1>Maminirina Balsama</h1>
-    </div>
+    </header>
     <nav>
       <a href="index.html">Accueil</a>
       <a href="about.html">À propos</a>
       <a href="blog.html">Blog</a>
       <a href="contact.html">Contact</a>
     </nav>
-  </header>
 
-  <section class="hero-background">
-    <div class="hero-text">
+    <section class="hero-text">
       <h2>Bienvenue sur mon site</h2>
       <p>Je suis Maminirina Balsama. Découvrez mes articles, projets, et plus encore.</p>
       <a href="blog.html" class="btn">Voir le blog</a>
-    </div>
-  </section>
+    </section>
 
-  <div class="faq-newsletter-wrapper">
     <section class="faq">
       <h2>Questions fréquentes</h2>
       <div class="faq-item">
