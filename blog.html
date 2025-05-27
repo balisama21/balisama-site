@@ -2,37 +2,116 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Blog - Maminirina Balsama</title>
-  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: white;
+    }
+
+    .section {
+      padding: 60px 20px;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 40px;
+    }
+
+    h2 {
+      font-size: 2.5em;
+      color: #FFD700;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .content img {
+      max-width: 45%;
+      border-radius: 12px;
+    }
+
+    .text {
+      flex: 1 1 100%;
+      font-size: 1.2em;
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      .content img {
+        max-width: 90%;
+      }
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <h1>Maminirina Balsama</h1>
-    <nav>
-      <a href="index.html">Accueil</a>
-      <a href="about.html">À propos</a>
-      <a href="blog.html">Blog</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </header>
 
-  <main>
-    <h2>Articles récents</h2>
-    <article>
-      <h3>Comment améliorer votre communication en ligne</h3>
-      <p>Publié le 15 avril 2025</p>
-      <p>Dans cet article, je partage des astuces simples pour développer une communication efficace sur le web, que vous soyez indépendant ou une petite entreprise.</p>
-    </article>
+  <div class="section" style="background-image: url('https://raw.githubusercontent.com/balisama21/balisama-site/main/t%C3%A9l%C3%A9com.jpg');">
+    <div class="overlay">
+      <h2>Télécommunication</h2>
+      <div class="content">
+        <img src="https://raw.githubusercontent.com/balisama21/balisama-site/main/t%C3%A9l%C3%A9com1.jpg" alt="Télécom 1">
+        <img src="https://raw.githubusercontent.com/balisama21/balisama-site/main/t%C3%A9l%C3%A9com2.jpg" alt="Télécom 2">
+        <div class="text">Formation en télécommunication débutée à l'université CNTEMAD, explorant les réseaux, la transmission de données et les technologies modernes de communication.</div>
+      </div>
+    </div>
+  </div>
 
-    <article>
-      <h3>Créer un mini-site efficace : mes conseils</h3>
-      <p>Publié le 20 avril 2025</p>
-      <p>Un mini-site peut être un outil puissant pour promouvoir vos projets. Découvrez comment structurer et rendre votre mini-site professionnel et attractif.</p>
-    </article>
-  </main>
+  <div class="section" style="background-image: url('https://raw.githubusercontent.com/balisama21/balisama-site/main/marketing.jpg');">
+    <div class="overlay">
+      <h2>Marketing Digital</h2>
+      <div class="content">
+        <img src="https://raw.githubusercontent.com/balisama21/balisama-site/main/marketing1.jpg" alt="Marketing 1">
+        <img src="https://raw.githubusercontent.com/balisama21/balisama-site/main/marketing2.jpg" alt="Marketing 2">
+        <div class="text">Compétences en réseaux sociaux, SEO, email marketing, acquises via une formation en ligne avec Sayna, et mises en pratique avec des outils comme Canva et Google Analytics.</div>
+      </div>
+    </div>
+  </div>
 
-  <footer>
-    <p>&copy; 2025 Maminirina Balsama. Tous droits réservés.</p>
-  </footer>
+  <div class="section" style="background-image: url('https://raw.githubusercontent.com/balisama21/balisama-site/main/devops.jpg');">
+    <div class="overlay">
+      <h2>Développement Web avec Python</h2>
+      <div class="content">
+        <img src="https://raw.githubusercontent.com/balisama21/balisama-site/main/devops1.jpg" alt="DevOps 1">
+        <img src="https://raw.githubusercontent.com/balisama21/balisama-site/main/python2.jpg" alt="Python">
+        <div class="text">Autoformation en développement web avec Python (bases Flask/Django), logique de programmation, automatisation avec Python.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" style="background-image: url('https://raw.githubusercontent.com/balisama21/balisama-site/main/IA.jpg');">
+    <div class="overlay">
+      <h2>Intelligence Artificielle</h2>
+      <div class="content">
+        <img src="https://raw.githubusercontent.com/balisama21/balisama-site/main/IA1.jpg" alt="IA 1">
+        <img src="https://raw.githubusercontent.com/balisama21/balisama-site/main/IA.PNG" alt="IA 2">
+        <div class="text">Bases en Intelligence Artificielle avec notions en machine learning, bibliothèques comme pandas, matplotlib et scikit-learn.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" style="background-image: url('https://raw.githubusercontent.com/balisama21/balisama-site/main/google.jpg');">
+    <div class="overlay">
+      <h2>Outils Numériques et Pack Office</h2>
+      <div class="content">
+        <img src="https://raw.githubusercontent.com/balisama21/balisama-site/main/google1.jpg" alt="Google 1">
+        <img src="https://raw.githubusercontent.com/balisama21/balisama-site/main/canva.jpg" alt="Canva">
+        <div class="text">Maîtrise de Google, Gmail, Facebook, WhatsApp, et pack Office : Word, Excel, PowerPoint. Utilisation avancée de Canva pour la création graphique.</div>
+      </div>
+    </div>
+  </div>
+
 </body>
 </html>
