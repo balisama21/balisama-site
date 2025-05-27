@@ -10,108 +10,123 @@
       font-family: Arial, sans-serif;
       color: white;
     }
-
     .section {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       padding: 60px 20px;
+      min-height: 100vh;
       background-size: cover;
       background-position: center;
-      position: relative;
     }
-
-    .overlay {
-      background-color: rgba(0, 0, 0, 0.6);
-      padding: 40px;
-    }
-
-    h2 {
-      font-size: 2.5em;
-      color: #FFD700;
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
     .content {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      justify-content: center;
-      align-items: center;
+      width: 50%;
+      padding: 20px;
+      background-color: rgba(0, 0, 0, 0.6);
+      border-radius: 10px;
     }
-
-    .content img {
-      max-width: 45%;
-      border-radius: 12px;
+    .image {
+      width: 45%;
     }
-
-    .text {
-      flex: 1 1 100%;
+    .image img {
+      width: 100%;
+      border-radius: 10px;
+    }
+    h2 {
+      color: #FFD700;
+    }
+    p {
       font-size: 1.2em;
-      text-align: center;
+      line-height: 1.6;
     }
-
-    @media (max-width: 768px) {
-      .content img {
-        max-width: 90%;
-      }
+    .buttons {
+      text-align: center;
+      margin: 40px 0;
+    }
+    .buttons a {
+      background-color: #FFD700;
+      color: black;
+      text-decoration: none;
+      padding: 12px 25px;
+      margin: 10px;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #111;
+      color: #aaa;
     }
   </style>
 </head>
 <body>
 
-  <div class="section" style="background-image: url('https://raw.githubusercontent.com/balisama21/balisama-site/main/t%C3%A9l%C3%A9com.jpg');">
-    <div class="overlay">
-      <h2>Télécommunication</h2>
-      <div class="content">
-        <img src="https://raw.githubusercontent.com/balisama21/balisama-site/main/t%C3%A9l%C3%A9com1.jpg" alt="Télécom 1">
-        <img src="https://raw.githubusercontent.com/balisama21/balisama-site/main/t%C3%A9l%C3%A9com2.jpg" alt="Télécom 2">
-        <div class="text">Formation en télécommunication débutée à l'université CNTEMAD, explorant les réseaux, la transmission de données et les technologies modernes de communication.</div>
-      </div>
-    </div>
+<!-- Télécommunication -->
+<div class="section" style="background-image: url('https://raw.githubusercontent.com/balisama21/balisama-site/main/t%C3%A9l%C3%A9com1.jpg');">
+  <div class="content">
+    <h2>Télécommunication</h2>
+    <p>La télécommunication joue un rôle essentiel dans la transmission d'informations à distance. Grâce à mes études à la CNTEMAD, j’ai acquis des bases solides en télécoms, notamment sur les réseaux, les technologies sans fil, les systèmes de transmission et l’importance croissante de l’Internet des objets (IoT) dans ce domaine. Ces compétences me permettent de comprendre le fonctionnement des infrastructures modernes et d’envisager leur évolution dans un monde de plus en plus connecté.</p>
   </div>
+  <div class="image">
+    <img src="https://raw.githubusercontent.com/balisama21/balisama-site/main/t%C3%A9l%C3%A9com.jpg" alt="Télécommunication">
+  </div>
+</div>
 
-  <div class="section" style="background-image: url('https://raw.githubusercontent.com/balisama21/balisama-site/main/marketing.jpg');">
-    <div class="overlay">
-      <h2>Marketing Digital</h2>
-      <div class="content">
-        <img src="https://raw.githubusercontent.com/balisama21/balisama-site/main/marketing1.jpg" alt="Marketing 1">
-        <img src="https://raw.githubusercontent.com/balisama21/balisama-site/main/marketing2.jpg" alt="Marketing 2">
-        <div class="text">Compétences en réseaux sociaux, SEO, email marketing, acquises via une formation en ligne avec Sayna, et mises en pratique avec des outils comme Canva et Google Analytics.</div>
-      </div>
-    </div>
+<!-- Marketing Digital -->
+<div class="section" style="background-image: url('https://raw.githubusercontent.com/balisama21/balisama-site/main/marketing3.jpg');">
+  <div class="image">
+    <img src="https://raw.githubusercontent.com/balisama21/balisama-site/main/marketing.jpg" alt="Marketing Digital">
   </div>
+  <div class="content">
+    <h2>Marketing Digital</h2>
+    <p>Formé par Sayna, j’ai acquis des compétences pratiques en marketing digital. J’ai appris à gérer les réseaux sociaux, à améliorer la visibilité sur Google grâce au SEO, et à créer des campagnes d’emailing efficaces. L’utilisation d’outils comme Canva, Google Analytics ou Meta Business Suite me permet de concevoir des stratégies performantes pour renforcer la présence en ligne d’une entreprise ou d’un projet personnel.</p>
+  </div>
+</div>
 
-  <div class="section" style="background-image: url('https://raw.githubusercontent.com/balisama21/balisama-site/main/devops.jpg');">
-    <div class="overlay">
-      <h2>Développement Web avec Python</h2>
-      <div class="content">
-        <img src="https://raw.githubusercontent.com/balisama21/balisama-site/main/devops1.jpg" alt="DevOps 1">
-        <img src="https://raw.githubusercontent.com/balisama21/balisama-site/main/python2.jpg" alt="Python">
-        <div class="text">Autoformation en développement web avec Python (bases Flask/Django), logique de programmation, automatisation avec Python.</div>
-      </div>
-    </div>
+<!-- Développement Web avec Python -->
+<div class="section" style="background-image: url('https://raw.githubusercontent.com/balisama21/balisama-site/main/devops.jpg');">
+  <div class="content">
+    <h2>Développement Web avec Python</h2>
+    <p>J’ai suivi une autoformation en programmation Python et en développement web. J’ai appris à créer des applications simples avec des frameworks comme Flask ou Django. Grâce à cette formation, je suis capable de concevoir des sites dynamiques, automatiser des tâches, et structurer le code pour une meilleure lisibilité. Je poursuis continuellement mon apprentissage pour m’améliorer dans ce domaine passionnant.</p>
   </div>
+  <div class="image">
+    <img src="https://raw.githubusercontent.com/balisama21/balisama-site/main/python1.PNG" alt="Développement Python">
+  </div>
+</div>
 
-  <div class="section" style="background-image: url('https://raw.githubusercontent.com/balisama21/balisama-site/main/IA.jpg');">
-    <div class="overlay">
-      <h2>Intelligence Artificielle</h2>
-      <div class="content">
-        <img src="https://raw.githubusercontent.com/balisama21/balisama-site/main/IA1.jpg" alt="IA 1">
-        <img src="https://raw.githubusercontent.com/balisama21/balisama-site/main/IA.PNG" alt="IA 2">
-        <div class="text">Bases en Intelligence Artificielle avec notions en machine learning, bibliothèques comme pandas, matplotlib et scikit-learn.</div>
-      </div>
-    </div>
+<!-- Intelligence Artificielle -->
+<div class="section" style="background-image: url('https://raw.githubusercontent.com/balisama21/balisama-site/main/IA1.jpg');">
+  <div class="image">
+    <img src="https://raw.githubusercontent.com/balisama21/balisama-site/main/IA.PNG" alt="Intelligence Artificielle">
   </div>
+  <div class="content">
+    <h2>Intelligence Artificielle</h2>
+    <p>Mes premières notions d’intelligence artificielle m’ont permis de comprendre comment les machines peuvent apprendre à partir des données. J’ai utilisé des bibliothèques Python comme pandas, matplotlib ou scikit-learn pour analyser et représenter des données. Je m’intéresse également aux applications concrètes de l’IA comme la reconnaissance d’image, la prédiction, et l’automatisation de tâches.</p>
+  </div>
+</div>
 
-  <div class="section" style="background-image: url('https://raw.githubusercontent.com/balisama21/balisama-site/main/google.jpg');">
-    <div class="overlay">
-      <h2>Outils Numériques et Pack Office</h2>
-      <div class="content">
-        <img src="https://raw.githubusercontent.com/balisama21/balisama-site/main/google1.jpg" alt="Google 1">
-        <img src="https://raw.githubusercontent.com/balisama21/balisama-site/main/canva.jpg" alt="Canva">
-        <div class="text">Maîtrise de Google, Gmail, Facebook, WhatsApp, et pack Office : Word, Excel, PowerPoint. Utilisation avancée de Canva pour la création graphique.</div>
-      </div>
-    </div>
+<!-- Outils Numériques et Pack Office -->
+<div class="section" style="background-image: url('https://raw.githubusercontent.com/balisama21/balisama-site/main/canva1.jpg');">
+  <div class="content">
+    <h2>Outils numériques & Pack Office</h2>
+    <p>Je maîtrise les logiciels du Pack Office (Word, Excel, PowerPoint) ainsi que des outils numériques indispensables comme Gmail, Google, Canva, Facebook et WhatsApp. Ces outils sont essentiels pour communiquer, créer du contenu, organiser des données, et améliorer la productivité dans un cadre personnel comme professionnel.</p>
   </div>
+  <div class="image">
+    <img src="https://raw.githubusercontent.com/balisama21/balisama-site/main/google.jpg" alt="Outils numériques">
+  </div>
+</div>
+
+<!-- Navigation -->
+<div class="buttons">
+  <a href="index.html">Retour à l'accueil</a>
+  <a href="contact.html">Me contacter</a>
+</div>
+
+<!-- Footer -->
+<footer>
+  © 2025 Maminirina Balsama. Tous droits réservés.
+</footer>
 
 </body>
 </html>
