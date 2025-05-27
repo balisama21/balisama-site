@@ -9,12 +9,11 @@
   <style>
     /* Section image d'arrière-plan */
     .hero-background {
-      background-image: url('https://balisama21.github.io/balisama-site/site.jpg');
+      background-image: url('https://raw.githubusercontent.com/balisama21/balisama-site/main/baba.jpg');
       background-size: cover;
       background-position: center;
-      padding: 400px 200px;
+      padding: 120px 20px;
       color: white;
-      text-align: center;
       position: relative;
     }
 
@@ -32,6 +31,22 @@
       z-index: 1;
       max-width: 800px;
       margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .hero-content img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid white;
+    }
+
+    .hero-text {
+      text-align: left;
     }
 
     .btn {
@@ -134,9 +149,12 @@
 
   <section class="hero-background">
     <div class="hero-content">
-      <h2>Bienvenue sur mon site</h2>
-      <p>Je suis Maminirina Balsama. Découvrez mes articles, projets, et plus encore.</p>
-      <a href="blog.html" class="btn">Voir le blog</a>
+      <img src="https://raw.githubusercontent.com/balisama21/balisama-site/main/site.jpg" alt="Photo de Maminirina Balsama">
+      <div class="hero-text">
+        <h2>Bienvenue sur mon site</h2>
+        <p>Je suis Maminirina Balsama. Découvrez mes articles, projets, et plus encore.</p>
+        <a href="blog.html" class="btn">Voir le blog</a>
+      </div>
     </div>
   </section>
 
@@ -153,7 +171,7 @@
       </div>
       <div class="faq-item">
         <h3>Quel est votre domaine principal ?</h3>
-        <p>Je me spécialise dans le développement web, la télécommunication et l'intégration des entreprises dans l'Inteligence Artificielle .</p>
+        <p>Je me spécialise dans la rédaction, la communication et la création de mini-sites.</p>
       </div>
     </section>
 
