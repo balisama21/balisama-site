@@ -12,7 +12,7 @@
       background-image: url('https://balisama21.github.io/balisama-site/site.jpg');
       background-size: cover;
       background-position: center;
-      padding: 500px 100px;
+      padding: 120px 90px;
       color: white;
       text-align: center;
       position: relative;
@@ -49,18 +49,17 @@
       background-color: #dddddd;
     }
 
-    /* Arrière-plan personnalisé pour FAQ et newsletter */
-    .faq, .newsletter {
-      padding: 60px 20px;
-      background-image: url('https://balisama21.github.io/balisama-site/baba.jpg');
+    /* Arrière-plan commun pour FAQ et newsletter */
+    .faq-newsletter-wrapper {
+      background-image: url('https://raw.githubusercontent.com/balisama21/balisama-site/main/baba.jpg');
       background-size: cover;
       background-position: center;
       color: white;
-      text-align: center;
       position: relative;
+      padding: 60px 20px;
     }
 
-    .faq::before, .newsletter::before {
+    .faq-newsletter-wrapper::before {
       content: '';
       background-color: rgba(0, 0, 0, 0.6);
       position: absolute;
@@ -69,7 +68,7 @@
       z-index: 0;
     }
 
-    .faq > *, .newsletter > * {
+    .faq-newsletter-wrapper > * {
       position: relative;
       z-index: 1;
     }
@@ -141,33 +140,35 @@
     </div>
   </section>
 
-  <section class="faq">
-    <h2>Questions fréquentes</h2>
-    <div class="faq-item">
-      <h3>Comment puis-je vous contacter ?</h3>
-      <p>Vous pouvez utiliser la page Contact pour m’envoyer un message directement.</p>
-    </div>
-    <div class="faq-item">
-      <h3>Est-ce que vous acceptez les collaborations ?</h3>
-      <p>Oui, je suis toujours ouverte à de nouvelles opportunités de collaboration professionnelle.</p>
-    </div>
-    <div class="faq-item">
-      <h3>Quel est votre domaine principal ?</h3>
-      <p>Je me spécialise dans la rédaction, la communication et la création de mini-sites.</p>
-    </div>
-  </section>
+  <div class="faq-newsletter-wrapper">
+    <section class="faq">
+      <h2>Questions fréquentes</h2>
+      <div class="faq-item">
+        <h3>Comment puis-je vous contacter ?</h3>
+        <p>Vous pouvez utiliser la page Contact pour m’envoyer un message directement.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Est-ce que vous acceptez les collaborations ?</h3>
+        <p>Oui, je suis toujours ouverte à de nouvelles opportunités de collaboration professionnelle.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Quel est votre domaine principal ?</h3>
+        <p>Je me spécialise dans la rédaction, la communication et la création de mini-sites.</p>
+      </div>
+    </section>
 
-  <section class="newsletter">
-    <h2>Abonnez-vous à la newsletter</h2>
-    <p>Recevez les dernières actualités, articles et astuces directement dans votre boîte mail.</p>
-    <form action="https://formsubmit.co/balisamamamy2003@gmail.com" method="POST">
-      <input type="hidden" name="_next" value="https://balisama21.github.io/balisama-site/merci.html">
-      <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_autoresponse" value="Merci pour votre inscription ! Nous vous répondrons bientôt.">
-      <input type="email" name="email" placeholder="Votre adresse email" required>
-      <button type="submit">S'abonner</button>
-    </form>
-  </section>
+    <section class="newsletter">
+      <h2>Abonnez-vous à la newsletter</h2>
+      <p>Recevez les dernières actualités, articles et astuces directement dans votre boîte mail.</p>
+      <form action="https://formsubmit.co/balisamamamy2003@gmail.com" method="POST">
+        <input type="hidden" name="_next" value="https://balisama21.github.io/balisama-site/merci.html">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_autoresponse" value="Merci pour votre inscription ! Nous vous répondrons bientôt.">
+        <input type="email" name="email" placeholder="Votre adresse email" required>
+        <button type="submit">S'abonner</button>
+      </form>
+    </section>
+  </div>
 
   <footer>
     <p>&copy; 2025 Maminirina Balsama. Tous droits réservés.</p>
