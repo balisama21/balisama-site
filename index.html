@@ -7,17 +7,18 @@
   <title>Accueil - Maminirina Balsama</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    /* Section image d'arrière-plan */
-    .hero-background {
+    /* Arrière-plan complet unifié */
+    .hero-background,
+    .faq-newsletter-wrapper {
       background-image: url('https://raw.githubusercontent.com/balisama21/balisama-site/main/baba.jpg');
       background-size: cover;
       background-position: center;
-      padding: 120px 20px;
       color: white;
       position: relative;
     }
 
-    .hero-background::before {
+    .hero-background::before,
+    .faq-newsletter-wrapper::before {
       content: '';
       background-color: rgba(0, 0, 0, 0.5);
       position: absolute;
@@ -26,20 +27,27 @@
       z-index: 0;
     }
 
+    .hero-background {
+      padding: 80px 20px 60px;
+    }
+
+    .faq-newsletter-wrapper {
+      padding: 60px 20px;
+    }
+
     .hero-content {
       position: relative;
       z-index: 1;
-      max-width: 800px;
+      max-width: 900px;
       margin: 0 auto;
       display: flex;
       align-items: center;
-      justify-content: center;
-      gap: 20px;
+      gap: 30px;
     }
 
     .hero-content img {
-      width: 100px;
-      height: 100px;
+      width: 120px;
+      height: 120px;
       border-radius: 50%;
       object-fit: cover;
       border: 3px solid white;
@@ -62,25 +70,6 @@
 
     .btn:hover {
       background-color: #dddddd;
-    }
-
-    /* Arrière-plan commun pour FAQ et newsletter */
-    .faq-newsletter-wrapper {
-      background-image: url('https://raw.githubusercontent.com/balisama21/balisama-site/main/baba.jpg');
-      background-size: cover;
-      background-position: center;
-      color: white;
-      position: relative;
-      padding: 60px 20px;
-    }
-
-    .faq-newsletter-wrapper::before {
-      content: '';
-      background-color: rgba(0, 0, 0, 0.6);
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      z-index: 0;
     }
 
     .faq-newsletter-wrapper > * {
@@ -138,7 +127,10 @@
 </head>
 <body>
   <header>
-    <h1>Maminirina Balsama</h1>
+    <div class="hero-content">
+      <img src="https://raw.githubusercontent.com/balisama21/balisama-site/main/site.jpg" alt="Photo de Maminirina Balsama">
+      <h1>Maminirina Balsama</h1>
+    </div>
     <nav>
       <a href="index.html">Accueil</a>
       <a href="about.html">À propos</a>
@@ -148,13 +140,10 @@
   </header>
 
   <section class="hero-background">
-    <div class="hero-content">
-      <img src="https://raw.githubusercontent.com/balisama21/balisama-site/main/site.jpg" alt="Photo de Maminirina Balsama">
-      <div class="hero-text">
-        <h2>Bienvenue sur mon site</h2>
-        <p>Je suis Maminirina Balsama. Découvrez mes articles, projets, et plus encore.</p>
-        <a href="blog.html" class="btn">Voir le blog</a>
-      </div>
+    <div class="hero-text">
+      <h2>Bienvenue sur mon site</h2>
+      <p>Je suis Maminirina Balsama. Découvrez mes articles, projets, et plus encore.</p>
+      <a href="blog.html" class="btn">Voir le blog</a>
     </div>
   </section>
 
