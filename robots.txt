@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://balsama.netlify.app/sitemap.xml
