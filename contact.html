@@ -4,39 +4,30 @@
   <meta charset="UTF-8">
   <title>Contact - Maminirina Balsama</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-  <!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-Q47HY7CVGP "></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-Q47HY7CVGP');
-</script>
-  
-   <!-- ✅ BALISES META POUR LE SEO -->
-  <title>Maminirina Balsama - Blog & Portfolio</title>
-  <meta name="description" content="Découvrez les compétences, formations et projets de Maminirina Balsama en marketing digital, télécommunications, IA et plus.">
-  <meta name="keywords" content="Maminirina Balsama, marketing digital, télécommunication, IA, blog, développement web, SEO">
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q47HY7CVGP "></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-Q47HY7CVGP');
+  </script>
+
+  <!-- ✅ SEO -->
+  <meta name="description" content="Contactez Maminirina Balsama pour en savoir plus sur ses projets en marketing digital, télécoms et IA.">
+  <meta name="keywords" content="Contact Maminirina Balsama, marketing digital, télécom, développeur Madagascar">
   <meta name="author" content="Maminirina Balsama">
 
-  <!-- ✅ BALISES OPEN GRAPH POUR LES RÉSEAUX SOCIAUX -->
-  <meta property="og:title" content="Maminirina Balsama - Blog & Portfolio">
-  <meta property="og:description" content="Découvrez mes compétences en marketing digital, développement web, télécoms et IA.">
+  <!-- ✅ Open Graph -->
+  <meta property="og:title" content="Contact - Maminirina Balsama">
+  <meta property="og:description" content="Envoyez un message ou retrouvez les réseaux sociaux de Maminirina Balsama.">
   <meta property="og:image" content="https://balsama.netlify.app/images/site.jpg">
-  <meta property="og:url" content="https://balsama.netlify.app">
+  <meta property="og:url" content="https://balsama.netlify.app/contact.html">
   <meta property="og:type" content="website">
 
-  <!-- Autres balises comme les liens CSS ou favicons -->
   <link rel="stylesheet" href="style.css">
 
-  <!-- Twitter Card (optionnel) -->
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Maminirina Balsama - Portfolio" />
-<meta name="twitter:description" content="Découvrez les projets et compétences de Maminirina Balsama, expert en marketing digital et IA." />
-<meta name="twitter:image" content="https://balsama.netlify.app/images/site.jpg" />
-  
   <style>
     body, html {
       margin: 0;
@@ -76,9 +67,9 @@
       color: #FFD700;
     }
 
-    .contact-info p {
-      margin: 10px 0;
+    .contact-info p, .contact-info a {
       font-size: 1.1em;
+      color: white;
     }
 
     .social-icons {
@@ -95,12 +86,20 @@
       vertical-align: middle;
     }
 
-    .right-column form {
+    .right-column {
       display: flex;
       flex-direction: column;
+      align-items: center;
     }
 
-    .right-column input, .right-column textarea {
+    form {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      max-width: 400px;
+    }
+
+    form input, form textarea {
       margin-bottom: 15px;
       padding: 10px;
       border: none;
@@ -108,7 +107,7 @@
       font-size: 1em;
     }
 
-    .right-column button {
+    form button {
       padding: 10px;
       background-color: #FFD700;
       border: none;
@@ -125,14 +124,16 @@
     }
 
     .btn-retour {
-      margin-top: 20px;
-      display: inline-block;
-      padding: 10px 20px;
+      position: absolute;
+      top: 20px;
+      left: 20px;
       background-color: #FFD700;
       color: black;
+      padding: 10px 20px;
       text-decoration: none;
-      border-radius: 5px;
       font-weight: bold;
+      border-radius: 5px;
+      z-index: 2;
     }
 
     footer {
@@ -142,6 +143,7 @@
       text-align: center;
       color: #ccc;
       font-size: 0.9em;
+      z-index: 2;
     }
 
     @media (max-width: 768px) {
@@ -155,6 +157,11 @@
         width: 100%;
         margin-bottom: 30px;
       }
+
+      .btn-retour {
+        position: static;
+        margin: 20px 0;
+      }
     }
   </style>
 </head>
@@ -166,38 +173,40 @@
     Votre navigateur ne supporte pas les vidéos HTML5.
   </video>
 
+  <!-- Bouton de retour -->
+  <a href="index.html" class="btn-retour">← Retour à l'accueil</a>
+
   <div class="overlay">
-    <!-- Colonne gauche : infos -->
+
+    <!-- Colonne gauche -->
     <div class="left-column">
       <h2>Contactez-moi</h2>
       <div class="contact-info">
-        <p>📧 Email : <a href="mailto:balisamamamy2003@gmail.com" style="color: #FFD700;">balisamamamy2003@gmail.com</a></p>
-        <p>💼 LinkedIn : <a href="https://www.linkedin.com/in/balisama-maminiaina-146350326" style="color: #FFD700;" target="_blank">Profil LinkedIn</a></p>
-        <p>📱 WhatsApp : <a href="https://wa.me/261328740631" style="color: #FFD700;" target="_blank">+261 32 87 406 31</a></p>
-        <p>📘 Facebook : <a href="https://www.facebook.com/alpha.gabriel.104891" style="color: #FFD700;" target="_blank">Alpha Gabriel</a></p>
+        <p>📧 Email : <a href="mailto:balisamamamy2003@gmail.com">balisamamamy2003@gmail.com</a></p>
+        <p>💼 LinkedIn : <a href="https://www.linkedin.com/in/balisama-maminiaina-146350326" target="_blank">Profil LinkedIn</a></p>
+        <p>📱 WhatsApp : <a href="https://wa.me/261328740631" target="_blank">+261 32 87 406 31</a></p>
+        <p>📘 Facebook : <a href="https://www.facebook.com/alpha.gabriel.104891" target="_blank">Alpha Gabriel</a></p>
+        <p>📸 Instagram : <a href="https://www.instagram.com/etre_optimiste_avec_balsama/" target="_blank">@etre_optimiste_avec_balsama</a></p>
 
         <div class="social-icons">
-          <a href="#"><img src="https://img.icons8.com/ios-filled/50/facebook-new.png" alt="Facebook" /></a>
-          <a href="#"><img src="https://img.icons8.com/ios-filled/50/instagram-new.png" alt="Instagram" /></a>
-          <a href="#"><img src="https://img.icons8.com/ios-filled/50/twitter.png" alt="Twitter" /></a>
+          <a href="https://www.facebook.com/alpha.gabriel.104891" target="_blank"><img src="https://img.icons8.com/ios-filled/50/facebook-new.png" alt="Facebook" /></a>
+          <a href="https://www.instagram.com/etre_optimiste_avec_balsama/" target="_blank"><img src="https://img.icons8.com/ios-filled/50/instagram-new.png" alt="Instagram" /></a>
         </div>
 
         <iframe 
-          src="https://www.google.com/maps?q=An'i+Kristy+Radio+FM+107.6+Ambohitrimanjaka&output=embed"
+          src="https://www.google.com/maps?q=Balsama+Ambohitrimanjaka&output=embed"
           allowfullscreen>
         </iframe>
-
-        <a href="index.html" class="btn-retour">← Retour à l'accueil</a>
       </div>
     </div>
 
-    <!-- Colonne droite : formulaire -->
+    <!-- Colonne droite -->
     <div class="right-column">
       <form action="https://formsubmit.co/balisamamamy2003@gmail.com" method="POST">
         <input type="text" name="name" placeholder="Votre nom" required>
         <input type="email" name="email" placeholder="Votre email" required>
         <textarea name="message" placeholder="Votre message" rows="5" required></textarea>
-        <input type="hidden" name="_next" value="https://balisama21.github.io/balisama-site/merci.html">
+        <input type="hidden" name="_next" value="https://balsama21.github.io/balisama-site/merci.html">
         <input type="text" name="_honey" style="display:none">
         <input type="hidden" name="_captcha" value="false">
         <button type="submit">Envoyer</button>
