@@ -14,12 +14,12 @@
     gtag('config', 'G-Q47HY7CVGP');
   </script>
 
-  <!-- ✅ SEO -->
+  <!-- SEO -->
   <meta name="description" content="Contactez Maminirina Balsama pour en savoir plus sur ses projets en marketing digital, télécoms et IA.">
   <meta name="keywords" content="Contact Maminirina Balsama, marketing digital, télécom, développeur Madagascar">
   <meta name="author" content="Maminirina Balsama">
 
-  <!-- ✅ Open Graph -->
+  <!-- Open Graph -->
   <meta property="og:title" content="Contact - Maminirina Balsama">
   <meta property="og:description" content="Envoyez un message ou retrouvez les réseaux sociaux de Maminirina Balsama.">
   <meta property="og:image" content="https://balsama.netlify.app/images/site.jpg">
@@ -35,7 +35,6 @@
       font-family: Arial, sans-serif;
       color: white;
       height: 100%;
-      overflow: hidden;
     }
 
     video#bgVideo {
@@ -56,6 +55,7 @@
       padding: 60px 40px;
       height: 100vh;
       box-sizing: border-box;
+      overflow-y: auto;
     }
 
     .left-column, .right-column {
@@ -137,20 +137,22 @@
     }
 
     footer {
-      position: fixed;
+      position: relative;
       bottom: 10px;
       width: 100%;
       text-align: center;
       color: #ccc;
       font-size: 0.9em;
-      z-index: 2;
+      margin-top: 20px;
     }
 
     @media (max-width: 768px) {
       .overlay {
         flex-direction: column;
         align-items: center;
-        overflow: auto;
+        height: auto;
+        overflow-y: auto;
+        padding: 20px;
       }
 
       .left-column, .right-column {
@@ -160,7 +162,11 @@
 
       .btn-retour {
         position: static;
-        margin: 20px 0;
+        margin-bottom: 20px;
+      }
+
+      iframe {
+        height: 250px;
       }
     }
   </style>
@@ -173,7 +179,7 @@
     Votre navigateur ne supporte pas les vidéos HTML5.
   </video>
 
-  <!-- Bouton de retour -->
+  <!-- Bouton retour -->
   <a href="index.html" class="btn-retour">← Retour à l'accueil</a>
 
   <div class="overlay">
@@ -186,7 +192,7 @@
         <p>💼 LinkedIn : <a href="https://www.linkedin.com/in/balisama-maminiaina-146350326" target="_blank">Profil LinkedIn</a></p>
         <p>📱 WhatsApp : <a href="https://wa.me/261328740631" target="_blank">+261 32 87 406 31</a></p>
         <p>📘 Facebook : <a href="https://www.facebook.com/alpha.gabriel.104891" target="_blank">Alpha Gabriel</a></p>
-        <p>📸 Instagram : <a href="https://www.instagram.com/etre_optimiste_avec_balsama/" target="_blank"><img src="https://img.icons8.com/ios-filled/50/instagram-new.png" alt="Instagram" /></a></p>
+        <p>📸 Instagram : <a href="https://www.instagram.com/etre_optimiste_avec_balsama/" target="_blank">@etre_optimiste_avec_balsama</a></p>
 
         <div class="social-icons">
           <a href="https://www.facebook.com/alpha.gabriel.104891" target="_blank"><img src="https://img.icons8.com/ios-filled/50/facebook-new.png" alt="Facebook" /></a>
