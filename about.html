@@ -2,141 +2,158 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
+  <title>À propos - Maminirina Balsama</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+
   <!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-Q47HY7CVGP "></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q47HY7CVGP"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-Q47HY7CVGP');
+  </script>
 
-  gtag('config', 'G-Q47HY7CVGP');
-</script>
-
-   <!-- ✅ BALISES META POUR LE SEO -->
-  <title>Maminirina Balsama - Blog & Portfolio</title>
-  <meta name="description" content="Découvrez les compétences, formations et projets de Maminirina Balsama en marketing digital, télécommunications, IA et plus.">
-  <meta name="keywords" content="Maminirina Balsama, marketing digital, télécommunication, IA, blog, développement web, SEO">
+  <!-- SEO -->
+  <meta name="description" content="En savoir plus sur Maminirina Balsama : son parcours, ses compétences et ses passions.">
+  <meta name="keywords" content="à propos, Maminirina Balsama, parcours, compétences, marketing digital, IA, télécom">
   <meta name="author" content="Maminirina Balsama">
 
-  <!-- ✅ BALISES OPEN GRAPH POUR LES RÉSEAUX SOCIAUX -->
-  <meta property="og:title" content="Maminirina Balsama - Blog & Portfolio">
-  <meta property="og:description" content="Découvrez mes compétences en marketing digital, développement web, télécoms et IA.">
-  <meta property="og:image" content="https://balsama.netlify.app/images/site.jpg">
-  <meta property="og:url" content="https://balsama.netlify.app">
-  <meta property="og:type" content="website">
-
-  <!-- Autres balises comme les liens CSS ou favicons -->
-  <link rel="stylesheet" href="style.css">
-
-  <!-- Twitter Card (optionnel) -->
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Maminirina Balsama - Portfolio" />
-<meta name="twitter:description" content="Découvrez les projets et compétences de Maminirina Balsama, expert en marketing digital et IA." />
-<meta name="twitter:image" content="https://balsama.netlify.app/images/site.jpg" />
-  
-  <title>À propos - Maminirina Balsama</title>
   <style>
-    body {
+    * {
       margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
       font-family: Arial, sans-serif;
-      background-image: url('https://raw.githubusercontent.com/balisama21/balisama-site/main/technologie.jpg');
-      background-size: cover;
-      background-position: center;
+      height: 100%;
       color: white;
+      overflow: auto;
+    }
+
+    video#bgVideo {
+      position: fixed;
+      top: 0;
+      left: 0;
+      min-width: 100%;
+      min-height: 100%;
+      object-fit: cover;
+      z-index: -1;
     }
 
     .overlay {
-      background-color: rgba(0, 0, 0, 0.6);
-      padding: 60px 20px;
-      min-height: 100vh;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 50px 20px;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
-    }
-
-    .container {
-      max-width: 1000px;
-      margin: 0 auto;
-      animation: fadeIn 1.2s ease-in-out;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+      min-height: 100vh;
     }
 
     h1 {
-      text-align: center;
       font-size: 3em;
-      margin-bottom: 20px;
       color: #FFD700;
+      margin-bottom: 20px;
+      text-align: center;
     }
 
-    h2 {
-      margin-top: 40px;
-      color: #87CEFA;
+    .section {
+      max-width: 900px;
+      margin-bottom: 40px;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 20px;
+      border-radius: 10px;
     }
 
-    p, li {
-      font-size: 1.2em;
-      line-height: 1.8;
+    .section h2 {
+      color: #FFD700;
+      margin-bottom: 15px;
     }
 
-    ul {
-      padding-left: 20px;
+    .section p {
+      font-size: 1.1em;
+      line-height: 1.7em;
+      color: #f0f0f0;
+    }
+
+    .btn-retour {
+      display: inline-block;
+      margin-bottom: 30px;
+      padding: 10px 20px;
+      background-color: #FFD700;
+      color: black;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 0;
+      color: #ccc;
+      font-size: 0.9em;
     }
 
     @media (max-width: 768px) {
       h1 {
         font-size: 2em;
       }
-      h2 {
-        font-size: 1.5em;
-      }
-      p, li {
-        font-size: 1em;
+
+      .section {
+        padding: 15px;
       }
     }
   </style>
 </head>
 <body>
+
+  <!-- Vidéo de fond -->
+  <video autoplay muted loop id="bgVideo">
+    <source src="page.mp4" type="video/mp4">
+    Votre navigateur ne supporte pas les vidéos HTML5.
+  </video>
+
   <div class="overlay">
-    <div class="container">
-      <h1>À propos de Maminirina Balsama</h1>
+    <a href="index.html" class="btn-retour">← Retour à l'accueil</a>
+    <h1>À propos de moi</h1>
 
-      <h2>Compétences</h2>
-      <ul>
-        <li>Marketing digital : réseaux sociaux, SEO, email marketing</li>
-        <li>Programmation Python – niveau intermédiaire à expert</li>
-        <li>Développement web avec Python </li>
-        <li>Bonne connaissances en Intelligence Artificielle</li>
-        <li>Pack Office : Word, Excel, PowerPoint</li>
-        <li>Outils numériques : Canva, Gmail, Google, Facebook, WhatsApp</li>
-      </ul>
-
-      <h2>Centres d’intérêt</h2>
-      <p>Voyage, lecture, sport, musique, exploration sur internet</p>
-
-      <h2>Formations</h2>
-      <ul>
-        <li><strong>Début de formation en Télécommunication</strong> – CNTEMAD (Université Madagascar)</li>
-        <li><strong>Baccalauréat – Série Scientifique</strong> – Lycée Ambohitrimanjaka, Antananarivo – Madagascar</li>
-        <li><strong>Formation en Marketing Digital</strong> – Sayna (en ligne)</li>
-        <ul>
-          <li>SEO, réseaux sociaux, publicité digitale, email marketing</li>
-          <li>Outils : Canva, Google Analytics, Meta Business Suite</li>
-        </ul>
-        <li><strong>Autoformation</strong> en Python, IA & Développement Web</li>
-        <ul>
-          <li>Programmation Python (bases, logique, automatisation)</li>
-          <li>Développement web avec Python (bases de Flask ou Django)</li>
-          <li>Notions en Intelligence Artificielle</li>
-          <li>Bibliothèques : pandas, matplotlib, scikit-learn</li>
-        </ul>
-      </ul>
+    <div class="section">
+      <h2>Qui suis-je ?</h2>
+      <p>
+        Je m'appelle <strong>Maminirina Balsama</strong>. Passionné par les nouvelles technologies, le marketing digital, l’intelligence artificielle et les télécommunications, je développe constamment mes compétences pour accompagner les entreprises dans leur transformation numérique.
+      </p>
     </div>
+
+    <div class="section">
+      <h2>Mon parcours</h2>
+      <p>
+        J'ai suivi une formation en télécommunications, enrichie par des certifications et projets dans le marketing digital, le développement web et l’analyse de données. Mon objectif : mettre la technologie au service de la communication et de la performance.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>Mes compétences</h2>
+      <p>
+        ▸ Marketing digital (SEO, réseaux sociaux, emailing)<br>
+        ▸ Développement web (HTML, CSS, JavaScript)<br>
+        ▸ Intelligence Artificielle (bases, automatisation)<br>
+        ▸ Communication et analyse stratégique<br>
+        ▸ Télécommunications et réseaux<br>
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>Mes objectifs</h2>
+      <p>
+        Je souhaite aider les entreprises à améliorer leur visibilité en ligne et leur efficacité marketing, tout en continuant à apprendre et innover dans le domaine de l’IA et des technologies numériques.
+      </p>
+    </div>
+
+    <footer>
+      © 2025 Maminirina Balsama. Tous droits réservés.
+    </footer>
   </div>
 </body>
 </html>
