@@ -4,156 +4,140 @@
   <meta charset="UTF-8">
   <title>À propos - Maminirina Balsama</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q47HY7CVGP"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-Q47HY7CVGP');
-  </script>
-
-  <!-- SEO -->
-  <meta name="description" content="En savoir plus sur Maminirina Balsama : son parcours, ses compétences et ses passions.">
-  <meta name="keywords" content="à propos, Maminirina Balsama, parcours, compétences, marketing digital, IA, télécom">
-  <meta name="author" content="Maminirina Balsama">
+  <link rel="stylesheet" href="style.css">
 
   <style>
-    * {
+    body, html {
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
-    }
-
-    body, html {
       font-family: Arial, sans-serif;
-      height: 100%;
       color: white;
-      overflow: auto;
+      height: 100%;
     }
 
-    video#bgVideo {
+    header {
+      background-color: rgba(0, 0, 0, 0.8);
+      padding: 15px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       position: fixed;
       top: 0;
-      left: 0;
-      min-width: 100%;
-      min-height: 100%;
-      object-fit: cover;
-      z-index: -1;
+      width: 100%;
+      z-index: 1000;
     }
 
-    .overlay {
-      background: rgba(0, 0, 0, 0.6);
-      padding: 50px 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-height: 100vh;
-    }
-
-    h1 {
-      font-size: 3em;
+    header nav a {
       color: #FFD700;
-      margin-bottom: 20px;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+    }
+
+    .background {
+      background: url('images/technologie.jpg') no-repeat center center/cover;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-top: 80px;
       text-align: center;
     }
 
-    .section {
-      max-width: 900px;
-      margin-bottom: 40px;
-      background: rgba(255, 255, 255, 0.05);
-      padding: 20px;
+    .content {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 40px;
       border-radius: 10px;
+      max-width: 800px;
     }
 
-    .section h2 {
+    h1 {
+      font-size: 2.5em;
       color: #FFD700;
-      margin-bottom: 15px;
     }
 
-    .section p {
-      font-size: 1.1em;
-      line-height: 1.7em;
-      color: #f0f0f0;
+    p {
+      font-size: 1.2em;
+      line-height: 1.6em;
     }
 
-    .btn-retour {
+    .quote {
+      font-style: italic;
+      margin: 30px 0;
+      color: #ccc;
+    }
+
+    .cv-link {
+      margin-top: 20px;
       display: inline-block;
-      margin-bottom: 30px;
-      padding: 10px 20px;
       background-color: #FFD700;
       color: black;
-      text-decoration: none;
+      padding: 10px 20px;
       border-radius: 5px;
+      text-decoration: none;
       font-weight: bold;
     }
 
     footer {
       text-align: center;
-      padding: 30px 0;
+      padding: 20px;
+      background-color: rgba(0, 0, 0, 0.8);
+      margin-top: 40px;
       color: #ccc;
-      font-size: 0.9em;
     }
 
     @media (max-width: 768px) {
-      h1 {
-        font-size: 2em;
+      .content {
+        margin: 20px;
+        padding: 20px;
       }
 
-      .section {
-        padding: 15px;
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      header nav {
+        margin-top: 10px;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- Vidéo de fond -->
-  <video autoplay muted loop id="bgVideo">
-    <source src="page.mp4" type="video/mp4">
-    Votre navigateur ne supporte pas les vidéos HTML5.
-  </video>
+<header>
+  <div class="logo"><strong>Balsama</strong></div>
+  <nav>
+    <a href="index.html">Accueil</a>
+    <a href="apropos.html">À propos</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
 
-  <div class="overlay">
-    <a href="index.html" class="btn-retour">← Retour à l'accueil</a>
+<section class="background">
+  <div class="content">
     <h1>À propos de moi</h1>
+    <p>
+      Passionné par le marketing digital, les télécommunications et le développement web, 
+      je suis formé par Sayna et j’ai développé des compétences solides pour accompagner les entreprises dans leur visibilité en ligne.
+    </p>
 
-    <div class="section">
-      <h2>Qui suis-je ?</h2>
-      <p>
-        Je m'appelle <strong>Maminirina Balsama</strong>. Passionné par les nouvelles technologies, le marketing digital, l’intelligence artificielle et les télécommunications, je développe constamment mes compétences pour accompagner les entreprises dans leur transformation numérique.
-      </p>
-    </div>
+    <div class="quote">"Le succès ne vient pas à vous, vous devez aller à lui." – Marva Collins</div>
 
-    <div class="section">
-      <h2>Mon parcours</h2>
-      <p>
-        J'ai suivi une formation en télécommunications, enrichie par des certifications et projets dans le marketing digital, le développement web et l’analyse de données. Mon objectif : mettre la technologie au service de la communication et de la performance.
-      </p>
-    </div>
+    <h2>Mes objectifs</h2>
+    <p>
+      Mon objectif est de contribuer à la transformation numérique en aidant les entreprises à développer leur présence en ligne.
+      J’aide aussi les personnes à promouvoir leur business et à atteindre leurs objectifs grâce aux outils numériques.
+    </p>
 
-    <div class="section">
-      <h2>Mes compétences</h2>
-      <p>
-        ▸ Marketing digital (SEO, réseaux sociaux, emailing)<br>
-        ▸ Développement web (HTML, CSS, JavaScript)<br>
-        ▸ Intelligence Artificielle (bases, automatisation)<br>
-        ▸ Communication et analyse stratégique<br>
-        ▸ Télécommunications et réseaux<br>
-      </p>
-    </div>
-
-    <div class="section">
-      <h2>Mes objectifs</h2>
-      <p>
-        Je souhaite aider les entreprises à améliorer leur visibilité en ligne et leur efficacité marketing, tout en continuant à apprendre et innover dans le domaine de l’IA et des technologies numériques.
-      </p>
-    </div>
-
-    <footer>
-      © 2025 Maminirina Balsama. Tous droits réservés.
-    </footer>
+    <a href="https://github.com/balisama21/balisama-site/blob/main/BALSAMA%20CV.pdf" target="_blank" class="cv-link">Voir mon CV</a>
   </div>
+</section>
+
+<footer>
+  © 2025 Maminirina Balsama. Tous droits réservés.
+</footer>
+
 </body>
 </html>
