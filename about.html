@@ -27,14 +27,16 @@
     }
 
     body, html {
-      font-family: Arial, sans-serif;
+      font-family: 'Arial', sans-serif;
       height: 100%;
       color: white;
-      background: url('images/technologie.jpg') no-repeat center center/cover;
+      background: url('https://raw.githubusercontent.com/balisama21/balisama-site/main/technologie.jpg') no-repeat center center/cover;
+      background-attachment: fixed;
+      line-height: 1.6;
     }
 
     header {
-      background: rgba(0, 0, 0, 0.8);
+      background: rgba(0, 0, 0, 0.9);
       padding: 15px 30px;
       display: flex;
       justify-content: center;
@@ -42,79 +44,296 @@
       top: 0;
       width: 100%;
       z-index: 999;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+
+    header nav {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
     }
 
     header nav a {
-      color: #FFD700;
-      margin: 0 20px;
+      color: #b0b0b0;
+      margin: 5px 15px;
       text-decoration: none;
       font-weight: bold;
       font-size: 1.1em;
+      padding: 8px 16px;
+      border-radius: 25px;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    header nav a:hover {
+      color: #FFD700;
+      background-color: rgba(255, 255, 255, 0.1);
+      transform: translateY(-2px);
+    }
+
+    header nav a.active {
+      color: #FFD700;
+      background-color: rgba(255, 215, 0, 0.1);
     }
 
     .overlay {
       background: rgba(0, 0, 0, 0.7);
-      padding: 100px 20px 50px;
+      padding: 120px 20px 50px;
       display: flex;
       flex-direction: column;
       align-items: center;
       min-height: 100vh;
+      backdrop-filter: blur(2px);
     }
 
     h1 {
-      font-size: 3em;
+      font-size: 3.2em;
       color: #FFD700;
       margin-bottom: 20px;
       text-align: center;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+      font-weight: 300;
     }
 
     .quote {
       font-style: italic;
-      color: #ccc;
-      margin: 20px 0 40px;
+      color: #e0e0e0;
+      margin: 20px 0 50px;
       text-align: center;
+      font-size: 1.2em;
+      max-width: 600px;
+      line-height: 1.5;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
     }
 
     .section {
       max-width: 900px;
-      margin-bottom: 40px;
-      background: rgba(255, 255, 255, 0.05);
-      padding: 20px;
-      border-radius: 10px;
+      width: 100%;
+      margin-bottom: 30px;
+      background: rgba(255, 255, 255, 0.08);
+      padding: 30px;
+      border-radius: 15px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .section:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.3);
     }
 
     .section h2 {
       color: #FFD700;
-      margin-bottom: 15px;
+      margin-bottom: 20px;
+      font-size: 1.6em;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
     }
 
     .section p {
       font-size: 1.1em;
-      line-height: 1.7em;
-      color: #f0f0f0;
+      line-height: 1.8em;
+      color: #f5f5f5;
+      text-align: justify;
+    }
+
+    .section strong {
+      color: #FFD700;
+    }
+
+    .skills-list {
+      margin-top: 15px;
+    }
+
+    .skills-list p {
+      margin-bottom: 8px;
+      padding-left: 10px;
+      border-left: 3px solid #FFD700;
+      background: rgba(255, 215, 0, 0.05);
+      padding: 8px 15px;
+      border-radius: 5px;
+      margin-bottom: 8px;
     }
 
     footer {
       text-align: center;
-      padding: 30px 0;
+      padding: 40px 20px;
       color: #ccc;
-      font-size: 0.9em;
+      font-size: 0.95em;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      margin-top: 40px;
+      width: 100%;
+      max-width: 900px;
     }
 
+    /* ============ RESPONSIVE DESIGN ============ */
+
+    /* Tablettes */
     @media (max-width: 768px) {
+      body {
+        background-attachment: scroll;
+      }
+
       header {
+        padding: 12px 20px;
         flex-direction: column;
+        gap: 10px;
       }
+
+      header nav {
+        gap: 10px;
+      }
+
       header nav a {
-        margin: 10px 0;
+        margin: 5px 8px;
+        font-size: 1em;
+        padding: 6px 12px;
       }
+
+      .overlay {
+        padding: 100px 15px 40px;
+      }
+
       h1 {
-        font-size: 2em;
+        font-size: 2.5em;
+        margin-bottom: 15px;
       }
+
+      .quote {
+        font-size: 1.1em;
+        margin: 15px 0 40px;
+        padding: 0 10px;
+      }
+
       .section {
-        padding: 15px;
+        padding: 25px 20px;
+        margin-bottom: 25px;
+      }
+
+      .section h2 {
+        font-size: 1.4em;
+        margin-bottom: 15px;
+      }
+
+      .section p {
+        font-size: 1em;
+        line-height: 1.7em;
+      }
+
+      footer {
+        padding: 30px 15px;
+        font-size: 0.9em;
       }
     }
+
+    /* Mobiles */
+    @media (max-width: 480px) {
+      header {
+        padding: 10px 15px;
+      }
+
+      header nav {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      header nav a {
+        display: block;
+        margin: 5px 0;
+        text-align: center;
+        width: 100%;
+        max-width: 200px;
+        background-color: rgba(255, 255, 255, 0.05);
+      }
+
+      .overlay {
+        padding: 90px 10px 30px;
+      }
+
+      h1 {
+        font-size: 2em;
+        line-height: 1.2;
+      }
+
+      .quote {
+        font-size: 1em;
+        margin: 15px 0 30px;
+        padding: 0 5px;
+      }
+
+      .section {
+        padding: 20px 15px;
+        margin-bottom: 20px;
+        border-radius: 10px;
+      }
+
+      .section h2 {
+        font-size: 1.3em;
+        margin-bottom: 12px;
+      }
+
+      .section p {
+        font-size: 0.95em;
+        line-height: 1.6em;
+        text-align: left;
+      }
+
+      .skills-list p {
+        padding: 6px 12px;
+        margin-bottom: 6px;
+        font-size: 0.9em;
+      }
+
+      footer {
+        padding: 25px 10px;
+        font-size: 0.85em;
+      }
+    }
+
+    /* Très petits écrans */
+    @media (max-width: 320px) {
+      h1 {
+        font-size: 1.8em;
+      }
+
+      .section {
+        padding: 15px 12px;
+      }
+
+      .section h2 {
+        font-size: 1.2em;
+      }
+
+      .section p {
+        font-size: 0.9em;
+      }
+    }
+
+    /* Animation d'entrée */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .section {
+      animation: fadeInUp 0.6s ease-out;
+    }
+
+    .section:nth-child(1) { animation-delay: 0.1s; }
+    .section:nth-child(2) { animation-delay: 0.2s; }
+    .section:nth-child(3) { animation-delay: 0.3s; }
+    .section:nth-child(4) { animation-delay: 0.4s; }
+    .section:nth-child(5) { animation-delay: 0.5s; }
   </style>
 </head>
 <body>
@@ -122,7 +341,7 @@
 <header>
   <nav>
     <a href="index.html">Accueil</a>
-    <a href="apropos.html">À propos</a>
+    <a href="apropos.html" class="active">À propos</a>
     <a href="blog.html">Blog</a>
     <a href="contact.html">Contact</a>
   </nav>
@@ -135,32 +354,32 @@
   <div class="section">
     <h2>Qui suis-je ?</h2>
     <p>
-      Je m'appelle <strong>Maminirina Balsama</strong>. Passionné par les nouvelles technologies, le marketing digital, l’intelligence artificielle et les télécommunications, je développe constamment mes compétences pour accompagner les entreprises dans leur transformation numérique.
+      Je m'appelle <strong>Maminirina Balsama</strong>. Passionné par les nouvelles technologies, le marketing digital, l'intelligence artificielle et les télécommunications, je développe constamment mes compétences pour accompagner les entreprises dans leur transformation numérique.
     </p>
   </div>
 
   <div class="section">
     <h2>Mon parcours</h2>
     <p>
-      J'ai suivi une formation en télécommunications, enrichie par des certifications et projets dans le marketing digital, le développement web et l’analyse de données. Mon objectif : mettre la technologie au service de la communication et de la performance.
+      J'ai suivi une formation en télécommunications, enrichie par des certifications et projets dans le marketing digital, le développement web et l'analyse de données. Mon objectif : mettre la technologie au service de la communication et de la performance.
     </p>
   </div>
 
   <div class="section">
     <h2>Mes compétences</h2>
-    <p>
-      ▸ Marketing digital (SEO, réseaux sociaux, emailing)<br>
-      ▸ Développement web (HTML, CSS, JavaScript)<br>
-      ▸ Intelligence Artificielle (bases, automatisation)<br>
-      ▸ Communication et analyse stratégique<br>
-      ▸ Télécommunications et réseaux
-    </p>
+    <div class="skills-list">
+      <p>Marketing digital (SEO, réseaux sociaux, emailing)</p>
+      <p>Développement web (HTML, CSS, JavaScript)</p>
+      <p>Intelligence Artificielle (bases, automatisation)</p>
+      <p>Communication et analyse stratégique</p>
+      <p>Télécommunications et réseaux</p>
+    </div>
   </div>
 
   <div class="section">
     <h2>Mes objectifs</h2>
     <p>
-      Je souhaite aider les entreprises à améliorer leur visibilité en ligne et leur efficacité marketing. J’accompagne également les entrepreneurs individuels et les porteurs de projet à faire connaître leurs activités, à booster leur présence numérique et à atteindre leurs objectifs professionnels grâce à des stratégies digitales sur mesure.
+      Je souhaite aider les entreprises à améliorer leur visibilité en ligne et leur efficacité marketing. J'accompagne également les entrepreneurs individuels et les porteurs de projet à faire connaître leurs activités, à booster leur présence numérique et à atteindre leurs objectifs professionnels grâce à des stratégies digitales sur mesure.
     </p>
   </div>
 
