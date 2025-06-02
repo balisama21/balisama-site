@@ -66,6 +66,7 @@
       border-radius: 25px;
       transition: all 0.3s ease;
       position: relative;
+      cursor: pointer;
     }
 
     header nav a:hover {
@@ -180,18 +181,23 @@
 
       header {
         padding: 12px 20px;
-        flex-direction: column;
-        gap: 10px;
       }
 
       header nav {
-        gap: 10px;
+        gap: 15px;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        justify-content: flex-start;
+        width: 100%;
+        padding: 0 10px;
       }
 
       header nav a {
         margin: 5px 8px;
         font-size: 1em;
-        padding: 6px 12px;
+        padding: 8px 16px;
+        white-space: nowrap;
+        flex-shrink: 0;
       }
 
       .overlay {
@@ -237,16 +243,28 @@
       }
 
       header nav {
-        flex-direction: column;
+        gap: 10px;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        justify-content: flex-start;
         width: 100%;
+        padding: 0 5px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+      }
+
+      header nav::-webkit-scrollbar {
+        display: none;
       }
 
       header nav a {
-        display: block;
-        margin: 5px 0;
-        text-align: center;
-        width: 100%;
-        max-width: 200px;
+        margin: 5px 5px;
+        font-size: 0.9em;
+        padding: 8px 14px;
+        white-space: nowrap;
+        flex-shrink: 0;
+        min-width: auto;
         background-color: rgba(255, 255, 255, 0.05);
       }
 
@@ -296,6 +314,11 @@
 
     /* Très petits écrans */
     @media (max-width: 320px) {
+      header nav a {
+        font-size: 0.85em;
+        padding: 6px 12px;
+      }
+
       h1 {
         font-size: 1.8em;
       }
@@ -341,7 +364,7 @@
 <header>
   <nav>
     <a href="index.html">Accueil</a>
-    <a href="apropos.html" class="active">À propos</a>
+    <a href="#" class="active" onclick="return false;">À propos</a>
     <a href="blog.html">Blog</a>
     <a href="contact.html">Contact</a>
   </nav>
@@ -387,5 +410,38 @@
     © 2025 Maminirina Balsama. Tous droits réservés.
   </footer>
 </div>
+
+<script>
+  // Gestion du scroll horizontal pour la navigation mobile
+  document.addEventListener('DOMContentLoaded', function() {
+    const nav = document.querySelector('header nav');
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    nav.addEventListener('mousedown', (e) => {
+      isDown = true;
+      startX = e.pageX - nav.offsetLeft;
+      scrollLeft = nav.scrollLeft;
+    });
+
+    nav.addEventListener('mouseleave', () => {
+      isDown = false;
+    });
+
+    nav.addEventListener('mouseup', () => {
+      isDown = false;
+    });
+
+    nav.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - nav.offsetLeft;
+      const walk = (x - startX) * 2;
+      nav.scrollLeft = scrollLeft - walk;
+    });
+  });
+</script>
+
 </body>
 </html>
