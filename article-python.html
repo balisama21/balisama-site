@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q47HY7CVGP"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-Q47HY7CVGP');
+  </script>
+  
+  <!-- SEO Meta Tags -->
+  <title>Apprendre Python en autodidacte – mon parcours et mes conseils - Maminirina Balsama</title>
+  <meta name="description" content="Python est l'un des langages les plus accessibles pour débuter en programmation. Découvrez comment j'ai appris seul et mes conseils pour réussir.">
+  <meta name="keywords" content="python autodidacte, apprendre python, programmation débutant, développement web, tutoriel python">
+  <meta name="author" content="Maminirina Balsama">
+
+  <!-- Open Graph Tags -->
+  <meta property="og:title" content="Apprendre Python en autodidacte - Maminirina Balsama">
+  <meta property="og:description" content="Mon parcours d'apprentissage de Python en autodidacte et mes conseils pour réussir">
+  <meta property="og:image" content="https://raw.githubusercontent.com/balisama21/balisama-site/main/python1.PNG">
+  <meta property="og:url" content="https://balsama.netlify.app/python-autodidacte.html">
+  <meta property="og:type" content="article">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background: #f8f9fa;
+    }
+
+    /* Navigation */
+    .navbar {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 70px;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #667eea;
+      text-decoration: none;
+    }
+
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      gap: 30px;
+    }
+
+    .nav-menu a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      padding: 8px 16px;
+      border-radius: 20px;
+    }
+
+    .nav-menu a:hover, .nav-menu a.active {
+      color: #667eea;
+      background: rgba(102, 126, 234, 0.1);
+    }
+
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      z-index: 1001;
+    }
+
+    .mobile-menu span {
+      width: 25px;
+      height: 3px;
+      background: #333;
+      margin: 3px 0;
+      transition: 0.3s;
+    }
+
+    /* Article Header */
+    .article-header {
+      background: linear-gradient(135deg, rgba(102, 126, 234, 0.9), rgba(118, 75, 162, 0.9)),
+                  url('https://raw.githubusercontent.com/balisama21/balisama-site/main/python1.PNG') center/cover;
+      padding: 120px 20px 80px;
+      text-align: center;
+      color: white;
+      min-height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .header-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .header-content h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .article-meta {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      margin-bottom: 30px;
+    }
+
+    .breadcrumb {
+      background: white;
+      padding: 15px 20px;
+      margin-top: 70px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+
+    .breadcrumb-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .breadcrumb a {
+      color: #667eea;
+      text-decoration: none;
+      margin-right: 10px;
+    }
+
+    .breadcrumb a:hover {
+      text-decoration: underline;
+    }
+
+    /* Article Content */
+    .article-content {
+      background: white;
+      margin: 0 20px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 60px 40px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      margin-top: -100px;
+      position: relative;
+      z-index: 100;
+    }
+
+    .article-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #444;
+    }
+
+    .article-body h2 {
+      font-size: 2rem;
+      color: #333;
+      margin: 40px 0 20px;
+      padding-bottom: 15px;
+      border-bottom: 3px solid #667eea;
+    }
+
+    .article-body h3 {
+      font-size: 1.5rem;
+      color: #667eea;
+      margin: 30px 0 15px;
+    }
+
+    .article-body p {
+      margin-bottom: 20px;
+      text-align: justify;
+    }
+
+    .article-body ul, .article-body ol {
+      margin: 20px 0;
+      padding-left: 30px;
+    }
+
+    .article-body li {
+      margin-bottom: 10px;
+    }
+
+    .code-block {
+      background: #2d3748;
+      color: #e2e8f0;
+      padding: 20px;
+      border-radius: 10px;
+      margin: 25px 0;
+      font-family: 'Courier New', monospace;
+      overflow-x: auto;
+      border-left: 4px solid #667eea;
+    }
+
+    .highlight-box {
+      background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+      padding: 25px;
+      border-radius: 10px;
+      margin: 30px 0;
+      border-left: 4px solid #667eea;
+    }
+
+    .timeline {
+      position: relative;
+      margin: 30px 0;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 40px;
+      margin-bottom: 30px;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: 10px;
+      top: 0;
+      width: 3px;
+      height: 100%;
+      background: #667eea;
+    }
+
+    .timeline-item::after {
+      content: '';
+      position: absolute;
+      left: 4px;
+      top: 8px;
+      width: 15px;
+      height: 15px;
+      background: #667eea;
+      border-radius: 50%;
+    }
+
+    .cta-section {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      padding: 40px;
+      border-radius: 15px;
+      text-align: center;
+      margin: 40px 0;
+    }
+
+    .cta-section h3 {
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+    }
+
+    .cta-section p {
+      font-size: 1.1rem;
+      margin-bottom: 25px;
+    }
+
+    .cta-button {
+      background: white;
+      color: #667eea;
+      padding: 15px 30px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    .resource-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin: 30px 0;
+    }
+
+    .resource-card {
+      background: #f8f9fa;
+      padding: 20px;
+      border-radius: 10px;
+      border-left: 4px solid #667eea;
+      transition: all 0.3s ease;
+    }
+
+    .resource-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .resource-card h4 {
+      color: #667eea;
+      margin-bottom: 10px;
+    }
+
+    /* Navigation between articles */
+    .article-navigation {
+      background: white;
+      margin: 40px 20px 0;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .nav-article {
+      text-decoration: none;
+      color: #333;
+      padding: 15px 20px;
+      border-radius: 10px;
+      background: #f8f9fa;
+      transition: all 0.3s ease;
+      flex: 1;
+      text-align: center;
+    }
+
+    .nav-article:hover {
+      background: #667eea;
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    /* Footer */
+    .footer {
+      background: #2c3e50;
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+      margin-top: 60px;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s ease;
+      background: rgba(102, 126, 234, 0.1);
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-weight: 500;
+    }
+
+    .footer-links a:hover {
+      color: #667eea;
+      background: rgba(102, 126, 234, 0.2);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 70px;
+        flex-direction: column;
+        background-color: rgba(255, 255, 255, 0.98);
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+        backdrop-filter: blur(10px);
+        padding: 20px 0;
+        z-index: 999;
+      }
+
+      .nav-menu.active {
+        left: 0;
+      }
+
+      .nav-menu li {
+        margin: 10px 0;
+      }
+
+      .mobile-menu {
+        display: flex;
+      }
+
+      .header-content h1 {
+        font-size: 2rem;
+      }
+
+      .article-content {
+        margin: 0 15px;
+        padding: 40px 25px;
+        margin-top: -80px;
+      }
+
+      .article-body h2 {
+        font-size: 1.5rem;
+      }
+
+      .article-navigation {
+        flex-direction: column;
+        margin: 20px 15px 0;
+      }
+
+      .resource-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-links {
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">Maminirina Balsama</a>
+      <ul class="nav-menu">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="about.html">À propos</a></li>
+        <li><a href="blog.html" class="active">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Breadcrumb -->
+  <div class="breadcrumb">
+    <div class="breadcrumb-container">
+      <a href="index.html">Accueil</a> > 
+      <a href="blog.html">Blog</a> > 
+      <span>Python Autodidacte</span>
+    </div>
+  </div>
+
+  <!-- Article Header -->
+  <section class="article-header">
+    <div class="header-content">
+      <h1>🐍 Apprendre Python en autodidacte – mon parcours et mes conseils</h1>
+      <div class="article-meta">
+        Par Maminirina Balsama • 3 juin 2025 • 10 min de lecture
+      </div>
+    </div>
+  </section>
+
+  <!-- Article Content -->
+  <article class="article-content">
+    <div class="article-body">
+      <p>Il y a trois ans, je ne connaissais rien à la programmation. Aujourd'hui, je développe des applications web, automatise des tâches complexes, et Python est devenu mon outil de travail quotidien. Si vous pensez qu'apprendre la programmation nécessite des années d'études ou des compétences particulières, détrompez-vous !</p>
+
+      <div class="highlight-box">
+        <strong>💡 Python en chiffres :</strong> Classé langage de programmation le plus populaire en 2024, Python est utilisé par 48% des développeurs dans le monde. Sa syntaxe simple en fait le choix idéal pour débuter.
+      </div>
+
+      <h2>🚀 Pourquoi j'ai choisi Python ?</h2>
+      
+      <p>Quand j'ai décidé d'apprendre la programmation, j'étais perdu devant la multitude de langages disponibles. Java, JavaScript, C++, Python... Comment choisir ? Voici pourquoi Python s'est imposé comme l'évidence :</p>
+
+      <h3>1. Syntaxe intuitive et lisible</h3>
+      <p>Python se lit presque comme de l'anglais. Regardez cette comparaison :</p>
+
+      <div class="code-block">
+# Python - Simple et clair
+nom = "Maminirina"
+if nom == "Maminirina":
+    print("Bonjour, c'est moi !")
+
+// JavaScript - Plus complexe
+var nom = "Maminirina";
+if (nom === "Maminirina") {
+    console.log("Bonjour, c'est moi !");
+}
+      </div>
+
+      <h3>2. Polyvalence exceptionnelle</h3>
+      <ul>
+        <li><strong>Développement web :</strong> Django, Flask</li>
+        <li><strong>Data Science :</strong> Pandas, NumPy, Matplotlib</li>
+        <li><strong>Intelligence artificielle :</strong> TensorFlow, PyTorch</li>
+        <li><strong>Automatisation :</strong> Scripts, web scraping</li>
+        <li><strong>Applications desktop :</strong> Tkinter, PyQt</li>
+      </ul>
+
+      <h3>3. Communauté immense et bienveillante</h3>
+      <p>Python dispose d'une communauté de millions de développeurs prêts à aider. Stack Overflow regorge de solutions, et la documentation officielle est excellente.</p>
+
+      <h2>📚 Mon parcours d'apprentissage (timeline réelle)</h2>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <h4>Mois 1-2 : Les fondamentaux</h4>
+          <p>Variables, conditions, boucles, fonctions. J'ai commencé par 30 minutes par jour avec des tutoriels gratuits sur YouTube et le site Python.org.</p>
+        </div>
+        
+        <div class="timeline-item">
+          <h4>Mois 3-4 : Projets simples</h4>
+          <p>Calculatrice, jeu de devinettes, gestionnaire de tâches en ligne de commande. Chaque projet consolidait mes acquis.</p>
+        </div>
+        
+        <div class="timeline-item">
+          <h4>Mois 5-6 : Web scraping et APIs</h4>
+          <p>J'ai appris BeautifulSoup et Requests pour extraire des données du web. Premier contact avec les APIs REST.</p>
+        </div>
+        
+        <div class="timeline-item">
+          <h4>Mois 7-9 : Développement web</h4>
+          <p>Django m'a ouvert les portes du web. Création de mon premier site dynamique avec base de données.</p>
+        </div>
+        
+        <div class="timeline-item">
+          <h4>Mois 10-12 : Data Science et IA</h4>
+          <p>Pandas pour l'analyse de données, Matplotlib pour la visualisation. Premiers pas avec les modèles de machine learning.</p>
+        </div>
+      </div>
+
+      <h2>🎯 Ma méthode d'apprentissage qui marche</h2>
+
+      <h3>1. La règle des 1% quotidiens</h3>
+      <p>Plutôt que des sessions marathons, j'ai opté pour la régularité. 30 minutes par jour, tous les jours, sans exception. En un an, cela représente 180 heures de pratique !</p>
+
+      <h3>2. Apprendre en construisant</h3>
+      <p>Dès la première semaine, j'ai commencé à créer de petits projets. Même simples, ils donnent du sens à l'apprentissage et boost the motivation.</p>
+
+      <div class="code-block">
+# Mon premier programme utile (semaine 2)
+# Convertisseur de devises simple
+taux_euro_ariary = 4500
+
+euros = float(input("Combien d'euros voulez-vous convertir ? "))
+ariary = euros * taux_euro_ariary
+
+print(f"{euros} euros = {ariary:,.0f} ariary")
+      </div>
+
+      <h3>3. La méthode "Feynman" adaptée</h3>
+      <p>J'expliquais chaque concept appris à des amis non-techniques. Si je n'arrivais pas à le faire simplement, c'est que je ne le maîtrisais pas vraiment.</p>
+
+      <h2>📖 Mes ressources incontournables (toutes testées !)</h2>
+
+      <div class="resource-grid">
+        <div class="resource-card">
+          <h4>🎓 Cours gratuits</h4>
+          <ul>
+            <li>Codecademy (interactif)</li>
+            <li>FreeCodeCamp (complet)</li>
+            <li>OpenClassrooms (français)</li>
+            <li>YouTube : Corey Schafer</li>
+          </ul>
+        </div>
+        
+        <div class="resource-card">
+          <h4>📚 Livres recommandés</h4>
+          <ul>
+            <li>"Automate the Boring Stuff"</li>
+            <li>"Python Crash Course"</li>
+            <li>"Effective Python"</li>
+            <li>"Python Tricks" (avancé)</li>
+          </ul>
+        </div>
+        
+        <div class="resource-card">
+          <h4>💻 Outils indispensables</h4>
+          <ul>
+            <li>Visual Studio Code</li>
+            <li>Jupyter Notebook</li>
+            <li>Git/GitHub</li>
+            <li>Virtual Environments</li>
+          </ul>
+        </div>
+        
+        <div class="resource-card">
+          <h4>🏆 Défis et pratique</h4>
+          <ul>
+            <li>HackerRank</li>
+            <li>LeetCode</li>
+            <li>Codewars</li>
+            <li>Projet Euler</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2>🚨 Les erreurs à éviter (je les ai toutes faites !)</h2>
+
+      <h3>1. Le syndrome du "tutorial hell"</h3>
+      <p>J'ai passé des mois à enchaîner les tutoriels sans jamais créer mes propres projets. Résultat : je savais suivre des instructions, mais pas résoudre de vrais problèmes.</p>
+
+      <h3>2. Vouloir tout apprendre d'un coup</h3>
+      <p>Python + Django + Data Science + IA + DevOps... J'ai voulu brûler les étapes. Mieux vaut maîtriser une chose à la fois.</p>
+
+      <h3>3. Négliger les bases</h3>
+      <p>Les structures de données (listes, dictionnaires) et les algorithmes de base sont cruciaux. J'ai dû y revenir plus tard.</p>
+
+      <h3>4. Ne pas pratiquer assez</h3>
+      <p>Lire du code, c'est bien. Écrire du code, c'est mieux. Il faut coder tous les jours, même 15 minutes.</p>
+
+      <div class="cta-section">
+        <h3>🎯 Envie de vous lancer ?</h3>
+        <p>Je propose des accompagnements personnalisés pour apprendre Python efficacement. De zéro à l'autonomie en quelques mois !</p>
+        <a href="contact.html" class="cta-button">Me contacter</a>
+      </div>
+
+      <h2>💡 Mes conseils concrets pour réussir</h2>
+
+      <h3>Semaine 1-2 : Installation et premiers pas</h3>
+      <ul>
+        <li>Installez Python et Visual Studio Code</li>
+        <li>Apprenez les variables et les types de données</li>
+        <li>Créez votre premier programme "Hello World"</li>
+        <li>Pratiquez les opérations de base</li>
+      </ul>
+
+      <h3>Semaine 3-4 : Logique et contrôle</h3>
+      <ul>
+        <li>Conditions (if, elif, else)</li>
+        <li>Boucles (for, while)</li>
+        <li>Premier projet : calculatrice simple</li>
+        <li>Gestion des erreurs de base</li>
+      </ul>
+
+      <h3>Mois 2 : Structures de données et fonctions</h3>
+      <ul>
+        <li>Listes, tuples, dictionnaires</li>
+        <li>Fonctions et paramètres</li>
+        <li>Projet : gestionnaire de contacts</li>
+        <li>Introduction aux modules</li>
+      </ul>
+
+      <h3>Mois 3+ : Spécialisation</h3>
+      <p>Choisissez votre voie selon vos objectifs :</p>
+      <ul>
+        <li><strong>Web :</strong> Flask puis Django</li>
+        <li><strong>Data :</strong> Pandas, NumPy, Matplotlib</li>
+        <li><strong>Automatisation :</strong> BeautifulSoup, Selenium</li>
+        <li><strong>IA :</strong> TensorFlow, Scikit-learn</li>
+      </ul>
+
+      <h2>🏆 Mes premiers projets qui ont marqué mon apprentissage</h2>
+
+      <h3>1. Web Scraper de prix (Mois 5)</h3>
+      <p>Un script qui surveillait les prix sur les sites e-commerce et m'envoyait un email en cas de baisse. Premier projet vraiment utile !</p>
+
+      <h3>2. Bot Telegram (Mois 7)</h3>
+      <p>Un bot qui répondait à mes commandes et me donnait la météo, les news, etc. Combinaison d'APIs et de logique métier.</p>
+
+      <h3>3. Analyseur de données Instagram (Mois 10)</h3>
+      <p>Analyse de mes statistiques Instagram avec Pandas. Graphiques, tendances, insights... J'ai découvert la puissance de la data science.</p>
+
+      <h2>🔮 Où en suis-je aujourd'hui ?</h2>
+
+      <p>Trois ans après mes débuts, Python est devenu mon outil principal pour :</p>
+      <ul>
+        <li><strong>Automatisation marketing :</strong> Scripts pour réseaux sociaux, reporting automatique</li>
+        <li><strong>Développement web :</strong> Sites clients avec Django</li>
+        <li><strong>Analyse de données :</strong> KPIs, études de marché, prédictions</li>
+        <li><strong>Intelligence artificielle :</strong> Chatbots, recommandations personnalisées</li>
+      </ul>
+
+      <div class="highlight-box">
+        <p><strong>💰 Impact sur mes revenus :</strong> Apprendre Python m'a permis d'augmenter mes tarifs de 200% en proposant des services d'automatisation et de développement web à mes clients marketing.</p>
+      </div>
+
+      <h2>🎯 Votre plan d'action pour les 30 prochains jours</h2>
+
+      <p>Voici exactement ce que je ferais si je recommençais aujourd'hui :</p>
+
+      <ol>
+        <li><strong>Jour 1-3 :</strong> Installation Python + VS Code, premier "Hello World"</li>
+        <li><strong>Jour 4-10 :</strong> Variables, conditions, boucles (30 min/jour)</li>
+        <li><strong>Jour 11-15 :</strong> Fonctions et structures de données</li>
+        <li><strong>Jour 16-20 :</strong> Premier projet : calculatrice avancée</li>
+        <li><strong>Jour 21-25 :</strong> Modules et gestion de fichiers</li>
+        <li><strong>Jour 26-30 :</strong> Projet final : gestionnaire de tâches avec sauvegarde</li>
+      </ol>
+
+      <h2>💪 Conclusion : Vous pouvez le faire !</h2>
+
+      <p>Si un marketeur sans background technique comme moi a pu apprendre Python, vous le pouvez aussi ! La clé n'est pas le talent ou les études, mais la constance et la pratique.</p>
+
+      <p>Ne cherchez pas la perfection dès le début. Mes premiers programmes étaient affreux, mais ils fonctionnaient. C'est ça qui compte !</p>
+
+      <p>Python n'est pas juste un langage de programmation, c'est un superpouvoir qui démultiplie vos capacités. Que vous soyez entrepreneur, étudiant, ou salarié, il y a forcément une application qui peut vous faire gagner du temps ou de l'argent.</p>
+
+      <p>Alors, prêt à écrire votre première ligne de code ? 🚀</p>
+    </div>
+  </article>
+
+  <!-- Article Navigation -->
+  <div class="article-navigation">
+    <a href="marketing-digital.html" class="nav-article">← Article précédent</a>
+    <a href="canva-design.html" class="nav-article">Article suivant →</a>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-links">
+        <a href="index.html">Accueil</a>
+        <a href="about.html">À propos</a>
+        <a href="contact.html">Contact</a>
+        <a href="blog.html">Blog</a>
+      </div>
+      <p>&copy; 2025 Maminirina Balsama. Tous droits réservés.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const navMenu = document.querySelector('.nav-menu');
+
+    mobileMenu.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+      
+      // Animation du menu hamburger
+      const spans = mobileMenu.querySelectorAll('span');
+      if (navMenu.classList.contains('active')) {
+        spans[0].style.transform = 'rotate(-45deg) translate(-5px, 6px)';
+        spans[1].style.opacity = '0';
+        spans[2].style.transform = 'rotate(45deg) translate(-5px, -6px)';
+      } else {
+        spans[0].style.transform = 'rotate(0) translate(0, 0)';
+        spans[1].style.opacity = '1';
+        spans[2].style.transform = 'rotate(0) translate(0, 0)';
+      }
+    });
+
+    // Fermer le menu mobile en cliquant sur un lien
+    document.querySelectorAll('.nav-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+        const spans = mobileMenu.querySelectorAll('span');
+        spans[0].style.transform = 'rotate(0) translate(0, 0)';
+        spans[1].style.opacity = '1';
+        spans[2].style.transform = 'rotate(0) translate(0, 0)';
+      });
+    });
+
+    // Navbar scroll effect
+    window.addEventListener('scroll', () => {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 100) {
+        navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+        navbar.style.boxShadow = '0 2px 30px rgba(0,0,0,0.15)';
+      } else {
+        navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+        navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+      }
+    });
+  </script>
+</body>
+</html>
