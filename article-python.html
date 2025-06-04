@@ -106,16 +106,17 @@
 
     /* Article Header */
     .article-header {
-      background: linear-gradient(135deg, rgba(102, 126, 234, 0.9), rgba(118, 75, 162, 0.9)),
-                  url('https://raw.githubusercontent.com/balisama21/balisama-site/main/python1.PNG') center/cover;
-      padding: 120px 20px 80px;
-      text-align: center;
-      color: white;
-      min-height: 60vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)),
+              url('https://raw.githubusercontent.com/balisama21/balisama-site/main/python1.PNG') center/cover;
+  padding: 120px 20px 80px;
+  text-align: center;
+  color: white;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 
     .header-content {
       max-width: 800px;
@@ -192,10 +193,12 @@
       margin: 30px 0 15px;
     }
 
-    .article-body p {
-      margin-bottom: 20px;
-      text-align: justify;
-    }
+    @media (max-width: 768px) {
+  .article-body p {
+    text-align: left;
+  }
+}
+
 
     .article-body ul, .article-body ol {
       margin: 20px 0;
@@ -733,13 +736,7 @@ print(f"{euros} euros = {ariary:,.0f} ariary")
 
   <!-- Footer -->
   <footer class="footer">
-    <div class="footer-content">
-      <div class="footer-links">
-        <a href="index.html">Accueil</a>
-        <a href="about.html">À propos</a>
-        <a href="contact.html">Contact</a>
-        <a href="blog.html">Blog</a>
-      </div>
+    
       <p>&copy; 2025 Maminirina Balsama. Tous droits réservés.</p>
     </div>
   </footer>
