@@ -129,7 +129,7 @@
 
     /* Article Header */
     .article-header {
-      background: linear-gradient(135deg, rgba(102, 126, 234, 0.9), rgba(118, 75, 162, 0.9)),
+      background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.9)),
                   url('https://raw.githubusercontent.com/balisama21/balisama-site/main/IA1.jpg') center/cover;
       padding: 120px 20px 80px;
       text-align: center;
@@ -193,10 +193,12 @@
       margin: 30px 0 15px;
     }
 
-    .article-body p {
-      margin-bottom: 20px;
-      text-align: justify;
-    }
+    @media (max-width: 768px) {
+  .article-body p {
+    text-align: left;
+  }
+}
+
 
     .article-body ul, .article-body ol {
       margin: 20px 0;
