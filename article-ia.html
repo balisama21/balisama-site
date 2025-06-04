@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q47HY7CVGP"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-Q47HY7CVGP');
+  </script>
+  
+  <!-- SEO Meta Tags -->
+  <title>Intelligence artificielle - Guide complet pour débutants | Maminirina Balsama</title>
+  <meta name="description" content="Découvrez tout ce qu'un débutant doit savoir sur l'intelligence artificielle. Guide pratique et accessible par Maminirina Balsama.">
+  <meta name="keywords" content="intelligence artificielle débutant, AI guide, machine learning, IA pour tous, ChatGPT, Maminirina Balsama">
+  <meta name="author" content="Maminirina Balsama">
+
+  <!-- Open Graph Tags -->
+  <meta property="og:title" content="Intelligence artificielle - Guide complet pour débutants">
+  <meta property="og:description" content="Guide pratique pour comprendre l'intelligence artificielle sans être expert">
+  <meta property="og:image" content="https://balsama.netlify.app/images/ia-article.jpg">
+  <meta property="og:url" content="https://balsama.netlify.app/ia-article.html">
+  <meta property="og:type" content="article">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background: #f8f9fa;
+    }
+
+    /* Navigation */
+    .navbar {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 70px;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #667eea;
+      text-decoration: none;
+    }
+
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      gap: 30px;
+    }
+
+    .nav-menu a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      padding: 8px 16px;
+      border-radius: 20px;
+    }
+
+    .nav-menu a:hover, .nav-menu a.active {
+      color: #667eea;
+      background: rgba(102, 126, 234, 0.1);
+    }
+
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      z-index: 1001;
+    }
+
+    .mobile-menu span {
+      width: 25px;
+      height: 3px;
+      background: #333;
+      margin: 3px 0;
+      transition: 0.3s;
+    }
+
+    /* Breadcrumb */
+    .breadcrumb {
+      background: white;
+      padding: 15px 20px;
+      margin-top: 70px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+
+    .breadcrumb-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .breadcrumb a {
+      color: #667eea;
+      text-decoration: none;
+      margin-right: 10px;
+    }
+
+    .breadcrumb a:hover {
+      text-decoration: underline;
+    }
+
+    /* Article Header */
+    .article-header {
+      background: linear-gradient(135deg, rgba(102, 126, 234, 0.9), rgba(118, 75, 162, 0.9)),
+                  url('https://raw.githubusercontent.com/balisama21/balisama-site/main/IA1.jpg') center/cover;
+      padding: 120px 20px 80px;
+      text-align: center;
+      color: white;
+      min-height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .header-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .header-content h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .article-meta {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      margin-bottom: 30px;
+    }
+
+    /* Article Content */
+    .article-content {
+      background: white;
+      margin: 0 20px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 60px 40px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      margin-top: -100px;
+      position: relative;
+      z-index: 100;
+    }
+
+    .article-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #444;
+    }
+
+    .article-body h2 {
+      font-size: 2rem;
+      color: #333;
+      margin: 40px 0 20px;
+      padding-bottom: 15px;
+      border-bottom: 3px solid #667eea;
+    }
+
+    .article-body h3 {
+      font-size: 1.5rem;
+      color: #667eea;
+      margin: 30px 0 15px;
+    }
+
+    .article-body p {
+      margin-bottom: 20px;
+      text-align: justify;
+    }
+
+    .article-body ul, .article-body ol {
+      margin: 20px 0;
+      padding-left: 30px;
+    }
+
+    .article-body li {
+      margin-bottom: 10px;
+    }
+
+    .highlight-box {
+      background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+      padding: 25px;
+      border-radius: 10px;
+      margin: 30px 0;
+      border-left: 4px solid #667eea;
+    }
+
+    .highlight-box h4 {
+      color: #667eea;
+      font-size: 1.3rem;
+      margin-bottom: 15px;
+    }
+
+    .tip-box {
+      background: #e8f5e8;
+      padding: 25px;
+      border-radius: 10px;
+      margin: 25px 0;
+      border-left: 4px solid #28a745;
+    }
+
+    .tip-box strong {
+      color: #28a745;
+    }
+
+    .warning-box {
+      background: #fff3cd;
+      padding: 25px;
+      border-radius: 10px;
+      margin: 25px 0;
+      border-left: 4px solid #ffc107;
+    }
+
+    .warning-box strong {
+      color: #856404;
+    }
+
+    .cta-section {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      padding: 40px;
+      border-radius: 15px;
+      text-align: center;
+      margin: 40px 0;
+    }
+
+    .cta-section h3 {
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+    }
+
+    .cta-section p {
+      font-size: 1.1rem;
+      margin-bottom: 25px;
+    }
+
+    .cta-button {
+      background: white;
+      color: #667eea;
+      padding: 15px 30px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    /* Navigation between articles */
+    .article-navigation {
+      background: white;
+      margin: 40px 20px 0;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .nav-article {
+      text-decoration: none;
+      color: #333;
+      padding: 15px 20px;
+      border-radius: 10px;
+      background: #f8f9fa;
+      transition: all 0.3s ease;
+      flex: 1;
+      text-align: center;
+    }
+
+    .nav-article:hover {
+      background: #667eea;
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    /* Footer */
+    .footer {
+      background: #2c3e50;
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+      margin-top: 60px;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 70px;
+        flex-direction: column;
+        background-color: rgba(255, 255, 255, 0.98);
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+        backdrop-filter: blur(10px);
+        padding: 20px 0;
+        z-index: 999;
+      }
+
+      .nav-menu.active {
+        left: 0;
+      }
+
+      .nav-menu li {
+        margin: 10px 0;
+      }
+
+      .mobile-menu {
+        display: flex;
+      }
+
+      .header-content h1 {
+        font-size: 2rem;
+      }
+
+      .article-content {
+        margin: 0 15px;
+        padding: 40px 25px;
+        margin-top: -80px;
+      }
+
+      .article-body h2 {
+        font-size: 1.5rem;
+      }
+
+      .article-navigation {
+        flex-direction: column;
+        margin: 20px 15px 0;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .header-content h1 {
+        font-size: 1.6rem;
+      }
+
+      .article-content {
+        padding: 30px 20px;
+      }
+
+      .article-body h2 {
+        font-size: 1.3rem;
+      }
+
+      .article-body h3 {
+        font-size: 1.2rem;
+      }
+
+      .cta-section {
+        padding: 30px 20px;
+      }
+
+      .cta-section h3 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">Maminirina Balsama</a>
+      <ul class="nav-menu">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="about.html">À propos</a></li>
+        <li><a href="blog.html" class="active">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Breadcrumb -->
+  <div class="breadcrumb">
+    <div class="breadcrumb-container">
+      <a href="index.html">Accueil</a> > 
+      <a href="blog.html">Blog</a> > 
+      <span>Guide Intelligence Artificielle</span>
+    </div>
+  </div>
+
+  <!-- Article Header -->
+  <section class="article-header">
+    <div class="header-content">
+      <h1>🤖 Intelligence artificielle – ce que tout débutant doit savoir</h1>
+      <div class="article-meta">
+        Par Maminirina Balsama • 4 juin 2025 • 18 min de lecture
+      </div>
+    </div>
+  </section>
+
+  <!-- Article Content -->
+  <article class="article-content">
+    <div class="article-body">
+      <p>L'intelligence artificielle (IA) n'est plus de la science-fiction. Elle fait partie de notre quotidien, parfois sans qu'on s'en rende compte. De ChatGPT à Netflix qui recommande vos séries, en passant par la reconnaissance vocale de votre smartphone, l'IA est partout. Après avoir exploré ce domaine fascinant, je vous partage tout ce qu'un débutant doit savoir pour comprendre et apprivoiser cette technologie révolutionnaire.</p>
+
+      <h2>🧠 Qu'est-ce que l'intelligence artificielle ?</h2>
+      
+      <p>L'intelligence artificielle, c'est la capacité d'une machine à imiter l'intelligence humaine. Concrètement, c'est un programme informatique qui peut apprendre, raisonner, prendre des décisions et résoudre des problèmes de manière autonome.</p>
+
+      <div class="highlight-box">
+        <h4>🎯 Définition simple</h4>
+        <p>L'IA, c'est comme enseigner à un ordinateur à "réfléchir" et à s'améliorer tout seul en analysant des données. Plus il analyse d'informations, plus il devient "intelligent" dans sa spécialité.</p>
+      </div>
+
+      <h3>IA faible vs IA forte</h3>
+      <ul>
+        <li><strong>IA faible :</strong> Spécialisée dans une tâche précise (comme jouer aux échecs ou recommander du contenu)</li>
+        <li><strong>IA forte :</strong> Théorique, aurait une intelligence générale comme l'humain (n'existe pas encore)</li>
+      </ul>
+
+      <h2>🔍 Les principales branches de l'IA</h2>
+
+      <h3>1. Machine Learning (Apprentissage automatique)</h3>
+      <p>C'est la capacité d'une machine à apprendre sans être explicitement programmée. Elle analyse des données pour identifier des patterns et faire des prédictions.</p>
+
+      <p><strong>Exemple concret :</strong> Votre boîte email qui apprend à identifier les spams en analysant des milliers d'emails marqués comme indésirables.</p>
+
+      <h3>2. Deep Learning (Apprentissage profond)</h3>
+      <p>Une sous-catégorie du Machine Learning qui utilise des réseaux de neurones artificiels pour traiter des données complexes comme les images, le son ou le langage.</p>
+
+      <p><strong>Exemple concret :</strong> La reconnaissance faciale de votre smartphone ou la traduction automatique de Google.</p>
+
+      <h3>3. Natural Language Processing (Traitement du langage naturel)</h3>
+      <p>L'IA qui comprend et génère du langage humain.</p>
+
+      <p><strong>Exemple concret :</strong> ChatGPT, Siri, Alexa qui comprennent vos questions et y répondent.</p>
+
+      <div class="tip-box">
+        <p><strong>💡 Analogie :</strong> Imaginez l'IA comme un étudiant très doué qui peut lire des milliers de livres en quelques secondes et retenir toutes les informations pour les utiliser intelligemment.</p>
+      </div>
+
+      <h2>🌟 L'IA dans notre quotidien</h2>
+
+      <p>Vous utilisez probablement déjà l'IA sans le savoir :</p>
+
+      <h3>Sur votre smartphone</h3>
+      <ul>
+        <li>Correction automatique des textos</li>
+        <li>Reconnaissance vocale</li>
+        <li>Appareil photo qui optimise automatiquement vos photos</li>
+        <li>Assistant vocal (Siri, Google Assistant)</li>
+      </ul>
+
+      <h3>Sur Internet</h3>
+      <ul>
+        <li>Recommandations YouTube, Netflix, Spotify</li>
+        <li>Fil d'actualité Facebook/Instagram</li>
+        <li>Recherche Google</li>
+        <li>Traduction automatique</li>
+        <li>Détection de fraude bancaire</li>
+      </ul>
+
+      <h3>Dans les transports</h3>
+      <ul>
+        <li>GPS qui calcule le meilleur itinéraire</li>
+        <li>Voitures autonomes (Tesla, Waymo)</li>
+        <li>Optimisation du trafic urbain</li>
+      </ul>
+
+      <h2>🚀 Les outils IA populaires que vous pouvez utiliser dès maintenant</h2>
+
+      <div class="highlight-box">
+        <h4>🛠️ Outils IA essentiels pour débuter</h4>
+        
+        <h3>Génération de texte</h3>
+        <ul>
+          <li><strong>ChatGPT :</strong> Assistant conversationnel pour répondre à vos questions</li>
+          <li><strong>Claude :</strong> Alternative à ChatGPT, excellent pour l'analyse</li>
+          <li><strong>Gemini :</strong> L'IA de Google, intégrée à leurs services</li>
+        </ul>
+
+        <h3>Génération d'images</h3>
+        <ul>
+          <li><strong>DALL-E :</strong> Crée des images à partir de descriptions texte</li>
+          <li><strong>Midjourney :</strong> Très populaire pour les créations artistiques</li>
+          <li><strong>Stable Diffusion :</strong> Open source et gratuit</li>
+        </ul>
+
+        <h3>Productivité</h3>
+        <ul>
+          <li><strong>Grammarly :</strong> Correction de texte avancée</li>
+          <li><strong>Notion AI :</strong> Assistant d'écriture intégré</li>
+          <li><strong>Otter.ai :</strong> Transcription automatique de réunions</li>
+        </ul>
+      </div>
+
+      <h2>💼 Comment l'IA transforme le monde du travail</h2>
+
+      <h3>Métiers en évolution</h3>
+      <p>L'IA ne remplace pas complètement les humains, mais transforme la façon de travailler :</p>
+
+      <ul>
+        <li><strong>Marketing :</strong> Personnalisation, analyse de données, génération de contenu</li>
+        <li><strong>Service client :</strong> Chatbots pour les questions simples, agents humains pour le complexe</li>
+        <li><strong>Finance :</strong> Détection de fraude, trading algorithmique, analyse de risque</li>
+        <li><strong>Santé :</strong> Diagnostic médical, découverte de médicaments, chirurgie assistée</li>
+        <li><strong>Éducation :</strong> Personnalisation de l'apprentissage, correction automatique</li>
+      </ul>
+
+      <h3>Nouveaux métiers créés</h3>
+      <ul>
+        <li>Prompt Engineer (spécialiste de la communication avec l'IA)</li>
+        <li>Data Scientist</li>
+        <li>Spécialiste en éthique de l'IA</li>
+        <li>Intégrateur de solutions IA</li>
+      </ul>
+
+      <div class="tip-box">
+        <p><strong>💡 Conseil de carrière :</strong> Plutôt que de craindre l'IA, apprenez à l'utiliser comme un super-outil qui amplifie vos capacités. Les professionnels qui maîtrisent l'IA auront un avantage considérable.</p>
+      </div>
+
+      <div class="cta-section">
+        <h3>🎯 Besoin d'accompagnement en IA ?</h3>
+        <p>Je propose des formations sur l'intelligence artificielle et l'accompagnement dans l'intégration des outils IA dans votre activité !</p>
+        <a href="contact.html" class="cta-button">Me contacter</a>
+      </div>
+
+      <h2>🎯 Comment commencer à utiliser l'IA</h2>
+
+      <h3>Étape 1 : Expérimentez avec ChatGPT</h3>
+      <p>Commencez par des tâches simples :</p>
+      <ul>
+        <li>Posez des questions sur des sujets qui vous intéressent</li>
+        <li>Demandez-lui de résumer des articles</li>
+        <li>Faites-vous aider pour écrire des emails</li>
+        <li>Demandez des explications sur des concepts complexes</li>
+      </ul>
+
+      <h3>Étape 2 : Apprenez l'art du "prompting"</h3>
+      <p>Le prompting, c'est l'art de bien communiquer avec l'IA. Une bonne question donne une meilleure réponse.</p>
+
+      <div class="highlight-box">
+        <h4>📝 Exemples de bons prompts</h4>
+        <p><strong>Prompt basique :</strong> "Explique-moi le marketing digital"</p>
+        <p><strong>Prompt optimisé :</strong> "Explique-moi le marketing digital comme si j'étais propriétaire d'une petite boulangerie et que je veux attirer plus de clients grâce au numérique. Donne-moi 5 stratégies concrètes avec des exemples."</p>
+      </div>
+
+      <h3>Étape 3 : Intégrez l'IA dans vos tâches quotidiennes</h3>
+      <ul>
+        <li>Brainstorming d'idées</li>
+        <li>Rédaction et amélioration de textes</li>
+        <li>Analyse de données</li>
+        <li>Apprentissage de nouveaux sujets</li>
+        <li>Automatisation de tâches répétitives</li>
+      </ul>
+
+      <h2>⚠️ Limites et précautions</h2>
+
+      <div class="warning-box">
+        <p><strong>⚠️ Attention :</strong> L'IA n'est pas infaillible. Elle peut faire des erreurs, "inventer" des informations ou reproduire des biais. Gardez toujours un esprit critique.</p>
+      </div>
+
+      <h3>Principales limites</h3>
+      <ul>
+        <li><strong>Hallucinations :</strong> L'IA peut inventer des faits qui semblent vrais</li>
+        <li><strong>Biais :</strong> Reproduit les biais présents dans ses données d'entraînement</li>
+        <li><strong>Données obsolètes :</strong> Connaissances limitées à sa date d'entraînement</li>
+        <li><strong>Manque de contexte :</strong> Ne comprend pas toujours les nuances humaines</li>
+      </ul>
+
+      <h3>Bonnes pratiques</h3>
+      <ul>
+        <li>Vérifiez toujours les informations importantes</li>
+        <li>Utilisez l'IA comme assistant, pas comme source de vérité absolue</li>
+        <li>Respectez la confidentialité (ne partagez pas d'infos sensibles)</li>
+        <li>Citez vos sources quand vous utilisez du contenu généré par IA</li>
+      </ul>
+
+      <h2>🔮 L'avenir de l'IA</h2>
+
+      <h3>Tendances à surveiller</h3>
+      <ul>
+        <li><strong>IA multimodale :</strong> Qui comprend texte, image, son simultanément</li>
+        <li><strong>IA personnalisée :</strong> Adaptée à vos besoins spécifiques</li>
+        <li><strong>Automatisation intelligente :</strong> Dans tous les secteurs</li>
+        <li><strong>IA éthique :</strong> Plus transparente et responsable</li>
+      </ul>
+
+      <h3>Ce qui ne changera pas</h3>
+      <p>Malgré les progrès de l'IA, certaines qualités humaines restent irremplaçables :</p>
+      <ul>
+        <li>Créativité et innovation</li>
+        <li>Empathie et relations humaines</li>
+        <li>Jugement éthique et moral</li>
+        <li>Leadership et inspiration</li>
+        <li>Résolution de problèmes complexes nécessitant du bon sens</li>
+      </ul>
+
+      <h2>📚 Ressources pour approfondir</h2>
+
+      <h3>Pour comprendre</h3>
+      <ul>
+        <li><strong>Livres :</strong> "Homo Deus" de Yuval Noah Harari</li>
+        <li><strong>Documentaires :</strong> "The Age of AI" sur YouTube</li>
+        <li><strong>Podcasts :</strong> "AI Podcast" de Lex Fridman</li>
+      </ul>
+
+      <h3>Pour pratiquer</h3>
+      <ul>
+        <li><strong>Cours gratuits :</strong> Machine Learning de Stanford sur Coursera</li>
+        <li><strong>Plateformes :</strong> Kaggle pour la data science</li>
+        <li><strong>Communautés :</strong> Reddit r/MachineLearning</li>
+      </ul>
+
+      <div class="tip-box">
+        <p><strong>🎯 Mon conseil :</strong> Commencez par être un utilisateur averti d'IA avant de vouloir la créer. Maîtrisez les outils existants, comprenez leurs possibilités et limites.</p>
+      </div>
+
+      <h2>🎯 Conclusion</h2>
+
+      <p>L'intelligence artificielle n'est pas une technologie du futur – elle est déjà là et transforme notre présent. La clé n'est pas de la craindre mais de la comprendre et de l'apprivoiser.</p>
+
+      <p>Comme toute révolution technologique, l'IA apporte des opportunités et des défis. Les personnes qui sauront l'utiliser intelligemment et éthiquement auront un avantage considérable dans leur vie personnelle et professionnelle.</p>
+
+      <p>L'IA ne remplacera pas les humains, mais les humains qui utilisent l'IA remplaceront ceux qui ne l'utilisent pas. Alors, pourquoi ne pas commencer dès aujourd'hui ?</p>
+
+      <div class="highlight-box">
+        <h4>🚀 Vos premiers pas</h4>
+        <ol>
+          <li>Créez un compte ChatGPT gratuit</li>
+          <li>Posez-lui 5 questions sur vos centres d'intérêt</li>
+          <li>Demandez-lui de vous aider dans une tâche quotidienne</li>
+          <li>Explorez d'autres outils IA mentionnés dans cet article</li>
+          <li>Partagez votre expérience avec d'autres</li>
+        </ol>
+      </div>
+
+      <p>L'aventure de l'IA ne fait que commencer. Embarquez dès maintenant dans cette révolution qui façonne notre futur !</p>
+
+      <div class="cta-section">
+        <h3>💬 Envie d'aller plus loin ?</h3>
+        <p>Découvrez comment intégrer l'IA dans votre activité professionnelle. Formations et conseils personnalisés disponibles !</p>
+        <a href="contact.html" class="cta-button">Discutons ensemble</a>
+      </div>
+    </div>
+  </article>
+
+  <!-- Article Navigation -->
+  <div class="article-navigation">
+    <a href="article-canva.html" class="nav-article">← Article précédent</a>
+    <a href="article-seo.html" class="nav-article">Article suivant →</a>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <p>&copy; 2025 Maminirina Balsama. Tous droits réservés.</p>
+    </div>
+  </footer>
+
+  <script>
+ // Mobile menu toggle
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const navMenu = document.querySelector('.nav-menu');
+
+    mobileMenu.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+      
+      // Animation du menu hamburger
+      const spans = mobileMenu.querySelectorAll('span');
+      if (navMenu.classList.contains('active')) {
+        spans[0].style.transform = 'rotate(-45deg) translate(-5px, 6px)';
+        spans[1].style.opacity = '0';
+        spans[2].style.transform = 'rotate(45deg) translate(-5px, -6px)';
+      } else {
+        spans[0].style.transform = 'rotate(0) translate(0, 0)';
+        spans[1].style.opacity = '1';
+        spans[2].style.transform = 'rotate(0) translate(0, 0)';
+      }
+    });
+
+    // Fermer le menu mobile en cliquant sur un lien
+    document.querySelectorAll('.nav-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+        const spans = mobileMenu.querySelectorAll('span');
+        spans[0].style.transform = 'rotate(0) translate(0, 0)';
+        spans[1].style.opacity = '1';
+        spans[2].style.transform = 'rotate(0) translate(0, 0)';
+      });
+    });
+
+    // Navbar scroll effect
+    window.addEventListener('scroll', () => {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 100) {
+        navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+        navbar.style.boxShadow = '0 2px 30px rgba(0,0,0,0.15)';
+      } else {
+        navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+        navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+      }
+    });
+  </script>
+</body>
+</html>
