@@ -289,6 +289,27 @@
       box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
     }
 
+    /* Badge Nouveau */
+    .new-badge {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: linear-gradient(135deg, #ff6b6b, #ff8787);
+      color: white;
+      padding: 5px 12px;
+      border-radius: 15px;
+      font-size: 0.8rem;
+      font-weight: bold;
+      z-index: 10;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
     /* Footer */
     .footer {
       background: #2c3e50;
@@ -480,6 +501,18 @@
       <h2 class="section-title">📚 Mes Articles</h2>
       
       <div class="blog-grid">
+        <!-- Nouvel Article - Développement Personnel -->
+        <article class="blog-card">
+          <div class="blog-image" style="background-image: url('https://raw.githubusercontent.com/balisama21/balisama-site/main/dev-perso.PNG')">
+            <span class="new-badge">NOUVEAU</span>
+          </div>
+          <div class="blog-content">
+            <h3>🌟 5 habitudes qui ont transformé ma productivité</h3>
+            <p>Découvrez les 5 habitudes simples qui ont révolutionné ma façon de travailler et mon bien-être au quotidien. Des changements accessibles qui peuvent transformer votre vie.</p>
+            <a href="article-developpement-personnel.html" class="read-more">Lire plus →</a>
+          </div>
+        </article>
+
         <!-- Article 1 -->
         <article class="blog-card">
           <div class="blog-image" style="background-image: url('https://raw.githubusercontent.com/balisama21/balisama-site/main/marketing1.jpg')"></div>
