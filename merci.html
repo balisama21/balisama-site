@@ -1,74 +1,618 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q47HY7CVGP"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-Q47HY7CVGP');
+    </script>
     
-  <!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-Q47HY7CVGP "></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <!-- Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merci ! - Maminirina Balsama</title>
+    <meta name="description" content="Merci pour votre message ! Je vous répondrai dans les plus brefs délais.">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Message reçu - Maminirina Balsama">
+    <meta property="og:description" content="Merci pour votre message ! Je vous répondrai dans les plus brefs délais.">
+    <meta property="og:image" content="https://balsama.netlify.app/images/site.jpg">
+    <meta property="og:url" content="https://balsama.netlify.app">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  gtag('config', 'G-Q47HY7CVGP');
-</script>
-  
-   <!-- ✅ BALISES META POUR LE SEO -->
-  <title>Maminirina Balsama - Blog & Portfolio</title>
-  <meta name="description" content="Découvrez les compétences, formations et projets de Maminirina Balsama en marketing digital, télécommunications, IA et plus.">
-  <meta name="keywords" content="Maminirina Balsama, marketing digital, télécommunication, IA, blog, développement web, SEO">
-  <meta name="author" content="Maminirina Balsama">
+        :root {
+            --primary-color: #6366f1;
+            --secondary-color: #8b5cf6;
+            --accent-color: #06b6d4;
+            --success-color: #10b981;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --border-color: #e5e7eb;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
 
-  <!-- ✅ BALISES OPEN GRAPH POUR LES RÉSEAUX SOCIAUX -->
-  <meta property="og:title" content="Maminirina Balsama - Blog & Portfolio">
-  <meta property="og:description" content="Découvrez mes compétences en marketing digital, développement web, télécoms et IA.">
-  <meta property="og:image" content="https://balsama.netlify.app/images/site.jpg">
-  <meta property="og:url" content="https://balsama.netlify.app">
-  <meta property="og:type" content="website">
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            overflow-x: hidden;
+        }
 
-  <!-- Autres balises comme les liens CSS ou favicons -->
-  <link rel="stylesheet" href="style.css">
+        .container {
+            max-width: 600px;
+            width: 100%;
+            background: var(--bg-primary);
+            border-radius: 24px;
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+            position: relative;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
 
-  <!-- Twitter Card (optionnel) -->
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Maminirina Balsama - Portfolio" />
-<meta name="twitter:description" content="Découvrez les projets et compétences de Maminirina Balsama, expert en marketing digital et IA." />
-<meta name="twitter:image" content="https://balsama.netlify.app/images/site.jpg" />
-  
-  <meta charset="UTF-8">
-  <title>Merci !</title>
-  <style>
-    body {
-      text-align: center;
-      padding: 100px;
-      font-family: Arial, sans-serif;
-      background-color: #f9f9f9;
-    }
-    h1 {
-      color: #1a1a2e;
-      font-size: 2.5em;
-    }
-    p {
-      color: #555;
-      font-size: 1.2em;
-      margin-top: 20px;
-    }
-    a {
-      margin-top: 30px;
-      display: inline-block;
-      text-decoration: none;
-      color: white;
-      background-color: #1a1a2e;
-      padding: 10px 20px;
-      border-radius: 5px;
-    }
-    a:hover {
-      background-color: #333;
-    }
-  </style>
+        .header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            padding: 3rem 2rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 20%, transparent 20%);
+            background-size: 30px 30px;
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateX(-50px) translateY(-50px); }
+            100% { transform: translateX(0) translateY(0); }
+        }
+
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--success-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            position: relative;
+            z-index: 2;
+            animation: checkmark 0.6s ease-in-out;
+            box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+        }
+
+        .success-icon::after {
+            content: '✓';
+            color: white;
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+
+        @keyframes checkmark {
+            0% { transform: scale(0); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+        }
+
+        .title {
+            color: white;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 2;
+            animation: slideInUp 0.8s ease-out 0.2s both;
+        }
+
+        .subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
+            font-weight: 400;
+            position: relative;
+            z-index: 2;
+            animation: slideInUp 0.8s ease-out 0.4s both;
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .content {
+            padding: 2.5rem 2rem;
+        }
+
+        .message {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .message p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .timeline {
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .timeline-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .timeline-icon {
+            width: 20px;
+            height: 20px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.75rem;
+        }
+
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .timeline-item:last-child {
+            border-bottom: none;
+        }
+
+        .timeline-step {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--success-color);
+            flex-shrink: 0;
+        }
+
+        .timeline-step.pending {
+            background: var(--border-color);
+        }
+
+        .timeline-text {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .timeline-text.completed {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .actions {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-secondary {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            border: 2px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg-primary);
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .social-link {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 1.5rem 2rem;
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Animations pour les éléments */
+        .fade-in {
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Media Queries pour mobile */
+        @media (max-width: 768px) {
+            body {
+                padding: 0.5rem;
+            }
+
+            .container {
+                border-radius: 16px;
+                margin: 0.5rem 0;
+            }
+
+            .header {
+                padding: 2rem 1.5rem 1.5rem;
+            }
+
+            .title {
+                font-size: 2rem;
+            }
+
+            .subtitle {
+                font-size: 1rem;
+            }
+
+            .content {
+                padding: 2rem 1.5rem;
+            }
+
+            .actions {
+                gap: 0.75rem;
+            }
+
+            .btn {
+                padding: 0.875rem 1.5rem;
+                font-size: 0.95rem;
+            }
+
+            .social-links {
+                gap: 0.75rem;
+            }
+
+            .social-link {
+                width: 44px;
+                height: 44px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header {
+                padding: 1.5rem 1rem 1rem;
+            }
+
+            .title {
+                font-size: 1.75rem;
+            }
+
+            .content {
+                padding: 1.5rem 1rem;
+            }
+
+            .timeline {
+                padding: 1rem;
+            }
+
+            .message p {
+                font-size: 1rem;
+            }
+        }
+
+        /* Dark mode support */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --text-primary: #f9fafb;
+                --text-secondary: #d1d5db;
+                --bg-primary: #1f2937;
+                --bg-secondary: #374151;
+                --border-color: #4b5563;
+            }
+        }
+    </style>
 </head>
 <body>
-  <h1>Merci pour votre message !</h1>
-  <p>Je vous répondrai dès que possible.</p>
-  <a href="index.html">Retour à l'accueil</a>
+    <div class="container fade-in">
+        <div class="header">
+            <div class="success-icon pulse"></div>
+            <h1 class="title">Message reçu !</h1>
+            <p class="subtitle">Merci pour votre confiance</p>
+        </div>
+
+        <div class="content">
+            <div class="message">
+                <p>Votre message a été transmis avec succès. Je vous répondrai dans les plus brefs délais, généralement sous 24 heures.</p>
+                <p>En attendant, n'hésitez pas à explorer mon portfolio ou à me suivre sur les réseaux sociaux.</p>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-title">
+                    <div class="timeline-icon">📧</div>
+                    Prochaines étapes
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-step"></div>
+                    <span class="timeline-text completed">Message reçu et enregistré</span>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-step"></div>
+                    <span class="timeline-text completed">Notification envoyée</span>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-step pending"></div>
+                    <span class="timeline-text">Analyse de votre demande</span>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-step pending"></div>
+                    <span class="timeline-text">Réponse personnalisée (sous 24h)</span>
+                </div>
+            </div>
+
+            <div class="actions">
+                <a href="index.html" class="btn btn-primary">
+                    🏠 Retour à l'accueil
+                </a>
+                <a href="blog.html" class="btn btn-secondary">
+                    👨‍💻 Voir mes projets
+                </a>
+            </div>
+
+            <div class="social-links">
+                <a href="www.linkedin.com/in/balisama-maminiaina-146350326" class="social-link" title="LinkedIn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    </svg>
+                </a>
+                <a href="https://www.facebook.com/alpha.gabriel.104891" class="social-link" title="facebook">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                </a>
+                <a href="balisamamamy2003@gmail.com" class="social-link" title="gmail">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2025 Maminirina Balsama. Tous droits réservés.</p>
+        </div>
+    </div>
+
+    <script>
+        // Animation au chargement
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animation de la timeline
+            const timelineSteps = document.querySelectorAll('.timeline-step');
+            timelineSteps.forEach((step, index) => {
+                if (index < 2) {
+                    setTimeout(() => {
+                        step.style.transform = 'scale(1.2)';
+                        setTimeout(() => {
+                            step.style.transform = 'scale(1)';
+                        }, 200);
+                    }, index * 300);
+                }
+            });
+
+            // Animation des boutons
+            const buttons = document.querySelectorAll('.btn');
+            buttons.forEach((btn, index) => {
+                btn.style.animationDelay = `${0.6 + index * 0.1}s`;
+                btn.classList.add('fade-in');
+            });
+
+            // Gestion du compteur de temps estimé
+            updateResponseTime();
+        });
+
+        // Fonction pour mettre à jour le temps de réponse estimé
+        function updateResponseTime() {
+            const now = new Date();
+            const hours = now.getHours();
+            let responseTime = "sous 24 heures";
+            
+            if (hours >= 9 && hours <= 17) {
+                responseTime = "sous 4 heures";
+            } else if (hours >= 18 && hours <= 21) {
+                responseTime = "sous 8 heures";
+            }
+
+            const timelineTexts = document.querySelectorAll('.timeline-text');
+            if (timelineTexts.length > 3) {
+                timelineTexts[3].textContent = `Réponse personnalisée (${responseTime})`;
+            }
+        }
+
+        // Animation des liens sociaux
+        document.querySelectorAll('.social-link').forEach(link => {
+            link.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-4px) rotate(5deg)';
+            });
+            
+            link.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) rotate(0deg)';
+            });
+        });
+
+        // Easter egg : animation spéciale si on clique sur l'icône de succès
+        document.querySelector('.success-icon').addEventListener('click', function() {
+            this.style.animation = 'none';
+            this.style.transform = 'rotate(360deg) scale(1.2)';
+            this.style.background = 'linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4)';
+            this.style.backgroundSize = '400% 400%';
+            this.style.animation = 'gradient 2s ease infinite, spin 1s ease-in-out';
+            
+            setTimeout(() => {
+                this.style.animation = 'pulse 2s infinite';
+                this.style.transform = 'scale(1)';
+                this.style.background = '#10b981';
+            }, 2000);
+        });
+
+        // Animation gradient pour l'easter egg
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes gradient {
+                0% { background-position: 0% 50%; }
+                50% { background-position: 100% 50%; }
+                100% { background-position: 0% 50%; }
+            }
+            @keyframes spin {
+                from { transform: rotate(0deg) scale(1.2); }
+                to { transform: rotate(360deg) scale(1.2); }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Suivi des interactions pour analytics
+        function trackInteraction(action, element) {
+            if (typeof gtag !== 'undefined') {
+                gtag('event', action, {
+                    'event_category': 'Thank You Page',
+                    'event_label': element
+                });
+            }
+        }
+
+        // Ajout des événements de suivi
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                trackInteraction('click', this.textContent.trim());
+            });
+        });
+
+        document.querySelectorAll('.social-link').forEach(link => {
+            link.addEventListener('click', function() {
+                trackInteraction('social_click', this.title);
+            });
+        });
+    </script>
 </body>
 </html>
