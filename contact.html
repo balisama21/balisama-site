@@ -18,197 +18,742 @@
   <meta name="description" content="Contactez Maminirina Balsama pour en savoir plus sur ses compétences et projets.">
   <meta name="keywords" content="contact, Maminirina Balsama, marketing digital, développement web, IA">
   <meta name="author" content="Maminirina Balsama">
-  <link rel="stylesheet" href="style.css">
 
-    <!-- Open Graph -->
+  <!-- Open Graph -->
   <meta property="og:title" content="Contact - Maminirina Balsama">
   <meta property="og:description" content="Envoyez un message ou retrouvez les réseaux sociaux de Maminirina Balsama.">
   <meta property="og:image" content="https://balsama.netlify.app/images/site.jpg">
   <meta property="og:url" content="https://balsama.netlify.app/contact.html">
   <meta property="og:type" content="website">
 
-  <link rel="stylesheet" href="style.css">
-
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  
   <style>
-    html, body {
+    * {
       margin: 0;
       padding: 0;
-      font-family: Arial, sans-serif;
-      color: white;
-      height: 100%;
-      overflow: auto;
-    }
-
-    video#bgVideo {
-      position: fixed;
-      top: 0;
-      left: 0;
-      min-width: 100%;
-      min-height: 100%;
-      object-fit: cover;
-      z-index: -1;
-    }
-
-    .overlay {
-      background-color: rgba(0, 0, 0, 0.6);
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      justify-content: space-around;
-      align-items: flex-start;
-      padding: 40px 20px;
-      min-height: 100vh;
       box-sizing: border-box;
     }
 
-    .left-column, .right-column {
-      width: 45%;
-      min-width: 320px;
-      margin-bottom: 30px;
+    :root {
+      --primary-color: #FFD700;
+      --secondary-color: #ff6b35;
+      --dark-bg: rgba(0, 0, 0, 0.8);
+      --light-bg: rgba(255, 255, 255, 0.1);
+      --glass-bg: rgba(255, 255, 255, 0.05);
+      --text-light: #ffffff;
+      --text-muted: #cccccc;
+      --shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      --border-radius: 15px;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    .left-column h2 {
-      margin-top: 0;
-      color: #FFD700;
+    html, body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: var(--text-light);
+      height: 100%;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
     }
 
-    .contact-info p {
-      margin: 10px 0;
-      font-size: 1.1em;
+    /* Background Video */
+    .video-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+      overflow: hidden;
     }
 
-    .contact-info a {
-      color: #FFD700;
+    .video-background video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .video-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4));
+      z-index: -1;
+    }
+
+    /* Header */
+    .header {
+      position: sticky;
+      top: 0;
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      z-index: 100;
+      padding: 1rem 0;
+    }
+
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: #000;
       text-decoration: none;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: var(--transition);
+      box-shadow: var(--shadow);
     }
 
-    .social-icons {
-      margin-top: 20px;
+    .back-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(255, 215, 0, 0.3);
     }
 
-    .social-icons a {
-      margin-right: 10px;
-      display: inline-block;
+    .header-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
-    .social-icons img {
-      width: 30px;
+    /* Main Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+      min-height: calc(100vh - 80px);
     }
 
-    .right-column form {
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      margin-bottom: 3rem;
+      animation: fadeInUp 0.8s ease-out;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 800;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* Contact Grid */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .contact-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--border-radius);
+      padding: 2rem;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      animation: fadeInUp 0.8s ease-out;
+    }
+
+    .contact-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+    }
+
+    .contact-card h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      color: var(--primary-color);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* Contact Info */
+    .contact-info {
       display: flex;
       flex-direction: column;
-      background-color: rgba(255, 255, 255, 0.1);
-      padding: 20px;
+      gap: 1rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem;
+      background: rgba(255, 255, 255, 0.05);
       border-radius: 10px;
-    }
-
-    .right-column input, .right-column textarea {
-      margin-bottom: 15px;
-      padding: 10px;
-      border: none;
-      border-radius: 5px;
-      font-size: 1em;
-    }
-
-    .right-column button {
-      padding: 10px;
-      background-color: #FFD700;
-      border: none;
-      font-size: 1em;
-      cursor: pointer;
-      color: black;
-    }
-
-    iframe {
-      width: 100%;
-      height: 200px;
-      border: none;
-      margin-top: 20px;
-    }
-
-    .btn-retour {
-      display: inline-block;
-      margin-bottom: 20px;
-      padding: 10px 20px;
-      background-color: #FFD700;
-      color: black;
+      transition: var(--transition);
       text-decoration: none;
-      border-radius: 5px;
-      font-weight: bold;
+      color: var(--text-light);
     }
 
-    footer {
+    .contact-item:hover {
+      background: rgba(255, 215, 0, 0.1);
+      transform: translateX(5px);
+    }
+
+    .contact-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #000;
+      font-size: 1.2rem;
+    }
+
+    .contact-text {
+      flex: 1;
+    }
+
+    .contact-label {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 0.25rem;
+    }
+
+    .contact-value {
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+
+    /* Social Media */
+    .social-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .social-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      text-decoration: none;
+      color: var(--text-light);
+      transition: var(--transition);
+    }
+
+    .social-item:hover {
+      background: rgba(255, 215, 0, 0.1);
+      transform: scale(1.02);
+    }
+
+    .social-icon {
+      width: 35px;
+      height: 35px;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #000;
+      font-size: 1.1rem;
+    }
+
+    /* Contact Form */
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .form-group label {
+      font-weight: 600;
+      color: var(--primary-color);
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .form-input {
+      padding: 1rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      color: var(--text-light);
+      font-size: 1rem;
+      transition: var(--transition);
+    }
+
+    .form-input:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      background: rgba(255, 255, 255, 0.1);
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+    }
+
+    .form-input::placeholder {
+      color: var(--text-muted);
+    }
+
+    .submit-btn {
+      padding: 1.2rem 2rem;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: #000;
+      border: none;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 15px 40px rgba(255, 215, 0, 0.4);
+    }
+
+    .submit-btn:active {
+      transform: translateY(0);
+    }
+
+    /* Map Section */
+    .map-section {
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--border-radius);
+      padding: 2rem;
+      box-shadow: var(--shadow);
+      animation: fadeInUp 0.8s ease-out 0.2s both;
+    }
+
+    .map-section h3 {
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1.5rem;
+    }
+
+    .map-container {
+      border-radius: 10px;
+      overflow: hidden;
+      height: 300px;
+      box-shadow: var(--shadow);
+    }
+
+    .map-container iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      filter: grayscale(0.3) contrast(1.2);
+    }
+
+    /* Footer */
+    .footer {
       text-align: center;
-      color: #ccc;
-      font-size: 0.9em;
-      padding: 20px 0;
+      padding: 2rem;
+      margin-top: 3rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--text-muted);
     }
 
+    /* Loading Animation */
+    .loading {
+      display: none;
+      width: 20px;
+      height: 20px;
+      border: 2px solid rgba(0, 0, 0, 0.3);
+      border-radius: 50%;
+      border-top-color: #000;
+      animation: spin 1s linear infinite;
+      margin-left: 0.5rem;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    /* Mobile Responsive */
     @media (max-width: 768px) {
-      .overlay {
-        flex-direction: column;
-        align-items: center;
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
       }
 
-      .left-column, .right-column {
-        width: 90%;
+      .form-row {
+        grid-template-columns: 1fr;
       }
+
+      .header-content {
+        padding: 0 1rem;
+      }
+
+      .container {
+        padding: 1rem;
+      }
+
+      .contact-card {
+        padding: 1.5rem;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .social-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .header-title {
+        display: none;
+      }
+
+      .hero {
+        margin-bottom: 2rem;
+      }
+
+      .contact-card {
+        padding: 1rem;
+      }
+
+      .form-input {
+        padding: 0.8rem;
+      }
+    }
+
+    /* Dark mode toggle */
+    .theme-toggle {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      border: none;
+      border-radius: 50%;
+      color: #000;
+      font-size: 1.5rem;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      z-index: 1000;
+    }
+
+    .theme-toggle:hover {
+      transform: scale(1.1);
+      animation: pulse 2s infinite;
+    }
+
+    /* Success message */
+    .success-message {
+      display: none;
+      padding: 1rem;
+      background: linear-gradient(135deg, #4CAF50, #45a049);
+      color: white;
+      border-radius: 10px;
+      margin-top: 1rem;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    .error-message {
+      display: none;
+      padding: 1rem;
+      background: linear-gradient(135deg, #f44336, #da190b);
+      color: white;
+      border-radius: 10px;
+      margin-top: 1rem;
+      text-align: center;
+      font-weight: 600;
     }
   </style>
 </head>
 <body>
+  <div class="video-background">
+    <video autoplay muted loop>
+      <source src="page.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="video-overlay"></div>
 
-  <!-- Vidéo de fond -->
-  <video autoplay muted loop id="bgVideo">
-    <source src="page.mp4" type="video/mp4">
-    Votre navigateur ne supporte pas les vidéos HTML5.
-  </video>
+  <header class="header">
+    <div class="header-content">
+      <a href="index.html" class="back-btn">
+        <i class="fas fa-arrow-left"></i>
+        Retour à l'accueil
+      </a>
+      <h1 class="header-title">Contact</h1>
+    </div>
+  </header>
 
-  <div class="overlay">
-    
-    <!-- Colonne gauche : Contact -->
-    <div class="left-column">
-      <a href="index.html" class="btn-retour">← Retour à l'accueil</a>
-      <h2>Contactez-moi</h2>
-      <div class="contact-info">
-        <p>📧 Email : <a href="mailto:balisamamamy2003@gmail.com">balisamamamy2003@gmail.com</a></p>
-        <p>💼 LinkedIn : <a href="https://www.linkedin.com/in/balisama-maminiaina-146350326" target="_blank">Profil LinkedIn</a></p>
-        <p>📱 WhatsApp : <a href="https://wa.me/261328740631" target="_blank">+261 32 87 406 31</a></p>
-        <p>📘 Facebook : <a href="https://www.facebook.com/alpha.gabriel.104891" target="_blank">Alpha Gabriel</a></p>
+  <main class="container">
+    <section class="hero">
+      <h1>Contactez-moi</h1>
+      <p>Je suis toujours ravi d'échanger sur de nouveaux projets, des collaborations ou simplement pour discuter de vos idées. N'hésitez pas à me contacter !</p>
+    </section>
 
-        <div class="social-icons">
-          <a href="https://www.facebook.com/alpha.gabriel.104891" target="_blank">
-            <img src="https://img.icons8.com/ios-filled/50/facebook-new.png" alt="Facebook">
+    <div class="contact-grid">
+      <div class="contact-card">
+        <h2>
+          <i class="fas fa-address-book"></i>
+          Informations de contact
+        </h2>
+        <div class="contact-info">
+          <a href="mailto:balisamamamy2003@gmail.com" class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div class="contact-text">
+              <div class="contact-label">Email</div>
+              <div class="contact-value">balisamamamy2003@gmail.com</div>
+            </div>
           </a>
-          <a href="https://www.instagram.com/etre_optimiste_avec_balsama/" target="_blank">
-            <img src="https://img.icons8.com/ios-filled/50/instagram-new.png" alt="Instagram">
+
+          <a href="https://wa.me/261328740631" class="contact-item" target="_blank">
+            <div class="contact-icon">
+              <i class="fab fa-whatsapp"></i>
+            </div>
+            <div class="contact-text">
+              <div class="contact-label">WhatsApp</div>
+              <div class="contact-value">+261 32 87 406 31</div>
+            </div>
           </a>
+
+          <a href="https://www.linkedin.com/in/balisama-maminiaina-146350326" class="contact-item" target="_blank">
+            <div class="contact-icon">
+              <i class="fab fa-linkedin"></i>
+            </div>
+            <div class="contact-text">
+              <div class="contact-label">LinkedIn</div>
+              <div class="contact-value">Profil LinkedIn</div>
+            </div>
+          </a>
+
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div class="contact-text">
+              <div class="contact-label">Localisation</div>
+              <div class="contact-value">Antananarivo, Madagascar</div>
+            </div>
+          </div>
         </div>
 
-        <iframe 
-          src="https://www.google.com/maps?q=Balsama+Ambohitrimanjaka&output=embed"
-          allowfullscreen>
-        </iframe>
+        <div class="social-grid">
+          <a href="https://www.facebook.com/alpha.gabriel.104891" class="social-item" target="_blank">
+            <div class="social-icon">
+              <i class="fab fa-facebook"></i>
+            </div>
+            <span>Facebook</span>
+          </a>
+          <a href="https://www.instagram.com/etre_optimiste_avec_balsama/" class="social-item" target="_blank">
+            <div class="social-icon">
+              <i class="fab fa-instagram"></i>
+            </div>
+            <span>Instagram</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="contact-card">
+        <h2>
+          <i class="fas fa-paper-plane"></i>
+          Envoyez-moi un message
+        </h2>
+        <form class="contact-form" id="contactForm" action="https://formsubmit.co/balisamamamy2003@gmail.com" method="POST">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Nom complet</label>
+              <input type="text" id="name" name="name" class="form-input" placeholder="Votre nom complet" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" class="form-input" placeholder="votre@email.com" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="subject">Sujet</label>
+            <input type="text" id="subject" name="_subject" class="form-input" placeholder="Sujet de votre message" required>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" class="form-input" placeholder="Votre message..." rows="6" required></textarea>
+          </div>
+
+          <input type="hidden" name="_next" value="https://balsama.netlify.app/merci.html">
+          <input type="text" name="_honey" style="display:none">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_template" value="table">
+
+          <button type="submit" class="submit-btn">
+            <i class="fas fa-paper-plane"></i>
+            Envoyer le message
+            <div class="loading"></div>
+          </button>
+
+          <div class="success-message" id="successMessage">
+            <i class="fas fa-check-circle"></i>
+            Message envoyé avec succès !
+          </div>
+
+          <div class="error-message" id="errorMessage">
+            <i class="fas fa-exclamation-triangle"></i>
+            Erreur lors de l'envoi. Veuillez réessayer.
+          </div>
+        </form>
       </div>
     </div>
 
-    <!-- Colonne droite : Formulaire -->
-    <div class="right-column">
-      <form action="https://formsubmit.co/balisamamamy2003@gmail.com" method="POST">
-        <input type="text" name="name" placeholder="Votre nom" required>
-        <input type="email" name="email" placeholder="Votre email" required>
-        <textarea name="message" placeholder="Votre message" rows="5" required></textarea>
-        <input type="hidden" name="_next" value="https://balsama.netlify.app/merci.html">
-        <input type="text" name="_honey" style="display:none">
-        <input type="hidden" name="_captcha" value="false">
-        <button type="submit">Envoyer</button>
-      </form>
-    </div>
-  </div>
+    <section class="map-section">
+      <h3>
+        <i class="fas fa-map-marked-alt"></i>
+        Ma localisation
+      </h3>
+      <div class="map-container">
+        <iframe 
+          src="https://www.google.com/maps?q=Ambohitrimanjaka,+Antananarivo,+Madagascar&output=embed"
+          allowfullscreen
+          loading="lazy">
+        </iframe>
+      </div>
+    </section>
+  </main>
 
-  <footer>
-    © 2025 Maminirina Balsama. Tous droits réservés.
+  <footer class="footer">
+    <p>&copy; 2025 Maminirina Balsama. Tous droits réservés.</p>
   </footer>
+
+  <button class="theme-toggle" onclick="toggleTheme()" title="Changer le thème">
+    <i class="fas fa-palette"></i>
+  </button>
+
+  <script>
+    // Form handling
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      const submitBtn = document.querySelector('.submit-btn');
+      const loading = document.querySelector('.loading');
+      
+      submitBtn.style.pointerEvents = 'none';
+      loading.style.display = 'inline-block';
+      
+      setTimeout(() => {
+        submitBtn.style.pointerEvents = 'auto';
+        loading.style.display = 'none';
+      }, 2000);
+    });
+
+    // Theme toggle functionality
+    function toggleTheme() {
+      document.body.style.filter = document.body.style.filter ? '' : 'hue-rotate(180deg)';
+    }
+
+    // Smooth scroll for internal links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    // Add loading animation to contact items
+    document.querySelectorAll('.contact-item').forEach(item => {
+      item.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateX(5px) scale(1.02)';
+      });
+      
+      item.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateX(0) scale(1)';
+      });
+    });
+
+    // Form validation feedback
+    const inputs = document.querySelectorAll('.form-input');
+    inputs.forEach(input => {
+      input.addEventListener('blur', function() {
+        if (this.value && this.checkValidity()) {
+          this.style.borderColor = '#4CAF50';
+        } else if (this.value) {
+          this.style.borderColor = '#f44336';
+        }
+      });
+    });
+
+    // Parallax effect for cards
+    window.addEventListener('scroll', () => {
+      const scrolled = window.pageYOffset;
+      const cards = document.querySelectorAll('.contact-card');
+      
+      cards.forEach((card, index) => {
+        const rate = scrolled * -0.5;
+        card.style.transform = `translateY(${rate * (index + 1) * 0.1}px)`;
+      });
+    });
+  </script>
 </body>
 </html>
