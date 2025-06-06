@@ -37,24 +37,28 @@
     }
 
     :root {
-      --primary-color: #FFD700;
-      --secondary-color: #ff6b35;
-      --dark-bg: rgba(0, 0, 0, 0.8);
-      --light-bg: rgba(255, 255, 255, 0.1);
-      --glass-bg: rgba(255, 255, 255, 0.05);
-      --text-light: #ffffff;
-      --text-muted: #cccccc;
-      --shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      --primary-color: #2563eb;
+      --secondary-color: #3b82f6;
+      --accent-color: #10b981;
+      --dark-bg: rgba(255, 255, 255, 0.95);
+      --light-bg: rgba(255, 255, 255, 0.9);
+      --glass-bg: rgba(255, 255, 255, 0.8);
+      --text-dark: #1f2937;
+      --text-light: #374151;
+      --text-muted: #6b7280;
+      --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
       --border-radius: 15px;
       --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --border-color: rgba(0, 0, 0, 0.1);
     }
 
     html, body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      color: var(--text-light);
+      color: var(--text-dark);
       height: 100%;
       overflow-x: hidden;
       scroll-behavior: smooth;
+      background-color: #f8fafc;
     }
 
     /* Background Video */
@@ -80,7 +84,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4));
+      background: linear-gradient(135deg, rgba(248, 250, 252, 0.9), rgba(241, 245, 249, 0.8));
       z-index: -1;
     }
 
@@ -110,7 +114,7 @@
       gap: 0.5rem;
       padding: 0.75rem 1.5rem;
       background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-      color: #000;
+      color: white;
       text-decoration: none;
       border-radius: 50px;
       font-weight: 600;
@@ -120,7 +124,7 @@
 
     .back-btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 12px 40px rgba(255, 215, 0, 0.3);
+      box-shadow: 0 12px 40px rgba(37, 99, 235, 0.3);
     }
 
     .header-title {
@@ -157,7 +161,7 @@
 
     .hero p {
       font-size: 1.2rem;
-      color: var(--text-muted);
+      color: var(--text-light);
       max-width: 600px;
       margin: 0 auto;
       line-height: 1.6;
@@ -174,7 +178,7 @@
     .contact-card {
       background: var(--glass-bg);
       backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      border: 1px solid var(--border-color);
       border-radius: var(--border-radius);
       padding: 2rem;
       box-shadow: var(--shadow);
@@ -184,7 +188,7 @@
 
     .contact-card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
     }
 
     .contact-card h2 {
@@ -208,16 +212,18 @@
       align-items: center;
       gap: 1rem;
       padding: 1rem;
-      background: rgba(255, 255, 255, 0.05);
+      background: rgba(37, 99, 235, 0.05);
       border-radius: 10px;
       transition: var(--transition);
       text-decoration: none;
-      color: var(--text-light);
+      color: var(--text-dark);
+      border: 1px solid rgba(37, 99, 235, 0.1);
     }
 
     .contact-item:hover {
-      background: rgba(255, 215, 0, 0.1);
+      background: rgba(37, 99, 235, 0.1);
       transform: translateX(5px);
+      box-shadow: 0 4px 15px rgba(37, 99, 235, 0.2);
     }
 
     .contact-icon {
@@ -228,8 +234,9 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #000;
+      color: white;
       font-size: 1.2rem;
+      flex-shrink: 0;
     }
 
     .contact-text {
@@ -260,28 +267,31 @@
       align-items: center;
       gap: 0.75rem;
       padding: 1rem;
-      background: rgba(255, 255, 255, 0.05);
+      background: rgba(16, 185, 129, 0.05);
       border-radius: 10px;
       text-decoration: none;
-      color: var(--text-light);
+      color: var(--text-dark);
       transition: var(--transition);
+      border: 1px solid rgba(16, 185, 129, 0.1);
     }
 
     .social-item:hover {
-      background: rgba(255, 215, 0, 0.1);
+      background: rgba(16, 185, 129, 0.1);
       transform: scale(1.02);
+      box-shadow: 0 4px 15px rgba(16, 185, 129, 0.2);
     }
 
     .social-icon {
       width: 35px;
       height: 35px;
-      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      background: linear-gradient(135deg, var(--accent-color), #059669);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #000;
+      color: white;
       font-size: 1.1rem;
+      flex-shrink: 0;
     }
 
     /* Contact Form */
@@ -313,10 +323,10 @@
 
     .form-input {
       padding: 1rem;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.8);
+      border: 1px solid var(--border-color);
       border-radius: 10px;
-      color: var(--text-light);
+      color: var(--text-dark);
       font-size: 1rem;
       transition: var(--transition);
     }
@@ -324,8 +334,8 @@
     .form-input:focus {
       outline: none;
       border-color: var(--primary-color);
-      background: rgba(255, 255, 255, 0.1);
-      box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 0 20px rgba(37, 99, 235, 0.2);
     }
 
     .form-input::placeholder {
@@ -335,7 +345,7 @@
     .submit-btn {
       padding: 1.2rem 2rem;
       background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-      color: #000;
+      color: white;
       border: none;
       border-radius: 50px;
       font-size: 1.1rem;
@@ -349,7 +359,7 @@
 
     .submit-btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 15px 40px rgba(255, 215, 0, 0.4);
+      box-shadow: 0 15px 40px rgba(37, 99, 235, 0.4);
     }
 
     .submit-btn:active {
@@ -404,9 +414,9 @@
       display: none;
       width: 20px;
       height: 20px;
-      border: 2px solid rgba(0, 0, 0, 0.3);
+      border: 2px solid rgba(255, 255, 255, 0.3);
       border-radius: 50%;
-      border-top-color: #000;
+      border-top-color: white;
       animation: spin 1s linear infinite;
       margin-left: 0.5rem;
     }
@@ -462,6 +472,21 @@
       .social-grid {
         grid-template-columns: 1fr;
       }
+
+      .contact-item {
+        flex-wrap: wrap;
+        min-height: 60px;
+      }
+
+      .contact-text {
+        min-width: 0;
+        word-wrap: break-word;
+      }
+
+      .contact-value {
+        font-size: 1rem;
+        word-break: break-all;
+      }
     }
 
     @media (max-width: 480px) {
@@ -492,7 +517,7 @@
       background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
       border: none;
       border-radius: 50%;
-      color: #000;
+      color: white;
       font-size: 1.5rem;
       cursor: pointer;
       box-shadow: var(--shadow);
