@@ -859,7 +859,7 @@
         <a href="#" class="social-link" title="Instagram">
           <i class="fab fa-instagram"></i>
         </a>
-        <a href="#" class="social-link" title="GitHub">
+     <a href="#" class="social-link" title="GitHub">
           <i class="fab fa-github"></i>
         </a>
       </div>
@@ -868,71 +868,78 @@
       </p>
     </div>
   </footer>
-
   <script>
-    // Mobile Menu Toggle
-    const menuToggle = document.getElementById('menu-toggle');
-    const navMenu = document.getElementById('nav-menu');
-
+  // Mobile Menu Toggle
+  const menuToggle = document.getElementById('menu-toggle');
+  const navMenu = document.getElementById('nav-menu');
+  
+  // Vérifier que les éléments existent avant d'ajouter l'événement
+  if (menuToggle && navMenu) {
     menuToggle.addEventListener('click', () => {
       navMenu.classList.toggle('active');
       const icon = menuToggle.querySelector('i');
-      icon.classList.toggle('fa-bars');
-      icon.classList.toggle('fa-times');
+      if (icon) {
+        icon.classList.toggle('fa-bars');
+        icon.classList.toggle('fa-times');
+      }
     });
-
-    // Header Scroll Effect
-    window.addEventListener('scroll', () => {
-      const header = document.getElementById('header');
+  }
+  
+  // Header Scroll Effect
+  window.addEventListener('scroll', () => {
+    const header = document.getElementById('header');
+    if (header) {
       if (window.scrollY > 100) {
         header.classList.add('scrolled');
       } else {
         header.classList.remove('scrolled');
       }
-    });
-
-    // Smooth Scroll to Content
-    function scrollToContent() {
-      document.getElementById('main-content').scrollIntoView({
+    }
+  });
+  
+  // Smooth Scroll to Content
+  function scrollToContent() {
+    const mainContent = document.getElementById('main-content');
+    if (mainContent) {
+      mainContent.scrollIntoView({
         behavior: 'smooth'
       });
     }
-
-    // Animated Progress Bars
-    function animateProgressBars() {
-      const progressBars = document.querySelectorAll('.progress-fill');
-      
-      progressBars.forEach(bar => {
-        const width = bar.getAttribute('data-width');
+  }
+  
+  // Animated Progress Bars
+  function animateProgressBars() {
+    const progressBars = document.querySelectorAll('.progress-fill');
+    
+    progressBars.forEach(bar => {
+      const width = bar.getAttribute('data-width');
+      if (width) {
         bar.style.width = width + '%';
-      });
-    }
-
-    // Intersection Observer for Animations
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.animation = 'fadeInUp 0.8s ease-out forwards';
-          
-          // Animate progress bars when skills section is visible
-          if (entry.target.querySelector('.progress-container')) {
-            setTimeout(animateProgressBars, 300);
-          }
+      }
+    });
+  }
+  
+  // Intersection Observer for Animations
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.animation = 'fadeInUp 0.8s ease-out forwards';
+        
+        // Animate progress bars when skills section is visible
+        if (entry.target.querySelector('.progress-container')) {
+          setTimeout(animateProgressBars, 300);
         }
-      });
-    }, observerOptions);
-
-    // Observe all section cards
-    document.querySelectorAll('.section-card, .contact-cta').forEach(el => {
-      observer.observe(el);
-    }
-  });                                                                                                           
-  </script>
-</body>
-</html>                                                                 
-                                                                       
+      }
+    });
+  }, observerOptions);
+  
+  // Observe all section cards
+  document.querySelectorAll('.section-card, .contact-cta').forEach(el => {
+    observer.observe(el);
+  });
+</script>
