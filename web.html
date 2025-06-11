@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Développement Web - Maminirina Balsama</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .laptop-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .main-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+            margin-bottom: 30px;
+        }
+
+        .intro-section {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .intro-section h2 {
+            color: #5a67d8;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .intro-section p {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .tech-stack {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 40px 0;
+        }
+
+        .tech-badge {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: transform 0.3s ease;
+        }
+
+        .tech-badge:hover {
+            transform: translateY(-3px);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .service-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 15px;
+            padding: 30px;
+            color: white;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card:nth-child(2) {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .service-card:nth-child(3) {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        }
+
+        .service-card:nth-child(4) {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.1);
+            transform: rotate(45deg);
+            transition: all 0.5s ease;
+        }
+
+        .service-card:hover::before {
+            top: -60%;
+            right: -60%;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .service-card .icon {
+            font-size: 2rem;
+        }
+
+        .service-card p {
+            font-size: 1rem;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+
+        .service-card ul {
+            list-style: none;
+        }
+
+        .service-card li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .service-card li::before {
+            content: '⚡';
+            position: absolute;
+            left: 0;
+            color: rgba(255,255,255,0.8);
+            font-weight: bold;
+        }
+
+        .process-section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 40px;
+            margin: 40px 0;
+            backdrop-filter: blur(10px);
+        }
+
+        .process-section h2 {
+            color: #5a67d8;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2rem;
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .process-step {
+            text-align: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        .step-number {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 20px;
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .process-step h3 {
+            color: #5a67d8;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .process-step p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .portfolio-preview {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 40px;
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .portfolio-preview h2 {
+            color: #5a67d8;
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .portfolio-item {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            transition: transform 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .portfolio-item h4 {
+            color: #5a67d8;
+            margin-bottom: 10px;
+        }
+
+        .portfolio-item p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .cta-section {
+            text-align: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 50px;
+            border-radius: 15px;
+            margin-top: 40px;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #667eea;
+            transform: translateY(-3px);
+        }
+
+        .stats-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 30px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #5a67d8;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .main-card {
+                padding: 20px;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-section {
+                padding: 30px 20px;
+            }
+
+            .tech-stack {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="laptop-icon">💻</div>
+            <h1>Développement Web</h1>
+            <p class="subtitle">Sites web modernes, performants et optimisés pour tous les appareils</p>
+        </div>
+
+        <div class="main-card">
+            <div class="intro-section">
+                <h2>Créons ensemble votre présence web</h2>
+                <p>Spécialisée dans le développement web moderne, je crée des sites web sur mesure qui allient performance, esthétique et fonctionnalité. De la conception à la mise en ligne, je vous accompagne dans tous vos projets digitaux.</p>
+            </div>
+
+            <div class="tech-stack">
+                <span class="tech-badge">HTML5</span>
+                <span class="tech-badge">CSS3</span>
+                <span class="tech-badge">JavaScript</span>
+                <span class="tech-badge">React</span>
+                <span class="tech-badge">Python</span>
+                <span class="tech-badge">Django</span>
+                <span class="tech-badge">WordPress</span>
+                <span class="tech-badge">Bootstrap</span>
+                <span class="tech-badge">Tailwind CSS</span>
+                <span class="tech-badge">Node.js</span>
+            </div>
+
+            <div class="stats-section">
+                <div class="stat-card">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Sites créés</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">98%</div>
+                    <div class="stat-label">Satisfaction client</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">72h</div>
+                    <div class="stat-label">Délai moyen</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Responsive</div>
+                </div>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3><span class="icon">🛒</span> Sites vitrines & E-commerce</h3>
+                    <p>Des sites web professionnels pour présenter votre activité et vendre en ligne</p>
+                    <ul>
+                        <li>Design responsive et moderne</li>
+                        <li>Optimisation SEO intégrée</li>
+                        <li>Système de paiement sécurisé</li>
+                        <li>Gestion des stocks et commandes</li>
+                        <li>Interface d'administration intuitive</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <h3><span class="icon">⚙️</span> Applications web personnalisées</h3>
+                    <p>Solutions sur mesure adaptées à vos besoins spécifiques</p>
+                    <ul>
+                        <li>Développement Python/Django</li>
+                        <li>Applications React interactives</li>
+                        <li>API REST et intégrations</li>
+                        <li>Base de données optimisée</li>
+                        <li>Architecture scalable</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <h3><span class="icon">🚀</span> Optimisation des performances</h3>
+                    <p>Améliorez la vitesse et l'expérience utilisateur de votre site</p>
+                    <ul>
+                        <li>Audit de performance complet</li>
+                        <li>Optimisation du code et des images</li>
+                        <li>Mise en cache et CDN</li>
+                        <li>Core Web Vitals Google</li>
+                        <li>Tests de charge et monitoring</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <h3><span class="icon">🔧</span> Maintenance & Support technique</h3>
+                    <p>Un accompagnement continu pour garantir le bon fonctionnement</p>
+                    <ul>
+                        <li>Mises à jour sécuritaires</li>
+                        <li>Sauvegardes automatiques</li>
+                        <li>Résolution des bugs</li>
+                        <li>Support technique réactif</li>
+                        <li>Formation à l'administration</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="process-section">
+            <h2>Mon processus de développement</h2>
+            <div class="process-grid">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h3>Analyse & Conception</h3>
+                    <p>Étude de vos besoins, définition des fonctionnalités et création des maquettes</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h3>Développement</h3>
+                    <p>Codage du site avec les meilleures pratiques et technologies modernes</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h3>Tests & Optimisation</h3>
+                    <p>Tests complets, optimisation des performances et correction des bugs</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h3>Mise en ligne</h3>
+                    <p>Déploiement sur serveur, formation et accompagnement post-lancement</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="portfolio-preview">
+            <h2>Projets récents</h2>
+            <p style="color: #666; margin-bottom: 30px;">Découvrez quelques-unes de mes réalisations récentes</p>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <h4>Site E-commerce Mode</h4>
+                    <p>Boutique en ligne avec système de paiement intégré et gestion des stocks</p>
+                </div>
+                <div class="portfolio-item">
+                    <h4>Application de Gestion</h4>
+                    <p>Outil de gestion d'entreprise développé en Python/Django</p>
+                </div>
+                <div class="portfolio-item">
+                    <h4>Site Vitrine Restaurant</h4>
+                    <p>Site responsive avec système de réservation en ligne</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <h2>Votre projet web nous attend !</h2>
+            <p>Discutons de votre vision et transformons-la en réalité digitale</p>
+            <a href="mailto:contact@balsama.com" class="btn-primary">Démarrer mon projet</a>
+            <a href="https://balsama.netlify.app" class="btn-secondary">Retour à l'accueil</a>
+        </div>
+    </div>
+
+    <script>
+        // Animation au scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observer les cartes de service
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+
+        // Observer les étapes du processus
+        document.querySelectorAll('.process-step').forEach(step => {
+            step.style.opacity = '0';
+            step.style.transform = 'translateY(30px)';
+            step.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(step);
+        });
+
+        // Animation des statistiques
+        const animateStats = () => {
+            document.querySelectorAll('.stat-number').forEach(stat => {
+                const finalText = stat.textContent;
+                const isPercentage = finalText.includes('%');
+                const hasHours = finalText.includes('h');
+                const cleanNumber = parseInt(finalText.replace(/[^0-9]/g, ''));
+                
+                let currentNumber = 0;
+                const increment = cleanNumber / 50;
+                
+                const timer = setInterval(() => {
+                    currentNumber += increment;
+                    if (currentNumber >= cleanNumber) {
+                        currentNumber = cleanNumber;
+                        clearInterval(timer);
+                    }
+                    
+                    let displayText = Math.floor(currentNumber).toString();
+                    if (isPercentage) displayText += '%';
+                    if (hasHours) displayText += 'h';
+                    if (finalText.includes('+')) displayText += '+';
+                    
+                    stat.textContent = displayText;
+                }, 30);
+            });
+        };
+
+        // Observer la section des stats
+        const statsSection = document.querySelector('.stats-section');
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateStats();
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        statsObserver.observe(statsSection);
+
+        // Animation des badges technologiques
+        document.querySelectorAll('.tech-badge').forEach((badge, index) => {
+            badge.style.opacity = '0';
+            badge.style.transform = 'translateY(20px)';
+            badge.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            
+            setTimeout(() => {
+                badge.style.opacity = '1';
+                badge.style.transform = 'translateY(0)';
+            }, index * 100);
+        });
+
+        // Effet de parallaxe léger
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const header = document.querySelector('.header');
+            header.style.transform = `translateY(${scrolled * 0.3}px)`;
+        });
+
+        // Animation de typed effect pour le titre
+        const subtitle = document.querySelector('.header .subtitle');
+        const originalText = subtitle.textContent;
+        subtitle.textContent = '';
+        
+        let i = 0;
+        const typeWriter = () => {
+            if (i < originalText.length) {
+                subtitle.textContent += originalText.charAt(i);
+                i++;
+                setTimeout(typeWriter, 50);
+            }
+        };
+        
+        setTimeout(typeWriter, 1000);
+    </script>
+</body>
+</html>
