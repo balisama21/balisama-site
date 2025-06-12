@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nos Réalisations IA - Portfolio | Maminirina Balsama</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 40px 0;
+        }
+
+        .header h1 {
+            color: white;
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.2em;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 50px;
+        }
+
+        .stat-card {
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            color: rgba(255,255,255,0.9);
+            font-size: 1em;
+        }
+
+        .projects-grid {
+            display: grid;
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .project-header {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 30px;
+            position: relative;
+        }
+
+        .project-category {
+            background: rgba(255,255,255,0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .project-title {
+            font-size: 1.8em;
+            margin-bottom: 10px;
+        }
+
+        .project-subtitle {
+            opacity: 0.9;
+            font-size: 1.1em;
+        }
+
+        .project-content {
+            padding: 40px;
+        }
+
+        .project-info {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .project-description h4 {
+            color: #333;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+        }
+
+        .project-description p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .project-details {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 15px;
+        }
+
+        .detail-item {
+            margin-bottom: 15px;
+        }
+
+        .detail-label {
+            font-weight: bold;
+            color: #333;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .detail-value {
+            color: #666;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .tech-tag {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+        }
+
+        .results-section {
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 2px solid #e0e0e0;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .result-item {
+            text-align: center;
+            padding: 20px;
+            background: #f0f8ff;
+            border-radius: 15px;
+        }
+
+        .result-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .result-label {
+            color: #333;
+            font-size: 0.9em;
+        }
+
+        .testimonial {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 30px;
+            border-left: 4px solid #667eea;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            color: #555;
+            font-size: 1.1em;
+            margin-bottom: 15px;
+        }
+
+        .testimonial-author {
+            color: #333;
+            font-weight: bold;
+        }
+
+        .demo-section {
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 50px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            margin-bottom: 50px;
+        }
+
+        .demo-section h2 {
+            color: white;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .demo-section p {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .demo-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: left;
+        }
+
+        .demo-card h4 {
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .demo-card p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .demo-btn {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            text-decoration: none;
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .demo-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .cta-section {
+            text-align: center;
+            background: white;
+            border-radius: 20px;
+            padding: 50px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .cta-section h2 {
+            color: #333;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            color: #666;
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1em;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #667eea;
+            border: 2px solid #667eea;
+        }
+
+        .btn-secondary:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .nav-back {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .nav-back:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .project-info {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .results-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="#" class="nav-back" onclick="window.history.back()">← Retour</a>
+    
+    <div class="container">
+        <div class="header">
+            <h1>Nos Réalisations IA</h1>
+            <p>Découvrez comment nos solutions d'Intelligence Artificielle transforment les entreprises</p>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">15+</div>
+                    <div class="stat-label">Projets IA réalisés</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">95%</div>
+                    <div class="stat-label">Taux de satisfaction</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">60%</div>
+                    <div class="stat-label">Gain productivité moyen</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Support continu</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="projects-grid">
+            <!-- Projet 1: Chatbot E-commerce -->
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-category">Chatbot Intelligence</div>
+                    <h3 class="project-title">Assistant Client E-commerce</h3>
+                    <p class="project-subtitle">Automatisation du support client pour boutique en ligne</p>
+                </div>
+                <div class="project-content">
+                    <div class="project-info">
+                        <div class="project-description">
+                            <h4>Le Défi</h4>
+                            <p>Une boutique e-commerce recevait plus de 200 demandes client par jour, saturant l'équipe support et créant des délais de réponse inacceptables.</p>
+                            
+                            <h4>Notre Solution</h4>
+                            <p>Développement d'un chatbot intelligent capable de traiter 80% des demandes courantes : suivi commandes, retours, informations produits, et recommandations personnalisées.</p>
+                            
+                            <h4>Technologies Utilisées</h4>
+                            <div class="tech-stack">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">Natural Language Processing</span>
+                                <span class="tech-tag">Machine Learning</span>
+                                <span class="tech-tag">API Integration</span>
+                                <span class="tech-tag">Webhook</span>
+                            </div>
+                        </div>
+                        <div class="project-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Secteur</span>
+                                <span class="detail-value">E-commerce Mode</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Durée</span>
+                                <span class="detail-value">6 semaines</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Équipe</span>
+                                <span class="detail-value">1 développeur IA</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Budget</span>
+                                <span class="detail-value">8 500€</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="results-section">
+                        <h4>Résultats Obtenus</h4>
+                        <div class="results-grid">
+                            <div class="result-item">
+                                <div class="result-number">-75%</div>
+                                <div class="result-label">Tickets support</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-number">3min</div>
+                                <div class="result-label">Temps de réponse</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-number">+40%</div>
+                                <div class="result-label">Satisfaction client</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-number">24/7</div>
+                                <div class="result-label">Disponibilité</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial">
+                        <p class="testimonial-text">"Le chatbot a révolutionné notre service client. Nos équipes peuvent maintenant se concentrer sur les demandes complexes tandis que l'IA gère parfaitement les questions courantes."</p>
+                        <p class="testimonial-author">- Sarah M., Directrice E-commerce</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Projet 2: Système de Recommandation -->
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-category">Machine Learning</div>
+                    <h3 class="project-title">Moteur de Recommandation Intelligent</h3>
+                    <p class="project-subtitle">Personnalisation de l'expérience utilisateur</p>
+                </div>
+                <div class="project-content">
+                    <div class="project-info">
+                        <div class="project-description">
+                            <h4>Le Défi</h4>
+                            <p>Une plateforme de formation en ligne cherchait à améliorer l'engagement utilisateur en proposant des cours personnalisés selon les profils et objectifs.</p>
+                            
+                            <h4>Notre Solution</h4>
+                            <p>Création d'un système de recommandation basé sur l'analyse comportementale, les préférences déclarées et les parcours similaires d'autres utilisateurs.</p>
+                            
+                            <h4>Technologies Utilisées</h4>
+                            <div class="tech-stack">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">Scikit-learn</span>
+                                <span class="tech-tag">Pandas</span>
+                                <span class="tech-tag">Collaborative Filtering</span>
+                                <span class="tech-tag">Content-Based Filtering</span>
+                            </div>
+                        </div>
+                        <div class="project-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Secteur</span>
+                                <span class="detail-value">EdTech</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Durée</span>
+                                <span class="detail-value">8 semaines</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Utilisateurs</span>
+                                <span class="detail-value">10 000+</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Budget</span>
+                                <span class="detail-value">12 000€</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="results-section">
+                        <h4>Impact Mesuré</h4>
+                        <div class="results-grid">
+                            <div class="result-item">
+                                <div class="result-number">+65%</div>
+                                <div class="result-label">Engagement utilisateur</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-number">+30%</div>
+                                <div class="result-label">Taux de conversion</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-number">+45%</div>
+                                <div class="result-label">Temps sur plateforme</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-number">87%</div>
+                                <div class="result-label">Précision recommandations</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial">
+                        <p class="testimonial-text">"Les recommandations sont si pertinentes que nos utilisateurs découvrent des cours qu'ils n'auraient jamais trouvés seuls. Le taux de complétion des formations a explosé !"</p>
+                        <p class="testimonial-author">- Marc L., Fondateur EduTech</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Projet 3: Automatisation RH -->
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-category">Automatisation IA</div>
+                    <h3 class="project-title">Assistant RH Intelligent</h3>
+                    <p class="project-subtitle">Automatisation du processus de recrutement</p>
+                </div>
+                <div class="project-content">
+                    <div class="project-info">
+                        <div class="project-description">
+                            <h4>Le Défi</h4>
+                            <p>Un cabinet RH traitait manuellement 500+ CV par semaine, nécessitant 2 jours complets de tri préliminaire avant de pouvoir analyser les profils pertinents.</p>
+                            
+                            <h4>Notre Solution</h4>
+                            <p>Développement d'un système d'IA pour analyser automatiquement les CV, extraire les compétences clés et scorer les candidats selon les critères du poste.</p>
+                            
+                            <h4>Technologies Utilisées</h4>
+                            <div class="tech-stack">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">OCR</span>
+                                <span class="tech-tag">Natural Language Processing</span>
+                                <span class="tech-tag">Keyword Extraction</span>
+                                <span class="tech-tag">PDF Processing</span>
+                            </div>
+                        </div>
+                        <div class="project-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Secteur</span>
+                                <span class="detail-value">Ressources Humaines</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Durée</span>
+                                <span class="detail-value">4 semaines</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">CV traités</span>
+                                <span class="detail-value">2000+ /mois</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Budget</span>
+                                <span class="detail-value">6 500€</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="results-section">
+                        <h4>Gains Obtenus</h4>
+                        <div class="results-grid">
+                            <div class="result-item">
+                                <div class="result-number">-85%</div>
+                                <div class="result-label">Temps de tri</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-number">+200%</div>
+                                <div class="result-label">CV traités/jour</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-number">92%</div>
+                                <div class="result-label">Précision scoring</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-number">15min</div>
+                                <div class="result-label">Analyse complète</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial">
+                        <p class="testimonial-text">"Cette solution nous a permis de nous concentrer sur ce qui compte vraiment : l'entretien et l'accompagnement humain. L'IA fait le travail de pré-qualification avec une précision remarquable."</p>
+                        <p class="testimonial-author">- Julie R., Directrice RH</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h2>Projets Démo & Prototypes</h2>
+            <p>Découvrez nos démonstrations techniques et projets d'apprentissage</p>
+            
+            <div class="demo-grid">
+                <div class="demo-card">
+                    <h4>🤖 Assistant Personnel IA</h4>
+                    <p>Chatbot multifonction capable de gérer agenda, emails et rappels avec intelligence contextuelle.</p>
+                    <a href="#" class="demo-btn">Voir la démo</a>
+                </div>
+                
+                <div class="demo-card">
+                    <h4>📊 Analyseur de Sentiments</h4>
+                    <p>Outil d'analyse automatique des avis clients et commentaires sur les réseaux sociaux.</p>
+                    <a href="#" class="demo-btn">Tester l'outil</a>
+                </div>
+                
+                <div class="demo-card">
+                    <h4>🔮 Prédicteur de Tendances</h4>
+                    <p>Modèle de Machine Learning pour anticiper les tendances de vente basé sur données historiques.</p>
+                    <a href="#" class="demo-btn">Explorer</a>
+                </div>
+                
+                <div class="demo-card">
+                    <h4>🎯 Optimiseur de Prix</h4>
+                    <p>Algorithme d'optimisation dynamique des prix selon la demande et la concurrence.</p>
+                    <a href="#" class="demo-btn">Voir le prototype</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <h2>Votre Projet Sera le Prochain ?</h2>
+            <p>Rejoignez nos clients satisfaits et transformez votre entreprise avec l'Intelligence Artificielle</p>
+            <div class="cta-buttons">
+                <a href="/devis" class="btn btn-primary">Demander un Devis</a>
+                <a href="/contact" class="btn btn-secondary">Discuter de mon Projet</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Animation des cartes au scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Appliquer l'animation aux éléments
+        document.querySelectorAll('.project-card, .demo-card, .stat-card').forEach(element => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(20px)';
+            element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(element);
+        });
+
+        // Animation des compteurs
+        function animateCounter(element, start, end, duration) {
+            let startTime = null;
+            const step = (timestamp) => {
+                if (!startTime) startTime = timestamp;
+                const progress = Math.min((timestamp - startTime) / duration, 1);
+                const current = Math.floor(progress * (end - start) + start);
+                element.textContent = current + (element.textContent.includes('%') ? '%' : '+');
+                if (progress < 1) {
+                    requestAnimationFrame(step);
+                }
+            };
+            requestAnimationFrame(step);
+        }
+
+        // Lancer les animations de compteurs quand visibles
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const number = entry.target;
+                    const finalValue = parseInt(number.textContent);
+                    animateCounter(number, 0, finalValue, 2000);
+                    counterObserver.unobserve(number);
+                }
+            });
+        });
+
+        document.querySelectorAll('.stat-number, .result-number').forEach(counter => {
+            counterObserver.observe(counter);
+        });
+
+        // Effet de particules flottantes
+        function createFloatingElements() {
+            for (let i = 0; i < 20; i++) {
+                const particle = document.createElement('div');
+                particle.style.position = 'fixed';
+                particle.style.width = '4px';
+                particle.style.height = '4px';
+                particle.style.background = 'rgba(255,255,255,0.3)';
+                particle.style.borderRadius = '50%';
+                particle.style.pointerEvents = 'none';
+                particle.style.left = Math.random() * 100 + 'vw';
+                particle.style.top = '100vh';
+                particle.style.animation = `float-up ${Math.random() * 10 + 5}s linear infinite`;
+                document.body.appendChild(particle);
+                
+                setTimeout(() => {
+                    particle.remove();
+                }, (Math.random() * 10 + 5) * 1000);
+            }
+        }
+
+        // Ajouter les styles d'animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes float-up {
+                from {
+                    transform: translateY(0) rotate(0deg);
+                    opacity: 1;
+                }
+                to {
+                    transform: translateY(-100vh) rotate(360deg);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Créer des particules régulièrement
+        setInterval(createFloatingElements, 3000);
+        createFloatingElements();
+    </script>
+</body>
+</html>
