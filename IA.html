@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intelligence Artificielle - Maminirina Balsama</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 40px 0;
+        }
+
+        .header h1 {
+            color: white;
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.2em;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: white;
+        }
+
+        .service-card h3 {
+            color: #333;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+
+        .service-card p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .service-features {
+            list-style: none;
+        }
+
+        .service-features li {
+            color: #555;
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .service-features li::before {
+            content: '✓';
+            color: #667eea;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .process-section {
+            background: white;
+            border-radius: 20px;
+            padding: 50px;
+            margin-bottom: 50px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .process-section h2 {
+            text-align: center;
+            color: #333;
+            font-size: 2.5em;
+            margin-bottom: 40px;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            font-weight: bold;
+            margin: 0 auto 20px;
+        }
+
+        .step h4 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .step p {
+            color: #666;
+        }
+
+        .cta-section {
+            text-align: center;
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 50px;
+            backdrop-filter: blur(10px);
+        }
+
+        .cta-section h2 {
+            color: white;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1em;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #667eea;
+        }
+
+        .btn-primary:hover {
+            background: #f0f0f0;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #667eea;
+            transform: translateY(-2px);
+        }
+
+        .nav-back {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .nav-back:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .process-section {
+                padding: 30px 20px;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="#" class="nav-back" onclick="window.history.back()">← Retour</a>
+    
+    <div class="container">
+        <div class="header">
+            <h1>Intelligence Artificielle</h1>
+            <p>Intégration d'IA pour automatiser vos processus et améliorer l'efficacité de votre entreprise</p>
+        </div>
+
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🤖</div>
+                <h3>Chatbots Intelligents</h3>
+                <p>Créez des assistants virtuels pour améliorer l'expérience client 24/7.</p>
+                <ul class="service-features">
+                    <li>Support client automatisé</li>
+                    <li>Intégration multi-plateformes</li>
+                    <li>Apprentissage continu</li>
+                    <li>Personnalisation avancée</li>
+                    <li>Analyse des conversations</li>
+                </ul>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">📊</div>
+                <h3>Analyse de Données & Machine Learning</h3>
+                <p>Exploitez vos données pour prendre des décisions éclairées et prédictives.</p>
+                <ul class="service-features">
+                    <li>Analyse prédictive</li>
+                    <li>Visualisation de données</li>
+                    <li>Modèles de Machine Learning</li>
+                    <li>Détection d'anomalies</li>
+                    <li>Rapports automatisés</li>
+                </ul>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">⚙️</div>
+                <h3>Automatisation des Tâches</h3>
+                <p>Automatisez vos processus répétitifs pour gagner du temps et réduire les erreurs.</p>
+                <ul class="service-features">
+                    <li>Automatisation de workflows</li>
+                    <li>Traitement de documents</li>
+                    <li>Intégration API</li>
+                    <li>Programmation Python</li>
+                    <li>Surveillance automatique</li>
+                </ul>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">🎯</div>
+                <h3>Solutions d'IA Personnalisées</h3>
+                <p>Développement de solutions sur mesure adaptées à vos besoins spécifiques.</p>
+                <ul class="service-features">
+                    <li>Consultation personnalisée</li>
+                    <li>Développement sur mesure</li>
+                    <li>Formation et support</li>
+                    <li>Intégration complète</li>
+                    <li>Maintenance continue</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="process-section">
+            <h2>Notre Processus</h2>
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h4>Analyse des Besoins</h4>
+                    <p>Évaluation approfondie de vos processus actuels et identification des opportunités d'amélioration.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h4>Conception de la Solution</h4>
+                    <p>Développement d'une stratégie IA personnalisée adaptée à vos objectifs business.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h4>Développement & Tests</h4>
+                    <p>Implémentation de la solution avec des tests rigoureux pour garantir la performance.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h4>Déploiement & Formation</h4>
+                    <p>Mise en production avec formation complète de vos équipes et support continu.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <h2>Prêt à Transformer Votre Entreprise ?</h2>
+            <p>Découvrez comment l'Intelligence Artificielle peut révolutionner vos processus métier et améliorer votre productivité.</p>
+            <div class="cta-buttons">
+                <a href="/contact" class="btn btn-primary">Demander un Devis</a>
+                <a href="/blog" class="btn btn-secondary">Voir nos Réalisations</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Animation au scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Appliquer l'animation aux cartes
+        document.querySelectorAll('.service-card, .step').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+
+        // Effet de particules sur le header
+        function createParticles() {
+            const header = document.querySelector('.header');
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.style.position = 'absolute';
+                particle.style.width = '2px';
+                particle.style.height = '2px';
+                particle.style.background = 'rgba(255,255,255,0.5)';
+                particle.style.borderRadius = '50%';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animation = `float ${Math.random() * 3 + 2}s infinite ease-in-out`;
+                header.appendChild(particle);
+            }
+        }
+
+        // Ajouter les styles d'animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes float {
+                0%, 100% { transform: translateY(0px); opacity: 0.5; }
+                50% { transform: translateY(-20px); opacity: 1; }
+            }
+            .header { position: relative; overflow: hidden; }
+        `;
+        document.head.appendChild(style);
+
+        // Créer les particules
+        createParticles();
+    </script>
+</body>
+</html>
