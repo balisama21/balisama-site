@@ -236,7 +236,7 @@
             left: 20px;
             background: rgba(255,255,255,0.2);
             color: white;
-            padding: 10px 20px;
+            padding: 12px 20px;
             border-radius: 50px;
             text-decoration: none;
             backdrop-filter: blur(10px);
@@ -246,12 +246,20 @@
             align-items: center;
             gap: 8px;
             font-weight: 500;
+            cursor: pointer;
+            border: 2px solid rgba(255,255,255,0.3);
+            user-select: none;
+            -webkit-user-select: none;
+            -webkit-tap-highlight-color: transparent;
         }
 
-        .nav-back:hover {
+        .nav-back:hover,
+        .nav-back:active,
+        .nav-back:focus {
             background: rgba(255,255,255,0.3);
             transform: translateY(-2px);
             color: white;
+            outline: none;
         }
 
         /* Amélioration pour mobile */
@@ -276,19 +284,31 @@
             .nav-back {
                 top: 15px;
                 left: 15px;
-                padding: 12px 16px;
-                font-size: 14px;
-                min-height: 44px; /* Taille minimum recommandée pour les boutons tactiles */
-                min-width: 44px;
+                padding: 14px 18px;
+                font-size: 16px;
+                min-height: 48px; /* Taille minimum recommandée pour les boutons tactiles */
+                min-width: 48px;
+                border-radius: 25px;
             }
         }
 
-        /* Amélioration pour les appareils tactiles */
+        /* Amélioration universelle pour tous les appareils tactiles */
         @media (hover: none) and (pointer: coarse) {
             .nav-back {
-                padding: 12px 20px;
-                min-height: 44px;
-                min-width: 44px;
+                padding: 14px 20px;
+                min-height: 48px;
+                min-width: 48px;
+                font-size: 16px;
+            }
+        }
+
+        /* Support pour tous les navigateurs mobiles */
+        @media screen and (max-width: 1024px) {
+            .nav-back {
+                padding: 14px 18px;
+                min-height: 48px;
+                min-width: 48px;
+                font-size: 16px;
             }
         }
     </style>
@@ -390,7 +410,7 @@
             <p>Découvrez comment l'Intelligence Artificielle peut révolutionner vos processus métier et améliorer votre productivité.</p>
             <div class="cta-buttons">
                 <a href="devis.html" class="btn btn-primary">Demander un Devis</a>
-                <a href="realisation.html" class="btn btn-secondary">Voir nos Réalisations</a>
+                <a href="realisation" class="btn btn-secondary">Voir nos Réalisations</a>
             </div>
         </div>
     </div>
@@ -419,26 +439,23 @@
             observer.observe(card);
         });
 
-        // Gestion améliorée du bouton retour
+        // Gestion universelle du bouton retour - fonctionne sur TOUS les appareils
         document.getElementById('backButton').addEventListener('click', function(e) {
-            // Si on est sur mobile ou si l'historique est vide, aller directement à index.html
-            if (window.history.length <= 1 || /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-                return; // Laisser le lien href="index.html" faire son travail
-            } else {
-                // Sur desktop, essayer d'utiliser l'historique
-                e.preventDefault();
-                try {
-                    window.history.back();
-                    // Fallback au cas où history.back() ne fonctionne pas
-                    setTimeout(() => {
-                        if (window.location.href === e.target.href) {
-                            window.location.href = 'index.html';
-                        }
-                    }, 100);
-                } catch (error) {
-                    window.location.href = 'index.html';
-                }
-            }
+            // Empêcher le comportement par défaut du lien
+            e.preventDefault();
+            
+            // Solution universelle : toujours rediriger vers index.html
+            // C'est la méthode la plus fiable pour tous les appareils
+            window.location.href = 'index.html';
+        });
+
+        // Support tactile amélioré pour tous les appareils
+        document.getElementById('backButton').addEventListener('touchstart', function(e) {
+            this.style.transform = 'translateY(-1px) scale(0.98)';
+        });
+
+        document.getElementById('backButton').addEventListener('touchend', function(e) {
+            this.style.transform = 'translateY(-2px) scale(1)';
         });
 
         // Effet de particules sur le header
