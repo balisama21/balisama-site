@@ -190,11 +190,12 @@
         }
 
         .process-section {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.95);
             border-radius: 15px;
             padding: 40px;
             margin: 40px 0;
             backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
         .process-section h2 {
@@ -212,8 +213,17 @@
 
         .process-step {
             text-align: center;
-            padding: 20px;
+            padding: 25px;
             position: relative;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .process-step:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
         }
 
         .step-number {
@@ -232,57 +242,126 @@
         }
 
         .process-step h3 {
-            color: #5a67d8;
+            color: #333;
             margin-bottom: 15px;
             font-size: 1.3rem;
+            font-weight: 600;
         }
 
         .process-step p {
-            color: #666;
+            color: #555;
             font-size: 0.95rem;
+            line-height: 1.6;
         }
 
         .portfolio-preview {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
-            padding: 40px;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border-radius: 20px;
+            padding: 50px;
             margin: 40px 0;
             text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
         }
 
         .portfolio-preview h2 {
-            color: #5a67d8;
+            color: #2d3748;
             margin-bottom: 20px;
-            font-size: 2rem;
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .portfolio-preview > p {
+            color: #4a5568;
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .portfolio-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
             margin-top: 30px;
         }
 
         .portfolio-item {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            padding: 20px;
+            background: linear-gradient(135deg, #ffffff 0%, #f7fafc 100%);
+            border-radius: 15px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .portfolio-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transform: scaleX(0);
             transition: transform 0.3s ease;
-            backdrop-filter: blur(10px);
+        }
+
+        .portfolio-item:hover::before {
+            transform: scaleX(1);
         }
 
         .portfolio-item:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+        }
+
+        .portfolio-item:nth-child(1) {
+            border-left: 4px solid #f093fb;
+        }
+
+        .portfolio-item:nth-child(2) {
+            border-left: 4px solid #43e97b;
+        }
+
+        .portfolio-item:nth-child(3) {
+            border-left: 4px solid #fa709a;
         }
 
         .portfolio-item h4 {
-            color: #5a67d8;
-            margin-bottom: 10px;
+            color: #2d3748;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+            font-weight: 600;
         }
 
         .portfolio-item p {
-            color: #666;
-            font-size: 0.9rem;
+            color: #718096;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .portfolio-item .project-tech {
+            margin-top: 15px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tech-tag {
+            background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+            color: #4a5568;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 500;
         }
 
         .cta-section {
@@ -392,6 +471,14 @@
 
             .tech-stack {
                 justify-content: center;
+            }
+
+            .portfolio-preview {
+                padding: 30px 20px;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -521,19 +608,34 @@
 
         <div class="portfolio-preview">
             <h2>Projets récents</h2>
-            <p style="color: #666; margin-bottom: 30px;">Découvrez quelques-unes de mes réalisations récentes</p>
+            <p>Découvrez quelques-unes de mes réalisations récentes avec des technologies modernes</p>
             <div class="portfolio-grid">
                 <div class="portfolio-item">
                     <h4>Site E-commerce Mode</h4>
-                    <p>Boutique en ligne avec système de paiement intégré et gestion des stocks</p>
+                    <p>Boutique en ligne complète avec système de paiement intégré, gestion des stocks en temps réel et interface d'administration intuitive.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">Stripe</span>
+                    </div>
                 </div>
                 <div class="portfolio-item">
                     <h4>Application de Gestion</h4>
-                    <p>Outil de gestion d'entreprise développé en Python/Django</p>
+                    <p>Outil de gestion d'entreprise développé sur mesure avec tableaux de bord interactifs et système de reporting avancé.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Django</span>
+                        <span class="tech-tag">PostgreSQL</span>
+                    </div>
                 </div>
                 <div class="portfolio-item">
                     <h4>Site Vitrine Restaurant</h4>
-                    <p>Site responsive avec système de réservation en ligne</p>
+                    <p>Site responsive élégant avec système de réservation en ligne, menu interactif et intégration des réseaux sociaux.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">WordPress</span>
+                        <span class="tech-tag">PHP</span>
+                        <span class="tech-tag">MySQL</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -576,6 +678,14 @@
             step.style.transform = 'translateY(30px)';
             step.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
             observer.observe(step);
+        });
+
+        // Observer les projets du portfolio
+        document.querySelectorAll('.portfolio-item').forEach(item => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(30px)';
+            item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(item);
         });
 
         // Animation des statistiques
