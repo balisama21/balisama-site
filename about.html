@@ -30,6 +30,7 @@
       --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
       --gradient-accent: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      --gradient-web: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
       --dark-bg: rgba(0, 0, 0, 0.9);
       --glass-bg: rgba(255, 255, 255, 0.1);
       --text-light: #f8f9fa;
@@ -429,6 +430,12 @@
       padding: 25px;
       border-radius: 15px;
       margin-left: 25px;
+      transition: all 0.3s ease;
+    }
+
+    .timeline-item:hover {
+      background: rgba(255, 255, 255, 0.08);
+      transform: translateX(5px);
     }
 
     .timeline-item::before {
@@ -441,21 +448,48 @@
       background: var(--primary-gold);
       border-radius: 50%;
       border: 3px solid var(--dark-bg);
+      transition: all 0.3s ease;
+    }
+
+    .timeline-item:hover::before {
+      transform: scale(1.2);
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
     }
 
     .timeline-date {
       color: var(--primary-gold);
       font-weight: 600;
       margin-bottom: 10px;
+      font-size: 0.9em;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
 
     .timeline-title {
       font-weight: 600;
       margin-bottom: 10px;
+      font-size: 1.1em;
     }
 
     .timeline-description {
       color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .timeline-skills {
+      margin-top: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .timeline-skill {
+      background: rgba(255, 215, 0, 0.2);
+      color: var(--primary-gold);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.8em;
+      font-weight: 500;
     }
 
     /* Contact CTA */
@@ -654,6 +688,15 @@
         padding: 20px 15px;
       }
 
+      .timeline-skills {
+        gap: 5px;
+      }
+
+      .timeline-skill {
+        font-size: 0.75em;
+        padding: 3px 8px;
+      }
+
       .social-links {
         gap: 15px;
       }
@@ -738,24 +781,72 @@
         <h2 class="section-title">Mon Parcours</h2>
         <div class="timeline">
           <div class="timeline-item">
-            <div class="timeline-date">2024-présent</div>
+            <div class="timeline-date">2024 - Présent</div>
             <div class="timeline-title">Formation en Télécommunications</div>
             <div class="timeline-description">
-              Spécialisation dans les réseaux et les technologies de communication moderne
+              Spécialisation approfondie dans les réseaux et les technologies de communication moderne. Étude des protocoles de communication, architecture réseau, et infrastructures IT pour les entreprises.
+            </div>
+            <div class="timeline-skills">
+              <span class="timeline-skill">Réseaux</span>
+              <span class="timeline-skill">Protocoles</span>
+              <span class="timeline-skill">Infrastructure IT</span>
+              <span class="timeline-skill">Sécurité réseau</span>
             </div>
           </div>
           <div class="timeline-item">
-            <div class="timeline-date">2023-2024</div>
-            <div class="timeline-title">Certifications Marketing Digital</div>
+            <div class="timeline-date">2021 - 2024</div>
+            <div class="timeline-title">Développement Web & Applications</div>
             <div class="timeline-description">
-              Formation approfondie en SEO, réseaux sociaux et stratégies digitales
+              Maîtrise du développement front-end et back-end avec les technologies modernes. Création d'applications web responsives, optimisation des performances et intégration d'APIs. Développement de solutions personnalisées pour diverses industries.
+            </div>
+            <div class="timeline-skills">
+              <span class="timeline-skill">HTML5/CSS3</span>
+              <span class="timeline-skill">JavaScript</span>
+              <span class="timeline-skill">React</span>
+              <span class="timeline-skill">Node.js</span>
+              <span class="timeline-skill">APIs</span>
+              <span class="timeline-skill">Responsive Design</span>
             </div>
           </div>
           <div class="timeline-item">
-            <div class="timeline-date">2022-2024</div>
-            <div class="timeline-title">Développement & IA</div>
+            <div class="timeline-date">2023 - 2024</div>
+            <div class="timeline-title">Expertise Marketing Digital</div>
             <div class="timeline-description">
-              Intégration de l'intelligence artificielle dans les solutions marketing
+              Formation complète et certification en marketing digital. Maîtrise du SEO technique et sémantique, stratégies de contenu, gestion des réseaux sociaux, publicité en ligne et analyse de performance.
+            </div>
+            <div class="timeline-skills">
+              <span class="timeline-skill">SEO/SEM</span>
+              <span class="timeline-skill">Google Ads</span>
+              <span class="timeline-skill">Social Media</span>
+              <span class="timeline-skill">Analytics</span>
+              <span class="timeline-skill">Content Marketing</span>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">2022 - En cours</div>
+            <div class="timeline-title">Intelligence Artificielle & Automatisation</div>
+            <div class="timeline-description">
+              Intégration de l'IA dans les stratégies marketing et développement. Création de chatbots intelligents, automatisation des processus, analyse prédictive et machine learning pour optimiser les performances business.
+            </div>
+            <div class="timeline-skills">
+              <span class="timeline-skill">Machine Learning</span>
+              <span class="timeline-skill">Chatbots</span>
+              <span class="timeline-skill">Automatisation</span>
+              <span class="timeline-skill">Data Analysis</span>
+              <span class="timeline-skill">Python</span>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">2020 - 2022</div>
+            <div class="timeline-title">Fondations Numériques</div>
+            <div class="timeline-description">
+              Acquisition des bases solides en informatique, design web et stratégies digitales. Formation autodidacte intensive complétée par des projets pratiques et des collaborations avec des professionnels du secteur.
+            </div>
+            <div class="timeline-skills">
+              <span class="timeline-skill">Web Design</span>
+              <span class="timeline-skill">UX/UI</span>
+              <span class="timeline-skill">Photoshop</span>
+              <span class="timeline-skill">Stratégie digitale</span>
             </div>
           </div>
         </div>
@@ -774,20 +865,20 @@
         <div class="progress-container">
           <div class="progress-item">
             <div class="progress-label">
-              <span>Marketing Digital</span>
-              <span>90%</span>
-            </div>
-            <div class="progress-bar">
-              <div class="progress-fill" data-width="90"></div>
-            </div>
-          </div>
-          <div class="progress-item">
-            <div class="progress-label">
               <span>Développement Web</span>
               <span>91%</span>
             </div>
             <div class="progress-bar">
               <div class="progress-fill" data-width="91"></div>
+            </div>
+          </div>
+          <div class="progress-item">
+            <div class="progress-label">
+              <span>Marketing Digital</span>
+              <span>90%</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" data-width="90"></div>
             </div>
           </div>
           <div class="progress-item">
@@ -808,9 +899,18 @@
               <div class="progress-fill" data-width="37"></div>
             </div>
           </div>
+         <div class="progress-item">
+            <div class="progress-label">
+              <span>UI/UX Design</span>
+              <span>84%</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" data-width="84"></div>
+            </div>
+          </div>
         </div>
-
-        <!-- Skills Grid -->
+		
+		  <!-- Skills Grid -->
         <div class="skills-grid">
           <div class="skill-item">
             <div class="skill-title">
@@ -818,25 +918,25 @@
               SEO & Référencement
             </div>
             <div class="skill-description">
-              Optimisation pour les moteurs de recherche, analyse de mots-clés, stratégies de contenu
+              Optimisation technique et sémantique, recherche de mots-clés, audit SEO, link building, analyse de performance et suivi du positionnement.
             </div>
           </div>
           <div class="skill-item">
             <div class="skill-title">
               <i class="fas fa-share-alt"></i>
-              Réseaux Sociaux
+              Marketing des Réseaux Sociaux
             </div>
             <div class="skill-description">
-              Gestion de communautés, création de contenu engageant, publicité sociale
+              Stratégie social media, création de contenu viral, gestion de communauté, publicité sociale, influence marketing et analytics.
             </div>
           </div>
           <div class="skill-item">
             <div class="skill-title">
               <i class="fas fa-code"></i>
-              Développement Web
+              Développement Full-Stack
             </div>
             <div class="skill-description">
-              HTML5, CSS3, JavaScript, responsive design, UX/UI
+              HTML5, CSS3, JavaScript, React, Node.js, Python, PHP, bases de données MySQL/MongoDB, API REST, responsive design.
             </div>
           </div>
           <div class="skill-item">
@@ -845,32 +945,41 @@
               Intelligence Artificielle
             </div>
             <div class="skill-description">
-              Automatisation, chatbots, analyse prédictive, machine learning
+              Machine Learning, automatisation marketing, chatbots intelligents, analyse prédictive, traitement du langage naturel (NLP).
             </div>
           </div>
           <div class="skill-item">
             <div class="skill-title">
               <i class="fas fa-wifi"></i>
-              Télécommunications
+              Télécommunications & Réseaux
             </div>
             <div class="skill-description">
-              Réseaux, protocoles de communication, infrastructure IT
+              Architecture réseau, protocoles TCP/IP, technologies 5G, sécurité réseau, administration système, infrastructure cloud, infrastructure IT
             </div>
           </div>
           <div class="skill-item">
             <div class="skill-title">
               <i class="fas fa-chart-line"></i>
-              Analyse de Données
+              Analyse de Données Avancée
             </div>
             <div class="skill-description">
-              Google Analytics, reporting, KPIs, optimisation des performances
+              Google Analytics 4, Data Studio, Power BI, analyse comportementale, KPIs marketing, reporting automatisé, Business Intelligence.
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-title">
+              <i class="fas fa-palette"></i>
+              Design & UX/UI
+            </div>
+			<div class="skill-description">
+  Design d'interfaces révolutionnaires et expériences immersives. Expertise Figma/Adobe Creative Suite, design systems avancés, animations CSS, prototypage haute-fidélité et A/B testing.
             </div>
           </div>
         </div>
-      </div>
+	  </div>
     </section>
 
-    <!-- Objectives Section -->
+  <!-- Objectives Section -->
     <section class="section-grid">
       <div class="section-card fade-in-up">
         <div class="section-icon">
