@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demander un Devis - Intelligence Artificielle | Maminirina Balsama</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 40px 0;
+        }
+
+        .header h1 {
+            color: white;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.2em;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .form-section {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .form-section h2 {
+            color: #333;
+            font-size: 2em;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            color: #333;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            width: auto;
+            transform: scale(1.2);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .info-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .info-card {
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 25px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .info-card h3 {
+            color: white;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+        }
+
+        .info-card p, .info-card li {
+            color: rgba(255,255,255,0.9);
+            font-size: 0.95em;
+        }
+
+        .info-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .info-card li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .info-card li::before {
+            content: '✓';
+            color: #4CAF50;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .process-steps {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .process-steps h2 {
+            text-align: center;
+            color: #333;
+            font-size: 2em;
+            margin-bottom: 30px;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .step {
+            text-align: center;
+            padding: 20px;
+            border-radius: 15px;
+            background: #f8f9fa;
+            transition: transform 0.3s ease;
+        }
+
+        .step:hover {
+            transform: translateY(-5px);
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            font-weight: bold;
+            margin: 0 auto 15px;
+        }
+
+        .step h4 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .step p {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .nav-back {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .nav-back:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .checkbox-group {
+                grid-template-columns: 1fr;
+            }
+            
+            .steps-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="#" class="nav-back" onclick="window.history.back()">← Retour</a>
+    
+    <div class="container">
+        <div class="header">
+            <h1>Demander un Devis</h1>
+            <p>Obtenez une estimation personnalisée pour votre projet d'Intelligence Artificielle</p>
+        </div>
+
+        <div class="main-content">
+            <div class="form-section">
+                <h2>Parlez-nous de votre projet</h2>
+                <form id="devisForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="nom">Nom *</label>
+                            <input type="text" id="nom" name="nom" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="prenom">Prénom *</label>
+                            <input type="text" id="prenom" name="prenom" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="telephone">Téléphone</label>
+                            <input type="tel" id="telephone" name="telephone">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="entreprise">Entreprise / Organisation *</label>
+                        <input type="text" id="entreprise" name="entreprise" required>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="secteur">Secteur d'activité</label>
+                            <select id="secteur" name="secteur">
+                                <option value="">Sélectionnez...</option>
+                                <option value="e-commerce">E-commerce</option>
+                                <option value="sante">Santé</option>
+                                <option value="finance">Finance</option>
+                                <option value="education">Éducation</option>
+                                <option value="immobilier">Immobilier</option>
+                                <option value="restauration">Restauration</option>
+                                <option value="marketing">Marketing</option>
+                                <option value="autre">Autre</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="taille">Taille de l'entreprise</label>
+                            <select id="taille" name="taille">
+                                <option value="">Sélectionnez...</option>
+                                <option value="freelance">Freelance / Indépendant</option>
+                                <option value="startup">Startup (1-10 employés)</option>
+                                <option value="pme">PME (11-50 employés)</option>
+                                <option value="moyenneEntreprise">Moyenne entreprise (51-250)</option>
+                                <option value="grandeEntreprise">Grande entreprise (250+)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Type de projet souhaité *</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="chatbot" name="services" value="chatbot">
+                                <label for="chatbot">Chatbot intelligent</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="analyse" name="services" value="analyse">
+                                <label for="analyse">Analyse de données</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="automatisation" name="services" value="automatisation">
+                                <label for="automatisation">Automatisation</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="personnalise" name="services" value="personnalise">
+                                <label for="personnalise">Solution personnalisée</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description">Description détaillée du projet *</label>
+                        <textarea id="description" name="description" placeholder="Décrivez votre problématique, vos objectifs, et ce que vous attendez de cette solution IA..." required></textarea>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="budget">Budget estimé</label>
+                            <select id="budget" name="budget">
+                                <option value="">Sélectionnez...</option>
+                                <option value="1000-5000">1 000€ - 5 000€</option>
+                                <option value="5000-15000">5 000€ - 15 000€</option>
+                                <option value="15000-30000">15 000€ - 30 000€</option>
+                                <option value="30000+">30 000€ et plus</option>
+                                <option value="a-discuter">À discuter</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="delai">Délai souhaité</label>
+                            <select id="delai" name="delai">
+                                <option value="">Sélectionnez...</option>
+                                <option value="urgent">Urgent (< 1 mois)</option>
+                                <option value="court">Court terme (1-3 mois)</option>
+                                <option value="moyen">Moyen terme (3-6 mois)</option>
+                                <option value="long">Long terme (6+ mois)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Envoyer ma demande</button>
+                </form>
+            </div>
+
+            <div class="info-sidebar">
+                <div class="info-card">
+                    <h3>📞 Contact Direct</h3>
+                    <p><strong>Réponse garantie sous 24-48h</strong></p>
+                    <p>Email: contact@balsama.com</p>
+                    <p>Consultation gratuite de 30min</p>
+                </div>
+
+                <div class="info-card">
+                    <h3>💰 Tarification</h3>
+                    <ul>
+                        <li>Audit IA gratuit</li>
+                        <li>Devis détaillé personnalisé</li>
+                        <li>Paiement en plusieurs fois</li>
+                        <li>Garantie satisfaction</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <h3>🎯 Nos Garanties</h3>
+                    <ul>
+                        <li>Support technique 6 mois</li>
+                        <li>Formation incluse</li>
+                        <li>Code source fourni</li>
+                        <li>Maintenance préventive</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <h3>⚡ Nos + </h3>
+                    <ul>
+                        <li>Expertise Python & IA</li>
+                        <li>Solutions sur mesure</li>
+                        <li>Approche agile</li>
+                        <li>ROI mesurable</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="process-steps">
+            <h2>Notre Processus de Devis</h2>
+            <div class="steps-grid">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h4>Réception de votre demande</h4>
+                    <p>Analyse de votre formulaire et première évaluation de vos besoins</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h4>Consultation gratuite</h4>
+                    <p>Appel de 30min pour préciser votre projet et vos contraintes</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h4>Analyse technique</h4>
+                    <p>Étude de faisabilité et définition de l'architecture solution</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h4>Proposition détaillée</h4>
+                    <p>Devis complet avec planning, livrables et conditions</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('devisForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Validation des champs requis
+            const requiredFields = ['nom', 'prenom', 'email', 'entreprise', 'description'];
+            let isValid = true;
+            
+            requiredFields.forEach(fieldName => {
+                const field = document.getElementById(fieldName);
+                if (!field.value.trim()) {
+                    field.style.borderColor = '#ff4444';
+                    isValid = false;
+                } else {
+                    field.style.borderColor = '#e0e0e0';
+                }
+            });
+            
+            // Vérifier qu'au moins un service est sélectionné
+            const services = document.querySelectorAll('input[name="services"]:checked');
+            if (services.length === 0) {
+                alert('Veuillez sélectionner au moins un type de projet.');
+                isValid = false;
+            }
+            
+            if (isValid) {
+                // Simulation d'envoi
+                const submitBtn = document.querySelector('.submit-btn');
+                submitBtn.textContent = 'Envoi en cours...';
+                submitBtn.disabled = true;
+                
+                setTimeout(() => {
+                    alert('Votre demande a été envoyée avec succès ! Vous recevrez une réponse sous 24-48h.');
+                    submitBtn.textContent = 'Envoyer ma demande';
+                    submitBtn.disabled = false;
+                    // Ici, vous ajouteriez l'envoi réel vers votre backend
+                }, 2000);
+            }
+        });
+
+        // Animation des cartes au scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.step, .info-card').forEach(element => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(20px)';
+            element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(element);
+        });
+    </script>
+</body>
+</html>
