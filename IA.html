@@ -29,8 +29,6 @@
             text-align: center;
             margin-bottom: 50px;
             padding: 40px 0;
-            position: relative;
-            overflow: hidden;
         }
 
         .header h1 {
@@ -232,46 +230,31 @@
             transform: translateY(-2px);
         }
 
-        /* Bouton retour amélioré pour mobile */
         .nav-back {
             position: fixed;
             top: 20px;
             left: 20px;
             background: rgba(255,255,255,0.2);
             color: white;
-            padding: 12px 20px;
+            padding: 10px 20px;
             border-radius: 50px;
             text-decoration: none;
             backdrop-filter: blur(10px);
             transition: all 0.3s ease;
             z-index: 1000;
-            border: none;
-            font-family: inherit;
-            font-size: 16px;
-            cursor: pointer;
             display: flex;
             align-items: center;
             gap: 8px;
-            /* Amélioration pour mobile */
-            -webkit-tap-highlight-color: transparent;
-            touch-action: manipulation;
-            user-select: none;
-            min-height: 44px; /* Taille minimum recommandée pour mobile */
-            min-width: 44px;
+            font-weight: 500;
         }
 
-        .nav-back:hover,
-        .nav-back:focus {
+        .nav-back:hover {
             background: rgba(255,255,255,0.3);
             transform: translateY(-2px);
-            outline: none;
+            color: white;
         }
 
-        .nav-back:active {
-            transform: translateY(0);
-            background: rgba(255,255,255,0.4);
-        }
-
+        /* Amélioration pour mobile */
         @media (max-width: 768px) {
             .header h1 {
                 font-size: 2em;
@@ -290,26 +273,31 @@
                 align-items: center;
             }
 
-            /* Ajustements mobile pour le bouton retour */
             .nav-back {
                 top: 15px;
                 left: 15px;
-                padding: 10px 16px;
+                padding: 12px 16px;
                 font-size: 14px;
+                min-height: 44px; /* Taille minimum recommandée pour les boutons tactiles */
+                min-width: 44px;
             }
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); opacity: 0.5; }
-            50% { transform: translateY(-20px); opacity: 1; }
+        /* Amélioration pour les appareils tactiles */
+        @media (hover: none) and (pointer: coarse) {
+            .nav-back {
+                padding: 12px 20px;
+                min-height: 44px;
+                min-width: 44px;
+            }
         }
     </style>
 </head>
 <body>
-    <button class="nav-back" id="backButton">
+    <a href="index.html" class="nav-back" id="backButton">
         <span>←</span>
         <span>Retour</span>
-    </button>
+    </a>
     
     <div class="container">
         <div class="header">
@@ -408,38 +396,6 @@
     </div>
 
     <script>
-        // Gestion améliorée du bouton retour
-        function handleBackNavigation() {
-            // Vérifier s'il y a un historique
-            if (window.history.length > 1 && document.referrer) {
-                // Si on vient d'une autre page du même site
-                if (document.referrer.includes(window.location.hostname)) {
-                    window.history.back();
-                } else {
-                    // Si on vient d'un site externe, rediriger vers l'accueil
-                    window.location.href = '/';
-                }
-            } else {
-                // Pas d'historique, rediriger vers l'accueil
-                window.location.href = '/';
-            }
-        }
-
-        // Ajouter les event listeners pour desktop et mobile
-        const backButton = document.getElementById('backButton');
-        
-        // Événement click pour desktop
-        backButton.addEventListener('click', function(e) {
-            e.preventDefault();
-            handleBackNavigation();
-        });
-
-        // Événement touch pour mobile (optionnel, click fonctionne aussi)
-        backButton.addEventListener('touchend', function(e) {
-            e.preventDefault();
-            handleBackNavigation();
-        });
-
         // Animation au scroll
         const observerOptions = {
             threshold: 0.1,
@@ -463,6 +419,28 @@
             observer.observe(card);
         });
 
+        // Gestion améliorée du bouton retour
+        document.getElementById('backButton').addEventListener('click', function(e) {
+            // Si on est sur mobile ou si l'historique est vide, aller directement à index.html
+            if (window.history.length <= 1 || /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                return; // Laisser le lien href="index.html" faire son travail
+            } else {
+                // Sur desktop, essayer d'utiliser l'historique
+                e.preventDefault();
+                try {
+                    window.history.back();
+                    // Fallback au cas où history.back() ne fonctionne pas
+                    setTimeout(() => {
+                        if (window.location.href === e.target.href) {
+                            window.location.href = 'index.html';
+                        }
+                    }, 100);
+                } catch (error) {
+                    window.location.href = 'index.html';
+                }
+            }
+        });
+
         // Effet de particules sur le header
         function createParticles() {
             const header = document.querySelector('.header');
@@ -480,8 +458,19 @@
             }
         }
 
-        // Créer les particules au chargement
-        document.addEventListener('DOMContentLoaded', createParticles);
+        // Ajouter les styles d'animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes float {
+                0%, 100% { transform: translateY(0px); opacity: 0.5; }
+                50% { transform: translateY(-20px); opacity: 1; }
+            }
+            .header { position: relative; overflow: hidden; }
+        `;
+        document.head.appendChild(style);
+
+        // Créer les particules
+        createParticles();
     </script>
 </body>
 </html>
