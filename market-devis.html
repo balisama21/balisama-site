@@ -313,46 +313,52 @@
                     ❌ Une erreur s'est produite. Veuillez réessayer ou me contacter directement.
                 </div>
 
-                <form id="contactForm">
+                <form action="https://formsubmit.co/balisamamamy2003@gmail.com" method="POST" id="contactForm">
+                    <!-- Configuration FormSubmit -->
+                    <input type="hidden" name="_subject" value="Nouvelle demande de devis - Marketing Digital">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="text" name="_honey" style="display:none">
+                    
                     <div class="form-row">
                         <div class="form-group">
                             <label for="prenom">Prénom *</label>
-                            <input type="text" id="prenom" name="prenom" required>
+                            <input type="text" id="prenom" name="Prénom" required>
                         </div>
                         <div class="form-group">
                             <label for="nom">Nom *</label>
-                            <input type="text" id="nom" name="nom" required>
+                            <input type="text" id="nom" name="Nom" required>
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group">
                             <label for="email">Email *</label>
-                            <input type="email" id="email" name="email" required>
+                            <input type="email" id="email" name="Email" required>
                         </div>
                         <div class="form-group">
                             <label for="telephone">Téléphone</label>
-                            <input type="tel" id="telephone" name="telephone">
+                            <input type="tel" id="telephone" name="Téléphone">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="entreprise">Nom de l'entreprise</label>
-                        <input type="text" id="entreprise" name="entreprise">
+                        <input type="text" id="entreprise" name="Entreprise">
                     </div>
 
                     <div class="form-group">
                         <label for="secteur">Secteur d'activité</label>
-                        <select id="secteur" name="secteur">
+                        <select id="secteur" name="Secteur d'activité">
                             <option value="">Sélectionnez votre secteur</option>
-                            <option value="commerce">Commerce / E-commerce</option>
-                            <option value="services">Services</option>
-                            <option value="immobilier">Immobilier</option>
-                            <option value="sante">Santé / Beauté</option>
-                            <option value="restauration">Restauration</option>
-                            <option value="education">Éducation / Formation</option>
-                            <option value="technologie">Technologie</option>
-                            <option value="autre">Autre</option>
+                            <option value="Commerce / E-commerce">Commerce / E-commerce</option>
+                            <option value="Services">Services</option>
+                            <option value="Immobilier">Immobilier</option>
+                            <option value="Santé / Beauté">Santé / Beauté</option>
+                            <option value="Restauration">Restauration</option>
+                            <option value="Éducation / Formation">Éducation / Formation</option>
+                            <option value="Technologie">Technologie</option>
+                            <option value="Autre">Autre</option>
                         </select>
                     </div>
 
@@ -360,19 +366,19 @@
                         <label>Services souhaités *</label>
                         <div class="checkbox-group">
                             <div class="checkbox-item">
-                                <input type="checkbox" id="seo" name="services[]" value="seo">
+                                <input type="checkbox" id="seo" name="Services" value="SEO / Référencement">
                                 <label for="seo">SEO / Référencement</label>
                             </div>
                             <div class="checkbox-item">
-                                <input type="checkbox" id="reseaux" name="services[]" value="reseaux">
+                                <input type="checkbox" id="reseaux" name="Services" value="Réseaux sociaux">
                                 <label for="reseaux">Réseaux sociaux</label>
                             </div>
                             <div class="checkbox-item">
-                                <input type="checkbox" id="email" name="services[]" value="email">
-                                <label for="email">Email marketing</label>
+                                <input type="checkbox" id="email_marketing" name="Services" value="Email marketing">
+                                <label for="email_marketing">Email marketing</label>
                             </div>
                             <div class="checkbox-item">
-                                <input type="checkbox" id="publicite" name="services[]" value="publicite">
+                                <input type="checkbox" id="publicite" name="Services" value="Publicité digitale">
                                 <label for="publicite">Publicité digitale</label>
                             </div>
                         </div>
@@ -380,18 +386,18 @@
 
                     <div class="form-group">
                         <label for="budget">Budget approximatif</label>
-                        <select id="budget" name="budget">
+                        <select id="budget" name="Budget approximatif">
                             <option value="">Sélectionnez votre budget</option>
-                            <option value="500-1000">500€ - 1 000€</option>
-                            <option value="1000-2500">1 000€ - 2 500€</option>
-                            <option value="2500-5000">2 500€ - 5 000€</option>
-                            <option value="5000+">Plus de 5 000€</option>
+                            <option value="500€ - 1 000€">500€ - 1 000€</option>
+                            <option value="1 000€ - 2 500€">1 000€ - 2 500€</option>
+                            <option value="2 500€ - 5 000€">2 500€ - 5 000€</option>
+                            <option value="Plus de 5 000€">Plus de 5 000€</option>
                         </select>
                     </div>
 
                     <div class="form-group">
                         <label for="message">Décrivez votre projet *</label>
-                        <textarea id="message" name="message" placeholder="Décrivez vos objectifs, vos besoins spécifiques, votre situation actuelle..." required></textarea>
+                        <textarea id="message" name="Description du projet" placeholder="Décrivez vos objectifs, vos besoins spécifiques, votre situation actuelle..." required></textarea>
                     </div>
 
                     <button type="submit" class="btn-primary">Envoyer ma demande</button>
@@ -492,38 +498,20 @@
 
         // Gestion du formulaire
         document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Validation des services
-            const services = document.querySelectorAll('input[name="services[]"]:checked');
+            // Validation des services avant soumission
+            const services = document.querySelectorAll('input[name="Services"]:checked');
             if (services.length === 0) {
+                e.preventDefault();
                 alert('Veuillez sélectionner au moins un service.');
-                return;
+                return false;
             }
             
-            // Simulation d'envoi
+            // Animation du bouton pendant l'envoi
             const submitBtn = document.querySelector('.btn-primary');
-            const originalText = submitBtn.textContent;
-            
             submitBtn.textContent = 'Envoi en cours...';
             submitBtn.disabled = true;
             
-            // Simulation d'une requête
-            setTimeout(() => {
-                // Ici, vous pouvez intégrer votre service d'envoi d'email
-                // (Netlify Forms, EmailJS, etc.)
-                
-                document.getElementById('successMessage').style.display = 'block';
-                document.getElementById('contactForm').reset();
-                
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
-                
-                // Masquer le message après 5 secondes
-                setTimeout(() => {
-                    document.getElementById('successMessage').style.display = 'none';
-                }, 5000);
-            }, 2000);
+            // Le formulaire sera soumis normalement vers FormSubmit
         });
 
         // Animation au scroll
