@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demander un Devis - Maminirina Balsama</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .contact-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .form-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .info-section {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px;
+            backdrop-filter: blur(10px);
+            color: white;
+        }
+
+        .form-section h2 {
+            color: #5a67d8;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #4a5568;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            background: white;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            width: auto;
+            transform: scale(1.2);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #667eea;
+            border: 2px solid #667eea;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 15px;
+        }
+
+        .btn-secondary:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .info-section h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .contact-info {
+            margin-bottom: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(5px);
+        }
+
+        .contact-item .icon {
+            font-size: 1.5rem;
+            width: 40px;
+            text-align: center;
+        }
+
+        .services-list {
+            list-style: none;
+        }
+
+        .services-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .services-list li:last-child {
+            border-bottom: none;
+        }
+
+        .price-range {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .price-range h4 {
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .price-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding: 8px 0;
+        }
+
+        .success-message {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .error-message {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-section,
+            .info-section {
+                padding: 20px;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="contact-icon">📧</div>
+            <h1>Demander un Devis</h1>
+            <p class="subtitle">Obtenez une proposition personnalisée pour votre projet digital</p>
+        </div>
+
+        <div class="main-content">
+            <div class="form-section">
+                <h2>Formulaire de Contact</h2>
+                
+                <div class="success-message" id="successMessage">
+                    ✅ Votre demande a été envoyée avec succès ! Je vous répondrai dans les plus brefs délais.
+                </div>
+                
+                <div class="error-message" id="errorMessage">
+                    ❌ Une erreur s'est produite. Veuillez réessayer ou me contacter directement.
+                </div>
+
+                <form id="contactForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="prenom">Prénom *</label>
+                            <input type="text" id="prenom" name="prenom" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="nom">Nom *</label>
+                            <input type="text" id="nom" name="nom" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="telephone">Téléphone</label>
+                            <input type="tel" id="telephone" name="telephone">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="entreprise">Nom de l'entreprise</label>
+                        <input type="text" id="entreprise" name="entreprise">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="secteur">Secteur d'activité</label>
+                        <select id="secteur" name="secteur">
+                            <option value="">Sélectionnez votre secteur</option>
+                            <option value="commerce">Commerce / E-commerce</option>
+                            <option value="services">Services</option>
+                            <option value="immobilier">Immobilier</option>
+                            <option value="sante">Santé / Beauté</option>
+                            <option value="restauration">Restauration</option>
+                            <option value="education">Éducation / Formation</option>
+                            <option value="technologie">Technologie</option>
+                            <option value="autre">Autre</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Services souhaités *</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="seo" name="services[]" value="seo">
+                                <label for="seo">SEO / Référencement</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="reseaux" name="services[]" value="reseaux">
+                                <label for="reseaux">Réseaux sociaux</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="email" name="services[]" value="email">
+                                <label for="email">Email marketing</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="publicite" name="services[]" value="publicite">
+                                <label for="publicite">Publicité digitale</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="budget">Budget approximatif</label>
+                        <select id="budget" name="budget">
+                            <option value="">Sélectionnez votre budget</option>
+                            <option value="500-1000">500€ - 1 000€</option>
+                            <option value="1000-2500">1 000€ - 2 500€</option>
+                            <option value="2500-5000">2 500€ - 5 000€</option>
+                            <option value="5000+">Plus de 5 000€</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Décrivez votre projet *</label>
+                        <textarea id="message" name="message" placeholder="Décrivez vos objectifs, vos besoins spécifiques, votre situation actuelle..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-primary">Envoyer ma demande</button>
+                    <a href="marketing.html" class="btn-secondary">← Retour aux services</a>
+                </form>
+            </div>
+
+            <div class="info-section">
+                <h3>📞 Informations de Contact</h3>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <span class="icon">📧</span>
+                        <div>
+                            <strong>Email</strong><br>
+                            balisamamamy2003@gmail.com
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <span class="icon">📱</span>
+                        <div>
+                            <strong>Téléphone</strong><br>
+                            +261 32 87 406 31
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <span class="icon">📍</span>
+                        <div>
+                            <strong>Localisation</strong><br>
+                            Antananarivo, Madagascar
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <span class="icon">⏰</span>
+                        <div>
+                            <strong>Disponibilité</strong><br>
+                            Lun-Ven: 8h-18h<br>
+                            Sam: 9h-15h
+                        </div>
+                    </div>
+                </div>
+
+                <h3>🎯 Mes Services</h3>
+                <ul class="services-list">
+                    <li>🔍 Audit SEO et optimisation</li>
+                    <li>📱 Gestion réseaux sociaux</li>
+                    <li>📧 Campagnes email marketing</li>
+                    <li>🎯 Publicité Google & Facebook</li>
+                    <li>📊 Analytics et reporting</li>
+                    <li>🚀 Stratégie digitale globale</li>
+                </ul>
+
+                <div class="price-range">
+                    <h4>💰 Tarifs indicatifs</h4>
+                    <div class="price-item">
+                        <span>Audit SEO</span>
+                        <span>150€ - 300€</span>
+                    </div>
+                    <div class="price-item">
+                        <span>Gestion réseaux sociaux</span>
+                        <span>300€ - 800€/mois</span>
+                    </div>
+                    <div class="price-item">
+                        <span>Campagne publicitaire</span>
+                        <span>200€ - 500€/mois</span>
+                    </div>
+                    <div class="price-item">
+                        <span>Email marketing</span>
+                        <span>150€ - 400€/mois</span>
+                    </div>
+                    <p style="font-size: 0.9rem; margin-top: 15px; opacity: 0.8;">
+                        * Tarifs personnalisés selon vos besoins
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Animation d'entrée
+        document.addEventListener('DOMContentLoaded', function() {
+            const formSection = document.querySelector('.form-section');
+            const infoSection = document.querySelector('.info-section');
+            
+            formSection.style.opacity = '0';
+            formSection.style.transform = 'translateX(-50px)';
+            infoSection.style.opacity = '0';
+            infoSection.style.transform = 'translateX(50px)';
+            
+            setTimeout(() => {
+                formSection.style.transition = 'all 0.8s ease';
+                infoSection.style.transition = 'all 0.8s ease';
+                formSection.style.opacity = '1';
+                formSection.style.transform = 'translateX(0)';
+                infoSection.style.opacity = '1';
+                infoSection.style.transform = 'translateX(0)';
+            }, 300);
+        });
+
+        // Gestion du formulaire
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Validation des services
+            const services = document.querySelectorAll('input[name="services[]"]:checked');
+            if (services.length === 0) {
+                alert('Veuillez sélectionner au moins un service.');
+                return;
+            }
+            
+            // Simulation d'envoi
+            const submitBtn = document.querySelector('.btn-primary');
+            const originalText = submitBtn.textContent;
+            
+            submitBtn.textContent = 'Envoi en cours...';
+            submitBtn.disabled = true;
+            
+            // Simulation d'une requête
+            setTimeout(() => {
+                // Ici, vous pouvez intégrer votre service d'envoi d'email
+                // (Netlify Forms, EmailJS, etc.)
+                
+                document.getElementById('successMessage').style.display = 'block';
+                document.getElementById('contactForm').reset();
+                
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+                
+                // Masquer le message après 5 secondes
+                setTimeout(() => {
+                    document.getElementById('successMessage').style.display = 'none';
+                }, 5000);
+            }, 2000);
+        });
+
+        // Animation au scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observer les éléments de contact
+        document.querySelectorAll('.contact-item').forEach(item => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(20px)';
+            item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(item);
+        });
+
+        // Effet de parallaxe
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const header = document.querySelector('.header');
+            header.style.transform = `translateY(${scrolled * 0.3}px)`;
+        });
+
+        // Animation des éléments du formulaire
+        document.querySelectorAll('.form-group input, .form-group select, .form-group textarea').forEach(element => {
+            element.addEventListener('focus', function() {
+                this.parentElement.style.transform = 'translateY(-2px)';
+            });
+            
+            element.addEventListener('blur', function() {
+                this.parentElement.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body>
+</html>
