@@ -390,28 +390,38 @@
             observer.observe(card);
         });
 
-        // Animation des statistiques
-        const animateStats = () => {
-            document.querySelectorAll('.stat-number').forEach(stat => {
-                const finalNumber = stat.textContent;
-                const isPercentage = finalNumber.includes('%');
-                const cleanNumber = parseInt(finalNumber.replace(/[^0-9]/g, ''));
-                
-                let currentNumber = 0;
-                const increment = cleanNumber / 50;
-                
-                const timer = setInterval(() => {
-                    currentNumber += increment;
-                    if (currentNumber >= cleanNumber) {
-                        currentNumber = cleanNumber;
-                        clearInterval(timer);
-                    }
-                    
-                    stat.textContent = Math.floor(currentNumber) + (isPercentage ? '%' : finalNumber.includes('+') ? '+' : finalNumber.includes('/') ? '/7' : '');
-                }, 30);
-            });
-        };
-
+       // Animation des statistiques - VERSION CORRIGÉE
+const animateStats = () => {
+    document.querySelectorAll('.stat-number').forEach(stat => {
+        const finalNumber = stat.textContent;
+        const isPercentage = finalNumber.includes('%');
+        const isTimeFormat = finalNumber.includes('H/') || finalNumber.includes('h/');
+        
+        let cleanNumber, suffix;
+        
+        if (isTimeFormat) {
+            // Pour "24H/7j", on extrait seulement "24"
+            cleanNumber = parseInt(finalNumber.match(/\d+/)[0]);
+            suffix = finalNumber.replace(/^\d+/, ''); // Garde "H/7j"
+        } else {
+            cleanNumber = parseInt(finalNumber.replace(/[^0-9]/g, ''));
+            suffix = isPercentage ? '%' : (finalNumber.includes('+') ? '+' : '');
+        }
+        
+        let currentNumber = 0;
+        const increment = cleanNumber / 50;
+        
+        const timer = setInterval(() => {
+            currentNumber += increment;
+            if (currentNumber >= cleanNumber) {
+                currentNumber = cleanNumber;
+                clearInterval(timer);
+            }
+            
+            stat.textContent = Math.floor(currentNumber) + suffix;
+        }, 30);
+    });
+};
         // Observer la section des stats
         const statsSection = document.querySelector('.stats-section');
         const statsObserver = new IntersectionObserver((entries) => {
