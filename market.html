@@ -302,7 +302,7 @@
                     <div class="stat-label">Croissance moyenne</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-number"> 24/7</div>
+                    <div class="stat-number"> 24h/7j</div>
                     <div class="stat-label">Support client</div>
                 </div>
             </div>
@@ -400,7 +400,7 @@ const animateStats = () => {
         let cleanNumber, suffix;
         
         if (isTimeFormat) {
-            // Pour "24/7", on extrait seulement 
+            // Pour "24h/7j", on extrait seulement 
             cleanNumber = parseInt(finalNumber.match(/\d+/)[0]);
             suffix = finalNumber.replace(/^\d+/, ''); // Garde "H/7j"
         } else {
