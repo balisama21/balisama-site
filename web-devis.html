@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demander un Devis - Développement Web | Maminirina Balsama</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            color: white;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            border-radius: 2px;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            background: linear-gradient(135deg, #fff 0%, #e2e8f0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header .subtitle {
+            font-size: 1.3rem;
+            opacity: 0.95;
+            margin-bottom: 10px;
+        }
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-top: 20px;
+        }
+
+        .breadcrumb a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .breadcrumb a:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+
+        .form-container {
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 25px;
+            padding: 50px;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.15);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255,255,255,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .form-container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(102, 126, 234, 0.03), transparent);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            50% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .form-header h2 {
+            color: #2d3748;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .form-header p {
+            color: #4a5568;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .form-section {
+            background: rgba(248, 250, 252, 0.8);
+            border-radius: 20px;
+            padding: 35px;
+            border: 1px solid rgba(226, 232, 240, 0.6);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .form-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .form-section h3 {
+            color: #2d3748;
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 600;
+        }
+
+        .form-section .icon {
+            font-size: 1.8rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #2d3748;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .required {
+            color: #e53e3e;
+            margin-left: 4px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: white;
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            background: white;
+            border-radius: 10px;
+            border: 2px solid #e2e8f0;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .checkbox-item:hover {
+            border-color: #667eea;
+            background: rgba(102, 126, 234, 0.02);
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            width: auto;
+            margin: 0;
+            accent-color: #667eea;
+            transform: scale(1.2);
+        }
+
+        .checkbox-item label {
+            margin: 0;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .budget-range {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .budget-option {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .budget-option input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+
+        .budget-option label {
+            display: block;
+            padding: 15px;
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            text-align: center;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .budget-option input[type="radio"]:checked + label {
+            border-color: #667eea;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .timeline-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .timeline-option {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .timeline-option input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+
+        .timeline-option label {
+            display: block;
+            padding: 12px 20px;
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 25px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .timeline-option input[type="radio"]:checked + label {
+            border-color: #43e97b;
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(67, 233, 123, 0.3);
+        }
+
+        .full-width {
+            grid-column: 1 / -1;
+        }
+
+        .submit-section {
+            text-align: center;
+            margin-top: 40px;
+            padding: 30px;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+            border-radius: 20px;
+            border: 1px solid rgba(102, 126, 234, 0.1);
+            position: relative;
+            z-index: 2;
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 18px 50px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-back {
+            background: transparent;
+            color: #667eea;
+            border: 2px solid #667eea;
+            padding: 18px 40px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px;
+        }
+
+        .btn-back:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .contact-info {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border-radius: 20px;
+            padding: 30px;
+            margin-top: 40px;
+            text-align: center;
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+
+        .contact-info h3 {
+            color: #2d3748;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        .contact-methods {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 25px;
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #4a5568;
+            font-size: 1rem;
+        }
+
+        .contact-method .icon {
+            font-size: 1.5rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .progress-indicator {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            gap: 20px;
+        }
+
+        .progress-step {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #667eea;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .progress-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 968px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .form-container {
+                padding: 30px;
+            }
+            
+            .checkbox-group {
+                grid-template-columns: 1fr;
+            }
+            
+            .budget-range {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .form-container {
+                padding: 25px;
+                border-radius: 20px;
+            }
+            
+            .form-section {
+                padding: 25px;
+            }
+            
+            .budget-range {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline-options {
+                flex-direction: column;
+            }
+            
+            .timeline-option label {
+                text-align: center;
+            }
+            
+            .contact-methods {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .form-container {
+                padding: 20px;
+            }
+            
+            .form-section {
+                padding: 20px;
+            }
+            
+            .btn-submit,
+            .btn-back {
+                width: 100%;
+                margin: 5px 0;
+            }
+        }
+
+        /* Animation d'entrée */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .form-section:nth-child(1) { animation-delay: 0.1s; }
+        .form-section:nth-child(2) { animation-delay: 0.2s; }
+        .form-section:nth-child(3) { animation-delay: 0.3s; }
+        .form-section:nth-child(4) { animation-delay: 0.4s; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Demande de Devis</h1>
+            <p class="subtitle">Obtenez une estimation personnalisée pour votre projet web</p>
+            <div class="breadcrumb">
+                <a href="https://balsama.netlify.app">🏠 Accueil</a>
+                <span>></span>
+                <span>Développement Web</span>
+                <span>></span>
+                <span>Devis</span>
+            </div>
+        </div>
+
+        <div class="form-container">
+            <div class="form-header">
+                <h2>Parlons de votre projet</h2>
+                <p>Remplissez ce formulaire détaillé pour recevoir un devis personnalisé et précis. Plus vous nous donnerez d'informations, plus notre estimation sera adaptée à vos besoins.</p>
+            </div>
+
+            <div class="progress-indicator">
+                <div class="progress-step">
+                    <div class="progress-dot"></div>
+                    <span>Informations projet</span>
+                </div>
+            </div>
+
+              <form action="https://formsubmit.co/balisamamamy2003@gmail.com" method="POST" id="contactForm">
+                    <!-- Configuration FormSubmit -->
+                    <input type="hidden" name="_subject" value="Nouvelle demande de devis - Developpement web">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="hidden" name="_next" value="https://balsama.netlify.app/merci.html">
+                    <input type="text" name="_honey" style="display: none">
+                <div class="form-grid">
+                    <!-- Section Informations de contact -->
+                    <div class="form-section fade-in">
+                        <h3><span class="icon">👤</span> Vos informations</h3>
+                        
+                        <div class="form-group">
+                            <label for="nom">Nom complet <span class="required">*</span></label>
+                            <input type="text" id="nom" name="nom" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email <span class="required">*</span></label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="telephone">Téléphone</label>
+                            <input type="tel" id="telephone" name="telephone">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="entreprise">Entreprise / Organisation</label>
+                            <input type="text" id="entreprise" name="entreprise">
+                        </div>
+                    </div>
+
+                    <!-- Section Type de projet -->
+                    <div class="form-section fade-in">
+                        <h3><span class="icon">🎯</span> Type de projet</h3>
+                        
+                        <div class="form-group">
+                            <label>Services souhaités <span class="required">*</span></label>
+                            <div class="checkbox-group">
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="site-vitrine" name="services[]" value="site-vitrine">
+                                    <label for="site-vitrine">Site vitrine</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="e-commerce" name="services[]" value="e-commerce">
+                                    <label for="e-commerce">E-commerce</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="app-web" name="services[]" value="app-web">
+                                    <label for="app-web">Application web</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="optimisation" name="services[]" value="optimisation">
+                                    <label for="optimisation">Optimisation</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="maintenance" name="services[]" value="maintenance">
+                                    <label for="maintenance">Maintenance</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="autre" name="services[]" value="autre">
+                                    <label for="autre">Autre</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="secteur">Secteur d'activité</label>
+                            <select id="secteur" name="secteur">
+                                <option value="">Sélectionnez votre secteur</option>
+                                <option value="commerce">Commerce / Retail</option>
+                                <option value="services">Services</option>
+                                <option value="restauration">Restauration</option>
+                                <option value="sante">Santé / Médical</option>
+                                <option value="education">Éducation</option>
+                                <option value="technologie">Technologie</option>
+                                <option value="immobilier">Immobilier</option>
+                                <option value="association">Association / ONG</option>
+                                <option value="autre">Autre</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Section Budget et délai -->
+                    <div class="form-section fade-in">
+                        <h3><span class="icon">💰</span> Budget et délai</h3>
+                        
+                        <div class="form-group">
+                            <label>Budget approximatif <span class="required">*</span></label>
+                            <div class="budget-range">
+                                <div class="budget-option">
+                                    <input type="radio" id="budget1" name="budget" value="500-1500" required>
+                                    <label for="budget1">500€ - 1500€</label>
+                                </div>
+                                <div class="budget-option">
+                                    <input type="radio" id="budget2" name="budget" value="1500-3000" required>
+                                    <label for="budget2">1500€ - 3000€</label>
+                                </div>
+                                <div class="budget-option">
+                                    <input type="radio" id="budget3" name="budget" value="3000-5000" required>
+                                    <label for="budget3">3000€ - 5000€</label>
+                                </div>
+                                <div class="budget-option">
+                                    <input type="radio" id="budget4" name="budget" value="5000+" required>
+                                    <label for="budget4">5000€+</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Délai souhaité</label>
+                            <div class="timeline-options">
+                                <div class="timeline-option">
+                                    <input type="radio" id="delai1" name="delai" value="urgent">
+                                    <label for="delai1">🚀 Urgent (< 2 semaines)</label>
+                                </div>
+                                <div class="timeline-option">
+                                    <input type="radio" id="delai2" name="delai" value="normal">
+                                    <label for="delai2">⏰ Normal (1-2 mois)</label>
+                                </div>
+                                <div class="timeline-option">
+                                    <input type="radio" id="delai3" name="delai" value="flexible">
+                                    <label for="delai3">📅 Flexible (> 2 mois)</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section Spécifications -->
+                    <div class="form-section fade-in">
+                        <h3><span class="icon">⚙️</span> Spécifications</h3>
+                        
+                        <div class="form-group">
+                            <label for="pages">Nombre de pages estimé</label>
+                            <select id="pages" name="pages">
+                                <option value="1-5">1-5 pages</option>
+                                <option value="6-10">6-10 pages</option>
+                                <option value="11-20">11-20 pages</option>
+                                <option value="20+">Plus de 20 pages</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Fonctionnalités souhaitées</label>
+                            <div class="checkbox-group">
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="cms" name="fonctionnalites[]" value="cms">
+                                    <label for="cms">Système de gestion</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="paiement" name="fonctionnalites[]" value="paiement">
+                                    <label for="paiement">Paiement en ligne</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="reservation" name="fonctionnalites[]" value="reservation">
+                                    <label for="reservation">Système réservation</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="multilingue" name="fonctionnalites[]" value="multilingue">
+                                    <label for="multilingue">Multilingue</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="api" name="fonctionnalites[]" value="api">
+                                    <label for="api">Intégrations API</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="seo" name="fonctionnalites[]" value="seo">
+                                    <label for="seo">Optimisation SEO</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section Description détaillée -->
+                    <div class="form-section full-width fade-in">
+                        <h3><span class="icon">📝</span> Description du projet</h3>
+                        
+                        <div class="form-group">
+                            <label for="description">Décrivez votre projet en détail <span class="required">*</span></label>
+                            <textarea id="description" name="description" placeholder="Parlez-nous de votre vision, vos objectifs, votre public cible, vos inspirations..." required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="reference">Site web de référence (URL)</label>
+                            <input type="url" id="reference" name="reference" placeholder="https://exemple.com">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="commentaires">Commentaires additionnels</label>
+                            <textarea id="commentaires" name="commentaires" placeholder="Questions, contraintes spécifiques, demandes particulières..."></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="submit-section">
+                    <p style="margin-bottom: 25px; color: #4a5568;">
+                        🚀 Vous recevrez une réponse personnalisée sous 24-48h avec une estimation détaillée
+                    </p>
+                    <button type="submit" class="btn-submit">
+                        Envoyer ma demande de devis
+                    </button>
+                    <a href="https://balsama.netlify.app" class="btn-back">
+                        Retour à l'accueil
+                    </a>
+                </div>
+            </form>
+        </div>
+
+        <div class="contact-info">
+            <h3>Vous préférez nous contacter directement ?</h3>
+            <p style="color: #4a5568; margin-bottom: 20px;">N'hésitez pas à nous joindre par l'un de ces moyens</p>
+            <div class="contact-methods">
+                <div class="contact-method">
+                    <span class="icon">📧</span>
+                    <span>contact@balsama.dev</span>
+                </div>
+                <div class="contact-method">
+                    <span class="icon">📱</span>
+                    <span>+261 32 87 406 31</span>
+                </div>
+                <div class="contact-method">
+                    <span class="icon">💬</span>
+                    <span>Consultation gratuite 30min</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Animation d'entrée
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.form-section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Validation et soumission du formulaire
+        document.getElementById('devisForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Vérification des champs requis
+            const requiredFields = this.querySelectorAll('[required]');
+            let isValid = true;
+            
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    isValid = false;
+                    field.style.borderColor = '#e53e3e';
+                    field.style.boxShadow = '0 0 0 3px rgba(229, 62, 62, 0.1)';
+                } else {
+                    field.style.borderColor = '#e2e8f0';
+                    field.style.boxShadow = 'none';
+                }
+            });
+
+            // Vérification des services sélectionnés
+            const services = this.querySelectorAll('input[name="services[]"]:checked');
+            if (services.length === 0) {
+                isValid = false;
+                alert('Veuillez sélectionner au moins un service.');
+                document.querySelector('input[name="services[]"]').closest('.form-group').scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'center'
+                });
+                return;
+            }
+
+            if (isValid) {
+                // Animation de soumission
+                const submitBtn = this.querySelector('.btn-submit');
+                const originalText = submitBtn.textContent;
+                
+                submitBtn.textContent = '⏳ Envoi en cours...';
+                submitBtn.disabled = true;
+                submitBtn.style.opacity = '0.7';
+                
+                // Simulation d'envoi (remplacez par votre logique d'envoi)
+                setTimeout(() => {
+                    // Affichage du message de succès
+                    showSuccessMessage();
+                    
+                    // Reset du formulaire
+                    this.reset();
+                    
+                    // Restauration du bouton
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                    submitBtn.style.opacity = '1';
+                }, 2000);
+            } else {
+                // Scroll vers le premier champ invalide
+                const firstInvalid = this.querySelector('input[style*="border-color: rgb(229, 62, 62)"]');
+                if (firstInvalid) {
+                    firstInvalid.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'center'
+                    });
+                }
+            }
+        });
+
+        // Message de succès
+        function showSuccessMessage() {
+            const successMessage = document.createElement('div');
+            successMessage.innerHTML = `
+                <div style="
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: rgba(0,0,0,0.8);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    z-index: 9999;
+                    animation: fadeIn 0.3s ease;
+                ">
+                    <div style="
+                        background: white;
+                        padding: 40px;
+                        border-radius: 20px;
+                        text-align: center;
+                        max-width: 500px;
+                        margin: 20px;
+                        box-shadow: 0 25px 60px rgba(0,0,0,0.3);
+                    ">
+                        <div style="font-size: 4rem; margin-bottom: 20px;">🎉</div>
+                        <h3 style="color: #2d3748; margin-bottom: 15px; font-size: 1.8rem;">Demande envoyée avec succès !</h3>
+                        <p style="color: #4a5568; margin-bottom: 25px; line-height: 1.6;">
+                            Merci pour votre confiance ! Nous avons bien reçu votre demande de devis.
+                            Vous recevrez une réponse personnalisée dans les 24-48h.
+                        </p>
+                        <button onclick="this.closest('div').remove()" style="
+                            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                            color: white;
+                            border: none;
+                            padding: 15px 30px;
+                            border-radius: 25px;
+                            font-weight: bold;
+                            cursor: pointer;
+                            transition: transform 0.3s ease;
+                        " onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
+                            Parfait !
+                        </button>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(successMessage);
+        }
+
+        // Animation des éléments au focus
+        document.querySelectorAll('input, select, textarea').forEach(element => {
+            element.addEventListener('focus', function() {
+                this.closest('.form-group').style.transform = 'translateY(-2px)';
+                this.closest('.form-section').style.boxShadow = '0 20px 40px rgba(0,0,0,0.12)';
+            });
+            
+            element.addEventListener('blur', function() {
+                this.closest('.form-group').style.transform = 'translateY(0)';
+                this.closest('.form-section').style.boxShadow = '0 15px 35px rgba(0,0,0,0.1)';
+            });
+        });
+
+        // Animation des checkbox et radio
+        document.querySelectorAll('input[type="checkbox"], input[type="radio"]').forEach(input => {
+            input.addEventListener('change', function() {
+                if (this.checked) {
+                    this.closest('.checkbox-item, .budget-option, .timeline-option').style.transform = 'scale(1.02)';
+                    setTimeout(() => {
+                        this.closest('.checkbox-item, .budget-option, .timeline-option').style.transform = 'scale(1)';
+                    }, 200);
+                }
+            });
+        });
+
+        // Effet de parallaxe subtil
+        let ticking = false;
+        function updateParallax() {
+            const scrolled = window.pageYOffset;
+            const header = document.querySelector('.header');
+            const formContainer = document.querySelector('.form-container');
+            
+            header.style.transform = `translateY(${scrolled * 0.2}px)`;
+            formContainer.style.transform = `translateY(${scrolled * 0.05}px)`;
+            
+            ticking = false;
+        }
+
+        function requestTick() {
+            if (!ticking) {
+                requestAnimationFrame(updateParallax);
+                ticking = true;
+            }
+        }
+
+        window.addEventListener('scroll', requestTick);
+
+        // Indicateur de progression du formulaire
+        function updateProgress() {
+            const requiredFields = document.querySelectorAll('[required]');
+            const filledFields = Array.from(requiredFields).filter(field => {
+                if (field.type === 'checkbox' || field.type === 'radio') {
+                    return document.querySelector(`input[name="${field.name}"]:checked`);
+                }
+                return field.value.trim() !== '';
+            });
+            
+            const progress = (filledFields.length / requiredFields.length) * 100;
+            
+            // Mise à jour visuelle (vous pouvez ajouter une barre de progression si souhaité)
+            const progressDot = document.querySelector('.progress-dot');
+            progressDot.style.background = `conic-gradient(#667eea 0deg ${progress * 3.6}deg, rgba(102, 126, 234, 0.2) ${progress * 3.6}deg 360deg)`;
+        }
+
+        // Écoute des changements pour la progression
+        document.querySelectorAll('input, select, textarea').forEach(element => {
+            element.addEventListener('input', updateProgress);
+            element.addEventListener('change', updateProgress);
+        });
+
+        // Animation de typing pour le placeholder
+        const textarea = document.getElementById('description');
+        const placeholders = [
+            "Décrivez votre vision du projet...",
+            "Quels sont vos objectifs ?",
+            "Qui est votre public cible ?",
+            "Avez-vous des références visuelles ?"
+        ];
+        
+        let placeholderIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        
+        function typePlaceholder() {
+            const currentPlaceholder = placeholders[placeholderIndex];
+            
+            if (isDeleting) {
+                textarea.placeholder = currentPlaceholder.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                textarea.placeholder = currentPlaceholder.substring(0, charIndex + 1);
+                charIndex++;
+            }
+            
+            if (!isDeleting && charIndex === currentPlaceholder.length) {
+                setTimeout(() => isDeleting = true, 2000);
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                placeholderIndex = (placeholderIndex + 1) % placeholders.length;
+            }
+            
+            const speed = isDeleting ? 50 : 100;
+            setTimeout(typePlaceholder, speed);
+        }
+        
+        // Démarrer l'animation seulement si le textarea n'est pas focus
+        textarea.addEventListener('focus', () => {
+            textarea.placeholder = "Parlez-nous de votre vision, vos objectifs, votre public cible, vos inspirations...";
+        });
+        
+        textarea.addEventListener('blur', () => {
+            if (!textarea.value) {
+                setTimeout(typePlaceholder, 1000);
+            }
+        });
+        
+        // Démarrer l'animation
+        if (!textarea.value) {
+            setTimeout(typePlaceholder, 2000);
+        }
+
+        // Effet de survol pour les cartes
+        document.querySelectorAll('.form-section').forEach(section => {
+            section.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-8px)';
+                this.style.boxShadow = '0 25px 50px rgba(0,0,0,0.15)';
+            });
+            
+            section.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(-5px)';
+                this.style.boxShadow = '0 15px 35px rgba(0,0,0,0.1)';
+            });
+        });
+
+        // Initialisation
+        updateProgress();
+    </script>
+</body>
+</html>
