@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Demander un Devis - Maminirina Balsama</title>
+    <title>Demander un Devis - Marketing Digital</title>
     <style>
         * {
             margin: 0;
@@ -12,68 +12,55 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
+            font-family: 'Arial', sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
+            padding: 10px;
+            margin: 0;
+            box-sizing: border-box;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 100%;
+            width: 100%;
             margin: 0 auto;
-            padding: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+            box-sizing: border-box;
         }
 
         .header {
-            text-align: center;
-            margin-bottom: 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
+            text-align: center;
+            padding: 30px 15px;
+            box-sizing: border-box;
+        }
+
+        .contact-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
         }
 
         .header h1 {
-            font-size: 3rem;
+            font-size: 2.5rem;
             margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            font-weight: bold;
         }
 
-        .header .subtitle {
+        .subtitle {
             font-size: 1.2rem;
             opacity: 0.9;
         }
 
-        .contact-icon {
-            font-size: 4rem;
-            margin-bottom: 20px;
-            animation: pulse 2s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-        }
-
         .main-content {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            align-items: start;
-        }
-
-        .form-section {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            padding: 40px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            backdrop-filter: blur(10px);
-        }
-
-        .info-section {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 40px;
-            backdrop-filter: blur(10px);
-            color: white;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 20px;
+            padding: 20px;
+            box-sizing: border-box;
         }
 
         .form-section h2 {
@@ -104,6 +91,7 @@
             font-size: 1rem;
             transition: all 0.3s ease;
             background: rgba(255, 255, 255, 0.9);
+            box-sizing: border-box;
         }
 
         .form-group input:focus,
@@ -124,6 +112,8 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 15px;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .checkbox-group {
@@ -133,13 +123,13 @@
             margin-top: 10px;
         }
 
-        .checkbox-item {
+        .checkbox {
             display: flex;
             align-items: center;
             gap: 8px;
         }
 
-        .checkbox-item input[type="checkbox"] {
+        .checkbox input[type="checkbox"] {
             width: auto;
             transform: scale(1.2);
         }
@@ -176,6 +166,7 @@
             text-decoration: none;
             display: inline-block;
             margin-top: 15px;
+            text-align: center;
         }
 
         .btn-secondary:hover {
@@ -274,21 +265,67 @@
         }
 
         @media (max-width: 768px) {
+            body {
+                padding: 5px;
+            }
+
+            .container {
+                border-radius: 10px;
+                margin: 0;
+            }
+
             .header h1 {
                 font-size: 2rem;
             }
             
             .main-content {
                 grid-template-columns: 1fr;
+                padding: 15px;
+                gap: 20px;
             }
             
             .form-section,
             .info-section {
-                padding: 20px;
+                padding: 0;
             }
             
             .form-row {
                 grid-template-columns: 1fr;
+            }
+
+            .checkbox-group {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .contact-icon {
+                font-size: 2.5rem;
+            }
+
+            .header {
+                padding: 20px 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 2px;
+            }
+
+            .main-content {
+                padding: 10px;
+            }
+
+            .header h1 {
+                font-size: 1.8rem;
+            }
+
+            .subtitle {
+                font-size: 1rem;
+            }
+
+            .form-section h2 {
+                font-size: 1.5rem;
             }
         }
     </style>
@@ -298,12 +335,12 @@
         <div class="header">
             <div class="contact-icon">📧</div>
             <h1>Demander un Devis</h1>
-            <p class="subtitle">Obtenez une proposition personnalisée pour votre projet digital</p>
+            <p class="subtitle">Obtenez une proposition personnalisée pour votre projet numérique</p>
         </div>
 
         <div class="main-content">
             <div class="form-section">
-                <h2>Formulaire de Contact</h2>
+                <h2>Formulaire de contact</h2>
                 
                 <div class="success-message" id="successMessage">
                     ✅ Votre demande a été envoyée avec succès ! Je vous répondrai dans les plus brefs délais.
@@ -319,38 +356,38 @@
                     <input type="hidden" name="_captcha" value="false">
                     <input type="hidden" name="_template" value="table">
                     <input type="hidden" name="_next" value="https://balsama.netlify.app/market-merci.html">
-                    <input type="text" name="_honey" style="display:none">
+                    <input type="text" name="_honey" style="display: none">
                     
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="prenom">Prénom *</label>
-                            <input type="text" id="prenom" name="Prénom" required>
+                            <label for="firstName">Prénom *</label>
+                            <input type="text" id="firstName" name="Prénom" required>
                         </div>
                         <div class="form-group">
-                            <label for="nom">Nom *</label>
-                            <input type="text" id="nom" name="Nom" required>
+                            <label for="lastName">Nom *</label>
+                            <input type="text" id="lastName" name="Nom" required>
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="email">Email *</label>
-                            <input type="email" id="email" name="Email" required>
+                            <label for="email">E-mail *</label>
+                            <input type="email" id="email" name="E-mail" required>
                         </div>
                         <div class="form-group">
-                            <label for="telephone">Téléphone</label>
-                            <input type="tel" id="telephone" name="Téléphone">
+                            <label for="phone">Téléphone</label>
+                            <input type="tel" id="phone" name="Téléphone">
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="entreprise">Nom de l'entreprise</label>
-                        <input type="text" id="entreprise" name="Entreprise">
+                        <label for="company">Nom de l'entreprise</label>
+                        <input type="text" id="company" name="Entreprise">
                     </div>
 
                     <div class="form-group">
-                        <label for="secteur">Secteur d'activité</label>
-                        <select id="secteur" name="Secteur d'activité">
+                        <label for="sector">Secteur d'activité</label>
+                        <select id="sector" name="Secteur d'activité">
                             <option value="">Sélectionnez votre secteur</option>
                             <option value="Commerce / E-commerce">Commerce / E-commerce</option>
                             <option value="Services">Services</option>
@@ -366,21 +403,21 @@
                     <div class="form-group">
                         <label>Services souhaités *</label>
                         <div class="checkbox-group">
-                            <div class="checkbox-item">
+                            <div class="checkbox">
                                 <input type="checkbox" id="seo" name="Services" value="SEO / Référencement">
                                 <label for="seo">SEO / Référencement</label>
                             </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="reseaux" name="Services" value="Réseaux sociaux">
-                                <label for="reseaux">Réseaux sociaux</label>
+                            <div class="checkbox">
+                                <input type="checkbox" id="social" name="Services" value="Réseaux sociaux">
+                                <label for="social">Réseaux sociaux</label>
                             </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="email_marketing" name="Services" value="Email marketing">
-                                <label for="email_marketing">Email marketing</label>
+                            <div class="checkbox">
+                                <input type="checkbox" id="email-marketing" name="Services" value="Marketing par e-mail">
+                                <label for="email-marketing">Marketing par e-mail</label>
                             </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="publicite" name="Services" value="Publicité digitale">
-                                <label for="publicite">Publicité digitale</label>
+                            <div class="checkbox">
+                                <input type="checkbox" id="advertising" name="Services" value="Publicité numérique">
+                                <label for="advertising">Publicité numérique</label>
                             </div>
                         </div>
                     </div>
@@ -407,12 +444,12 @@
             </div>
 
             <div class="info-section">
-                <h3>📞 Informations de Contact</h3>
+                <h3>📞 Informations de contact</h3>
                 <div class="contact-info">
                     <div class="contact-item">
                         <span class="icon">📧</span>
                         <div>
-                            <strong>Email</strong><br>
+                            <strong>E-mail</strong><br>
                             balisamamamy2003@gmail.com
                         </div>
                     </div>
@@ -434,8 +471,8 @@
                         <span class="icon">⏰</span>
                         <div>
                             <strong>Disponibilité</strong><br>
-                            Lun-Ven: 8h-18h<br>
-                            Sam: 9h-15h
+                            Lun-Ven : 8h-18h<br>
+                            Sam : 9h-15h
                         </div>
                     </div>
                 </div>
@@ -443,11 +480,11 @@
                 <h3>🎯 Mes Services</h3>
                 <ul class="services-list">
                     <li>🔍 Audit SEO et optimisation</li>
-                    <li>📱 Gestion réseaux sociaux</li>
-                    <li>📧 Campagnes email marketing</li>
+                    <li>📱 Gestion des réseaux sociaux</li>
+                    <li>📧 Campagnes de marketing par e-mail</li>
                     <li>🎯 Publicité Google & Facebook</li>
-                    <li>📊 Analytics et reporting</li>
-                    <li>🚀 Stratégie digitale globale</li>
+                    <li>📊 Analyse et reporting</li>
+                    <li>🚀 Stratégie numérique globale</li>
                 </ul>
 
                 <div class="price-range">
@@ -457,7 +494,7 @@
                         <span>150€ - 300€</span>
                     </div>
                     <div class="price-item">
-                        <span>Gestion réseaux sociaux</span>
+                        <span>Gestion des réseaux sociaux</span>
                         <span>300€ - 800€/mois</span>
                     </div>
                     <div class="price-item">
@@ -465,11 +502,11 @@
                         <span>200€ - 500€/mois</span>
                     </div>
                     <div class="price-item">
-                        <span>Email marketing</span>
+                        <span>Marketing par e-mail</span>
                         <span>150€ - 400€/mois</span>
                     </div>
                     <p style="font-size: 0.9rem; margin-top: 15px; opacity: 0.8;">
-                        * Tarifs personnalisés selon vos besoins
+                         ิTarifs personnalisés selon vos besoins ิ
                     </p>
                 </div>
             </div>
@@ -534,11 +571,11 @@
         document.querySelectorAll('.contact-item').forEach(item => {
             item.style.opacity = '0';
             item.style.transform = 'translateY(20px)';
-            item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            item.style.transition = 'opacity 0.6s, transform 0.6s';
             observer.observe(item);
         });
 
-        // Effet de parallaxe
+        // Effet de parallaxe léger
         window.addEventListener('scroll', () => {
             const scrolled = window.pageYOffset;
             const header = document.querySelector('.header');
