@@ -1,0 +1,1308 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultation & Formation | Maminirina Balsama</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #8b5cf6;
+            --accent: #f59e0b;
+            --success: #10b981;
+            --dark: #0a0a0f;
+            --dark-2: #1a1a2e;
+            --dark-3: #16213e;
+            --light: #f8fafc;
+            --light-2: #e2e8f0;
+            --glass: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.12);
+            --shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            --shadow-lg: 0 35px 60px -12px rgba(0, 0, 0, 0.35);
+            --radius: 1.5rem;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.7;
+            color: var(--light);
+            background: var(--dark);
+            overflow-x: hidden;
+        }
+
+        /* Arrière-plan galactique */
+        .galaxy-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+            overflow: hidden;
+        }
+
+        /* Étoiles statiques avec scintillement */
+        .stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 2s infinite ease-in-out;
+        }
+
+        .star.small {
+            width: 1px;
+            height: 1px;
+        }
+
+        .star.medium {
+            width: 2px;
+            height: 2px;
+            box-shadow: 0 0 6px rgba(255, 255, 255, 0.8);
+        }
+
+        .star.large {
+            width: 3px;
+            height: 3px;
+            box-shadow: 0 0 12px rgba(255, 255, 255, 0.9), 0 0 24px rgba(99, 102, 241, 0.4);
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        /* Trajectoires stellaires animées */
+        .stellar-trajectories {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .trajectory {
+            position: absolute;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+            border-radius: 1px;
+            animation: shootingStar 8s linear infinite;
+            opacity: 0;
+        }
+
+        .trajectory.blue {
+            background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.8), transparent);
+            box-shadow: 0 0 10px rgba(99, 102, 241, 0.6);
+        }
+
+        .trajectory.purple {
+            background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.8), transparent);
+            box-shadow: 0 0 10px rgba(139, 92, 246, 0.6);
+        }
+
+        .trajectory.gold {
+            background: linear-gradient(90deg, transparent, rgba(245, 158, 11, 0.8), transparent);
+            box-shadow: 0 0 10px rgba(245, 158, 11, 0.6);
+        }
+
+        @keyframes shootingStar {
+            0% {
+                transform: translateX(-100px) rotate(-45deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(calc(100vw + 100px)) rotate(-45deg);
+                opacity: 0;
+            }
+        }
+
+        /* Nébuleuses et gaz cosmiques */
+        .nebula {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(40px);
+            animation: nebulaFloat 25s ease-in-out infinite;
+        }
+
+        .nebula.purple {
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, transparent 70%);
+        }
+
+        .nebula.blue {
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
+        }
+
+        .nebula.pink {
+            background: radial-gradient(circle, rgba(236, 72, 153, 0.1) 0%, transparent 70%);
+        }
+
+        @keyframes nebulaFloat {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -20px) scale(1.1); }
+            66% { transform: translate(-20px, 30px) scale(0.9); }
+        }
+
+        /* Constellations connectées */
+        .constellation {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .constellation-line {
+            position: absolute;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.2), rgba(99, 102, 241, 0.3), rgba(255, 255, 255, 0.2));
+            transform-origin: left center;
+            animation: constellationGlow 4s ease-in-out infinite;
+        }
+
+        @keyframes constellationGlow {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.8; }
+        }
+
+        /* Particules cosmiques flottantes */
+        .cosmic-particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .cosmic-particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+            animation: cosmicFloat 20s linear infinite;
+        }
+
+        .cosmic-particle.bright {
+            background: rgba(99, 102, 241, 0.8);
+            box-shadow: 0 0 8px rgba(99, 102, 241, 0.5);
+        }
+
+        @keyframes cosmicFloat {
+            0% {
+                transform: translate(0, 100vh) scale(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translate(100px, -100vh) scale(1) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Aurore boréale */
+        .aurora {
+            position: absolute;
+            width: 100%;
+            height: 50%;
+            top: 0;
+            background: linear-gradient(180deg, 
+                rgba(99, 102, 241, 0.1) 0%, 
+                rgba(139, 92, 246, 0.05) 30%, 
+                transparent 60%);
+            animation: auroraWave 15s ease-in-out infinite;
+            filter: blur(1px);
+        }
+
+        @keyframes auroraWave {
+            0%, 100% { transform: skewX(0deg); opacity: 0.3; }
+            25% { transform: skewX(2deg); opacity: 0.5; }
+            50% { transform: skewX(-1deg); opacity: 0.7; }
+            75% { transform: skewX(1deg); opacity: 0.4; }
+        }
+
+        /* Navigation moderne */
+        .nav {
+            position: fixed;
+            top: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 2rem;
+            padding: 0.75rem 1.5rem;
+            z-index: 1000;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateX(-50%) translateY(-2px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-content {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.1rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+        .nav-link {
+            color: var(--light-2);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .back-link {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: var(--light);
+            text-decoration: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-weight: 500;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .back-link:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateX(-4px);
+        }
+
+        /* Menu hamburger pour mobile */
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 0.5rem;
+            gap: 4px;
+        }
+
+        .mobile-menu-toggle span {
+            width: 24px;
+            height: 2px;
+            background: var(--light);
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .mobile-menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .mobile-menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        /* Menu mobile en tiroir */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 300px;
+            height: 100vh;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-left: 1px solid rgba(255, 255, 255, 0.15);
+            z-index: 1001;
+            transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-menu .logo {
+            font-size: 1.5rem;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .mobile-nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+        .mobile-nav-link {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            padding: 1rem;
+            border-radius: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .mobile-nav-link:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(8px);
+        }
+
+        .mobile-back-link {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            text-decoration: none;
+            padding: 1rem 1.5rem;
+            border-radius: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            font-weight: 600;
+            margin-top: auto;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-back-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.3);
+        }
+
+        /* Container principal */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+        }
+
+        /* Header avec animations */
+        .header {
+            text-align: center;
+            padding: 8rem 0 4rem;
+            position: relative;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .header h1 {
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--light) 0%, var(--primary) 50%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.1;
+            animation: slideUp 1s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .header .subtitle {
+            font-size: 1.25rem;
+            color: var(--light-2);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            font-weight: 400;
+            animation: slideUp 1s cubic-bezier(0.4, 0, 0.2, 1) 0.2s both;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Grille de services moderne */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+            gap: 2rem;
+            margin-bottom: 6rem;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: var(--radius);
+            padding: 2.5rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: -1;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 35px 60px -12px rgba(0, 0, 0, 0.35);
+            border-color: var(--primary);
+        }
+
+        .service-card:hover::before {
+            opacity: 0.05;
+        }
+
+        .service-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .service-title {
+            flex: 1;
+        }
+
+        .service-title h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--light);
+            margin-bottom: 0.5rem;
+        }
+
+        .service-badge {
+            background: var(--accent);
+            color: var(--dark);
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .service-description {
+            color: var(--light-2);
+            margin-bottom: 2rem;
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .service-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .service-features li {
+            padding: 0.75rem 0;
+            position: relative;
+            padding-left: 2rem;
+            color: var(--light-2);
+            transition: all 0.3s ease;
+        }
+
+        .service-features li::before {
+            content: "✨";
+            position: absolute;
+            left: 0;
+            top: 0.75rem;
+            color: var(--success);
+            font-size: 1.1rem;
+        }
+
+        .service-card:hover .service-features li {
+            color: var(--light);
+            transform: translateX(4px);
+        }
+
+        .service-cta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: auto;
+        }
+
+        .price-tag {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 2rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .price-tag::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .service-card:hover .price-tag::before {
+            left: 100%;
+        }
+
+        .learn-more {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .learn-more::after {
+            content: '→';
+            transition: transform 0.3s ease;
+        }
+
+        .learn-more:hover::after {
+            transform: translateX(4px);
+        }
+
+        /* Section CTA moderne */
+        .cta-section {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: var(--radius);
+            padding: 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 4rem;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, var(--primary), var(--secondary), var(--accent), var(--primary));
+            animation: rotate 10s linear infinite;
+            opacity: 0.05;
+            z-index: -1;
+        }
+
+        @keyframes rotate {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-section h2 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 800;
+            color: var(--light);
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--light) 0%, var(--primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .cta-section p {
+            color: var(--light-2);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.7;
+        }
+
+        .contact-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 2rem;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.3);
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(99, 102, 241, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--light);
+            border: 2px solid rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(20px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-3px);
+            border-color: var(--primary);
+        }
+
+        /* Animations d'intersection */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .nav {
+                top: 1rem;
+                left: 1rem;
+                right: 1rem;
+                transform: none;
+                padding: 1rem;
+                width: calc(100% - 2rem);
+                max-width: none;
+            }
+
+            .nav-content {
+                justify-content: space-between;
+            }
+
+            .nav-links,
+            .back-link {
+                display: none;
+            }
+
+            .mobile-menu-toggle {
+                display: flex;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .header {
+                padding: 6rem 0 3rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .service-card {
+                padding: 2rem;
+            }
+
+            .service-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+
+            .service-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+                margin: 0 auto;
+            }
+
+            .cta-section {
+                padding: 2.5rem 1.5rem;
+            }
+
+            .contact-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .service-card {
+                padding: 1.5rem;
+            }
+
+            .mobile-menu {
+                width: 100%;
+                right: -100%;
+            }
+
+            .service-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.25rem;
+            }
+        }
+
+        /* Indicateur de scroll */
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transform-origin: left;
+            transform: scaleX(0);
+            z-index: 1001;
+        }
+    </style>
+</head>
+<body>
+    <div class="scroll-indicator" id="scrollIndicator"></div>
+    
+    <!-- Arrière-plan galactique -->
+    <div class="galaxy-background">
+        <!-- Aurore boréale -->
+        <div class="aurora"></div>
+        
+        <!-- Étoiles statiques -->
+        <div class="stars" id="stars"></div>
+        
+        <!-- Trajectoires stellaires -->
+        <div class="stellar-trajectories" id="stellarTrajectories"></div>
+        
+        <!-- Nébuleuses -->
+        <div class="nebula purple" style="width: 400px; height: 400px; top: 10%; left: 70%;"></div>
+        <div class="nebula blue" style="width: 300px; height: 300px; top: 60%; left: 10%;"></div>
+        <div class="nebula pink" style="width: 500px; height: 500px; top: 30%; left: 30%;"></div>
+        
+        <!-- Constellations -->
+        <div class="constellation" id="constellation"></div>
+        
+        <!-- Particules cosmiques -->
+        <div class="cosmic-particles" id="cosmicParticles"></div>
+    </div>
+
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+    
+    <nav class="nav">
+        <div class="nav-content">
+            <div class="logo">MB</div>
+            <ul class="nav-links">
+                <li><a href="#services" class="nav-link">Services</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <a href="/" class="back-link">← Accueil</a>
+             <div class="mobile-menu-toggle" id="mobileMenuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="logo">Maminirina Balsama</div>
+        <ul class="mobile-nav-links">
+            <li><a href="#services" class="mobile-nav-link">📊 Services</a></li>
+            <li><a href="#contact" class="mobile-nav-link">📞 Contact</a></li>
+        </ul>
+        <a href="/" class="mobile-back-link">
+            ← Retour à l'accueil
+        </a>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <div class="header-content">
+                <h1>Consultation & Formation</h1>
+                <p class="subtitle">Accompagnement personnalisé pour optimiser votre stratégie digitale et former vos équipes aux technologies de demain</p>
+            </div>
+        </div>
+
+        <div class="services-grid" id="services">
+            <div class="service-card fade-in">
+                <div class="service-header">
+                    <div class="service-icon">📊</div>
+                    <div class="service-title">
+                        <h3>Audit Digital Complet</h3>
+                        <span class="service-badge">Populaire</span>
+                    </div>
+                </div>
+                <p class="service-description">
+                    Analyse approfondie de votre présence digitale pour identifier les points d'amélioration et les opportunités de croissance avec les dernières technologies.
+                </p>
+                
+                <ul class="service-features">
+                    <li>Audit SEO technique et sémantique avancé</li>
+                    <li>Analyse de performance web et Core Web Vitals</li>
+                    <li>Évaluation de vos réseaux sociaux et engagement</li>
+                    <li>Analyse concurrentielle approfondie</li>
+                    <li>Rapport interactif avec visualisations</li>
+                    <li>Plan d'action prioritaire avec timeline</li>
+                </ul>
+
+                <div class="service-cta">
+                    <div class="price-tag">À partir de 800€</div>
+                    <a href="#contact" class="learn-more">En savoir plus</a>
+                </div>
+            </div>
+
+            <div class="service-card fade-in">
+                <div class="service-header">
+                    <div class="service-icon">🚀</div>
+                    <div class="service-title">
+                        <h3>Transformation Numérique</h3>
+                        <span class="service-badge">Premium</span>
+                    </div>
+                </div>
+                <p class="service-description">
+                    Élaboration d'une feuille de route personnalisée pour digitaliser et moderniser votre activité avec l'IA et les technologies émergentes.
+                </p>
+                
+                <ul class="service-features">
+                    <li>Diagnostic de maturité digitale avec IA</li>
+                    <li>Définition d'objectifs SMART et KPIs</li>
+                    <li>Sélection d'outils no-code/low-code</li>
+                    <li>Planification agile des étapes</li>
+                    <li>Accompagnement dans l'implémentation</li>
+                    <li>Suivi en temps réel et ajustements</li>
+                </ul>
+
+                <div class="service-cta">
+                    <div class="price-tag">Sur devis</div>
+                    <a href="#contact" class="learn-more">Découvrir</a>
+                </div>
+            </div>
+
+            <div class="service-card fade-in">
+                <div class="service-header">
+                    <div class="service-icon">🎓</div>
+                    <div class="service-title">
+                        <h3>Formation Interactive</h3>
+                        <span class="service-badge">Nouveau</span>
+                    </div>
+                </div>
+                <p class="service-description">
+                    Sessions de formation immersives adaptées à vos besoins avec réalité virtuelle, gamification et apprentissage personnalisé.
+                </p>
+                
+                <ul class="service-features">
+                    <li>Marketing digital et Growth Hacking</li>
+                    <li>Développement web et IA appliquée</li>
+                    <li>Formations VR/AR immersives</li>
+                    <li>Bureautique moderne (Microsoft 365, Google Workspace)</li>
+                    <li>Communication numérique et personal branding</li>
+                    <li>Certificats et badges numériques</li>
+                </ul>
+
+                <div class="service-cta">
+                    <div class="price-tag">300€/jour</div>
+                    <a href="#contact" class="learn-more">Réserver</a>
+                </div>
+            </div>
+
+            <div class="service-card fade-in">
+                <div class="service-header">
+                    <div class="service-icon">🤝</div>
+                    <div class="service-title">
+                        <h3>Accompagnement Agile</h3>
+                        <span class="service-badge">Recommandé</span>
+                    </div>
+                </div>
+                <p class="service-description">
+                    Suivi personnalisé pour la réalisation de vos projets digitaux avec méthodologie agile, de la conception à la mise en production.
+                </p>
+                
+                <ul class="service-features">
+                    <li>Définition agile du cahier des charges</li>
+                    <li>Gestion de projet avec Scrum/Kanban</li>
+                    <li>Développement itératif et feedback continu</li>
+                    <li>Tests automatisés et déploiement continu</li>
+                    <li>Formation utilisateur gamifiée</li>
+                    <li>Maintenance préventive et support 24/7</li>
+                </ul>
+
+                <div class="service-cta">
+                    <div class="price-tag">1200€/mois</div>
+                    <a href="#contact" class="learn-more">Commencer</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-section fade-in" id="contact">
+            <div class="cta-content">
+                <h2>Prêt à transformer votre présence digitale ?</h2>
+                <p>
+                    Contactez-moi pour discuter de vos besoins et obtenir un devis personnalisé. 
+                    Je vous accompagne dans votre transformation numérique avec des solutions 
+                    innovantes adaptées à votre secteur d'activité.
+                </p>
+                
+                <div class="contact-buttons">
+                    <a href="#" class="btn btn-primary" onclick="openQuoteForm()">
+                        📋 Demander un devis gratuit
+                    </a>
+                    <a href="tel:+261123456789" class="btn btn-secondary">
+                        📞 Consultation téléphonique
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Création des étoiles scintillantes
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            const numberOfStars = 200;
+            
+            for (let i = 0; i < numberOfStars; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                
+                // Répartition des tailles d'étoiles
+                const sizeRandom = Math.random();
+                if (sizeRandom < 0.7) {
+                    star.classList.add('small');
+                } else if (sizeRandom < 0.9) {
+                    star.classList.add('medium');
+                } else {
+                    star.classList.add('large');
+                }
+                
+                // Position aléatoire
+                star.style.top = Math.random() * 100 + '%';
+                star.style.left = Math.random() * 100 + '%';
+                
+                // Délai d'animation aléatoire
+                star.style.animationDelay = Math.random() * 2 + 's';
+                
+                starsContainer.appendChild(star);
+            }
+        }
+
+        // Création des trajectoires stellaires
+        function createStellarTrajectories() {
+            const trajectoryContainer = document.getElementById('stellarTrajectories');
+            const numberOfTrajectories = 8;
+            
+            for (let i = 0; i < numberOfTrajectories; i++) {
+                const trajectory = document.createElement('div');
+                trajectory.className = 'trajectory';
+                
+                // Couleurs aléatoires
+                const colorRandom = Math.random();
+                if (colorRandom < 0.4) {
+                    trajectory.classList.add('blue');
+                } else if (colorRandom < 0.7) {
+                    trajectory.classList.add('purple');
+                } else {
+                    trajectory.classList.add('gold');
+                }
+                
+                // Position et taille aléatoires
+                trajectory.style.top = Math.random() * 100 + '%';
+                trajectory.style.width = (Math.random() * 100 + 50) + 'px';
+                
+                // Délai d'animation aléatoire
+                trajectory.style.animationDelay = Math.random() * 8 + 's';
+                
+                trajectoryContainer.appendChild(trajectory);
+            }
+        }
+
+        // Création des lignes de constellation
+        function createConstellation() {
+            const constellationContainer = document.getElementById('constellation');
+            const numberOfLines = 15;
+            
+            for (let i = 0; i < numberOfLines; i++) {
+                const line = document.createElement('div');
+                line.className = 'constellation-line';
+                
+                // Position et orientation aléatoires
+                const top = Math.random() * 100;
+                const left = Math.random() * 80;
+                const width = Math.random() * 150 + 50;
+                const angle = Math.random() * 360;
+                
+                line.style.top = top + '%';
+                line.style.left = left + '%';
+                line.style.width = width + 'px';
+                line.style.transform = `rotate(${angle}deg)`;
+                
+                // Délai d'animation aléatoire
+                line.style.animationDelay = Math.random() * 4 + 's';
+                
+                constellationContainer.appendChild(line);
+            }
+        }
+
+        // Création des particules cosmiques
+        function createCosmicParticles() {
+            const particlesContainer = document.getElementById('cosmicParticles');
+            const numberOfParticles = 30;
+            
+            for (let i = 0; i < numberOfParticles; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'cosmic-particle';
+                
+                // Certaines particules sont plus brillantes
+                if (Math.random() < 0.3) {
+                    particle.classList.add('bright');
+                }
+                
+                // Position de départ aléatoire
+                particle.style.left = Math.random() * 100 + '%';
+                
+                // Délai d'animation aléatoire
+                particle.style.animationDelay = Math.random() * 20 + 's';
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Gestion du menu mobile
+        function initMobileMenu() {
+            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+            
+            function toggleMenu() {
+                mobileMenuToggle.classList.toggle('active');
+                mobileMenu.classList.toggle('active');
+                mobileMenuOverlay.classList.toggle('active');
+                document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+            }
+            
+            mobileMenuToggle.addEventListener('click', toggleMenu);
+            mobileMenuOverlay.addEventListener('click', toggleMenu);
+            
+            // Fermer le menu lors du clic sur un lien
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', toggleMenu);
+            });
+        }
+
+        // Indicateur de scroll
+        function updateScrollIndicator() {
+            const scrollIndicator = document.getElementById('scrollIndicator');
+            const scrollPercent = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+            scrollIndicator.style.transform = `scaleX(${scrollPercent / 100})`;
+        }
+
+        // Animations au scroll
+        function initScrollAnimations() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+            
+            const fadeElements = document.querySelectorAll('.fade-in');
+            fadeElements.forEach(el => observer.observe(el));
+        }
+
+        // Navigation fluide
+        function initSmoothNavigation() {
+            const navLinks = document.querySelectorAll('a[href^="#"]');
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const target = document.querySelector(link.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        }
+
+        // Fonction pour ouvrir le formulaire de devis
+        function openQuoteForm() {
+            // Ici vous pouvez intégrer votre système de formulaire
+            alert('Formulaire de devis à intégrer selon vos besoins');
+        }
+
+        // Initialisation
+        document.addEventListener('DOMContentLoaded', function() {
+            createStars();
+            createStellarTrajectories();
+            createConstellation();
+            createCosmicParticles();
+            initMobileMenu();
+            initScrollAnimations();
+            initSmoothNavigation();
+            
+            // Écouteur pour l'indicateur de scroll
+            window.addEventListener('scroll', updateScrollIndicator);
+        });
+    </script>
+</body>
+</html>
