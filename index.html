@@ -312,11 +312,19 @@
                 return;
             }
             
+            // Réinitialiser complètement le modal si on l'ouvre depuis la page d'accueil
             if (!modalOpen) {
                 modalOpen = true;
                 modalHistory = [];
                 currentModalIndex = -1;
-                history.pushState({ modal: true, page: htmlFile }, '', '');
+                
+                // Ajouter un état unique à l'historique
+                history.pushState({ 
+                    modal: true, 
+                    page: htmlFile, 
+                    timestamp: Date.now() 
+                }, '', '');
+                
                 modal.classList.add('active');
                 document.body.classList.add('modal-open');
             }
@@ -375,19 +383,26 @@
         }
 
         function closeModal() {
+            console.log('Fermeture du modal');
+            
             var modal = document.getElementById('articleModal');
             var modalBody = document.getElementById('modalBody');
             
             modal.classList.remove('active');
             document.body.classList.remove('modal-open');
             
+            // Réinitialiser complètement toutes les variables
             modalOpen = false;
             modalHistory = [];
             currentModalIndex = -1;
             modalBody.innerHTML = '';
+            
+            console.log('Modal fermé et variables réinitialisées');
         }
 
         function goBackInModal() {
+            console.log('Retour dans le modal, index actuel: ' + currentModalIndex);
+            
             if (currentModalIndex > 0) {
                 currentModalIndex--;
                 modalHistory.pop();
@@ -400,14 +415,51 @@
             }
         }
 
+        function resetModalState() {
+            console.log('Réinitialisation forcée du modal');
+            modalOpen = false;
+            modalHistory = [];
+            currentModalIndex = -1;
+            
+            var modal = document.getElementById('articleModal');
+            var modalBody = document.getElementById('modalBody');
+            
+            if (modal) {
+                modal.classList.remove('active');
+            }
+            if (modalBody) {
+                modalBody.innerHTML = '';
+            }
+            
+            document.body.classList.remove('modal-open');
+        }
+
         window.addEventListener('popstate', function(e) {
+            console.log('Événement popstate détecté, état modal:', modalOpen);
+            console.log('État de l\'historique:', e.state);
+            
             if (modalOpen) {
                 if (e.state && e.state.modal) {
+                    // Navigation arrière dans le modal
                     goBackInModal();
                 } else {
+                    // Retour à la page d'accueil - fermer le modal complètement
                     closeModal();
                 }
             }
+        });
+
+        // Détecter quand on revient à la page d'accueil pour s'assurer que le modal est fermé
+        window.addEventListener('focus', function() {
+            // Vérifier si on est vraiment sur la page d'accueil
+            if (!window.location.hash && !document.querySelector('.modal.active')) {
+                resetModalState();
+            }
+        });
+
+        // Réinitialiser le modal au chargement de la page
+        window.addEventListener('load', function() {
+            resetModalState();
         });
 
         document.addEventListener('keydown', function(e) {
@@ -418,14 +470,27 @@
         });
 
         document.addEventListener('DOMContentLoaded', function() {
+            // Réinitialiser le modal au chargement
+            resetModalState();
+            
             var readMoreLinks = document.querySelectorAll('.read-more');
             for (var i = 0; i < readMoreLinks.length; i++) {
                 readMoreLinks[i].addEventListener('click', function(e) {
                     e.preventDefault();
                 });
             }
-            console.log('Systeme de modal charge');
+            
+            console.log('Systeme de modal charge et reinitialise');
         });
+
+        // Fonction de débogage - à appeler dans la console pour vérifier l'état
+        function debugModalState() {
+            console.log('État du modal:');
+            console.log('modalOpen:', modalOpen);
+            console.log('modalHistory:', modalHistory);
+            console.log('currentModalIndex:', currentModalIndex);
+            console.log('Classe active sur modal:', document.getElementById('articleModal').classList.contains('active'));
+        }
     </script>
 </body>
 </html>
